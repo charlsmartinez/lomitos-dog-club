@@ -4,363 +4,905 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lomitos Dog Club · Metepec</title>
+<meta name="description" content="El primer club canino premium de Metepec. Donde tu lomito es el VIP y tú eres el Invitado de Honor.">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0F0F0D;--bg2:#1A1A16;--bg3:#242420;--gold:#C9A84C;--gold2:rgba(201,168,76,0.15);--cream:#F5F0E8;--cream2:rgba(245,240,232,0.7);--muted:#6B6B5E;--green:#6BAF82;--radius:18px}
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--cream);-webkit-font-smoothing:antialiased}
+:root{
+  --bg:#0A0A08;--bg2:#141410;--bg3:#1E1E1A;--bg4:#282822;
+  --gold:#C9A84C;--gold2:rgba(201,168,76,0.15);--gold3:rgba(201,168,76,0.08);
+  --cream:#F5F0E8;--cream2:rgba(245,240,232,0.75);--cream3:rgba(245,240,232,0.4);
+  --muted:#6B6B5E;--green:#6BAF82;--radius:20px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--cream);-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{text-decoration:none;color:inherit}
+img{max-width:100%}
 
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(15,15,13,0.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--bg3);padding:16px 24px;display:flex;justify-content:space-between;align-items:center}
-.nav-logo{font-family:'Playfair Display',serif;font-size:18px;color:var(--gold);font-weight:700}
-.nav-links{display:flex;gap:24px;align-items:center}
-.nav-links a{font-size:13px;color:var(--muted);transition:color .2s}
+/* ─── CANVAS PARTICLES ─── */
+#canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.5}
+
+/* ─── NAV ─── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:18px 40px;display:flex;justify-content:space-between;align-items:center;transition:background .3s,backdrop-filter .3s}
+nav.scrolled{background:rgba(10,10,8,0.92);backdrop-filter:blur(16px);border-bottom:1px solid var(--bg3)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:20px;color:var(--gold);font-weight:700;letter-spacing:.3px}
+.nav-logo span{color:var(--cream2);font-weight:400}
+.nav-links{display:flex;gap:28px;align-items:center}
+.nav-links a{font-size:13px;color:var(--cream3);transition:color .2s;letter-spacing:.3px}
 .nav-links a:hover{color:var(--gold)}
-.nav-cta{background:var(--gold);color:var(--bg)!important;padding:8px 18px;border-radius:20px;font-weight:500!important;font-size:12px!important}
+.nav-cta{background:var(--gold)!important;color:var(--bg)!important;padding:9px 20px;border-radius:50px;font-weight:500!important;font-size:12px!important;letter-spacing:.5px!important}
+.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.nav-hamburger span{width:22px;height:1.5px;background:var(--cream);transition:.3s}
+.mobile-menu{display:none;position:fixed;inset:0;background:var(--bg);z-index:300;flex-direction:column;align-items:center;justify-content:center;gap:32px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-family:'Playfair Display',serif;font-size:28px;color:var(--cream2)}
+.mobile-close{position:absolute;top:24px;right:32px;font-size:28px;cursor:pointer;color:var(--muted)}
 
-/* HERO */
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(201,168,76,0.06) 0%,transparent 70%)}
-.hero-paw{font-size:80px;margin-bottom:24px;animation:float 3s ease-in-out infinite}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
-.hero-tag{display:inline-flex;align-items:center;gap:8px;background:var(--gold2);border:1px solid rgba(201,168,76,.3);border-radius:20px;padding:6px 16px;font-size:11px;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:20px}
-.hero h1{font-family:'Playfair Display',serif;font-size:clamp(40px,6vw,72px);font-weight:700;line-height:1.1;margin-bottom:16px}
+/* ─── HERO ─── */
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;position:relative;z-index:1}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--gold2);border:1px solid rgba(201,168,76,.25);border-radius:50px;padding:7px 18px;font-size:11px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:28px;animation:fadeUp .8s ease both}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(44px,7vw,88px);font-weight:700;line-height:1.05;letter-spacing:-.5px;margin-bottom:20px;animation:fadeUp .8s .15s ease both}
 .hero h1 em{color:var(--gold);font-style:italic}
-.hero p{font-size:16px;color:var(--cream2);max-width:520px;line-height:1.7;margin-bottom:36px}
-.hero-btns{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
-.btn-gold{background:var(--gold);color:var(--bg);padding:14px 28px;border-radius:50px;font-size:14px;font-weight:500;font-family:'Playfair Display',serif;transition:opacity .2s;cursor:pointer;border:none}
-.btn-gold:hover{opacity:.88}
-.btn-outline{background:transparent;color:var(--cream);padding:14px 28px;border-radius:50px;font-size:14px;border:1px solid var(--bg3);transition:border-color .2s;cursor:pointer}
+.hero-sub{font-size:clamp(15px,2vw,18px);color:var(--cream2);max-width:540px;line-height:1.75;margin-bottom:44px;animation:fadeUp .8s .3s ease both}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;animation:fadeUp .8s .45s ease both}
+.hero-scroll{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;animation:fadeUp 1s .8s ease both}
+.scroll-line{width:1px;height:48px;background:linear-gradient(to bottom,var(--gold),transparent)}
+
+.btn-gold{background:var(--gold);color:var(--bg);padding:15px 32px;border-radius:50px;font-size:14px;font-weight:500;font-family:'Playfair Display',serif;transition:all .25s;cursor:pointer;border:none;letter-spacing:.3px}
+.btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(201,168,76,.3)}
+.btn-outline{background:transparent;color:var(--cream);padding:15px 32px;border-radius:50px;font-size:14px;border:1px solid rgba(245,240,232,.2);transition:all .25s;cursor:pointer;letter-spacing:.3px}
 .btn-outline:hover{border-color:var(--gold);color:var(--gold)}
 
-/* STATS */
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--bg3);border:1px solid var(--bg3);margin:0 24px;border-radius:var(--radius);overflow:hidden}
-.stat{background:var(--bg2);padding:28px 20px;text-align:center}
-.stat-num{font-family:'Playfair Display',serif;font-size:32px;font-weight:700;color:var(--gold);margin-bottom:6px}
-.stat-label{font-size:11px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 
-/* SECTIONS */
-section{padding:80px 24px;max-width:1100px;margin:0 auto}
-.sec-tag{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:12px}
-.sec-title{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,42px);font-weight:700;line-height:1.2;margin-bottom:16px}
-.sec-sub{font-size:14px;color:var(--cream2);line-height:1.7;max-width:560px;margin-bottom:48px}
+/* ─── MARQUEE ─── */
+.marquee-wrap{overflow:hidden;border-top:1px solid var(--bg3);border-bottom:1px solid var(--bg3);background:var(--bg2);padding:16px 0;position:relative;z-index:1}
+.marquee-track{display:flex;gap:48px;white-space:nowrap;animation:marquee 30s linear infinite}
+.marquee-item{font-family:'Playfair Display',serif;font-size:14px;color:var(--muted);letter-spacing:1px;display:flex;align-items:center;gap:16px;flex-shrink:0}
+.marquee-item::after{content:'🐾';font-size:12px}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 
-/* SERVICIOS */
-.servicios-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
-.svc-card{background:var(--bg2);border:1px solid var(--bg3);border-radius:var(--radius);padding:24px;transition:border-color .2s,transform .2s}
-.svc-card:hover{border-color:var(--gold);transform:translateY(-4px)}
-.svc-ico{font-size:36px;margin-bottom:14px}
-.svc-name{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;color:var(--cream);margin-bottom:8px}
-.svc-desc{font-size:13px;color:var(--muted);line-height:1.6}
-.svc-badge{display:inline-block;background:var(--gold2);border:1px solid rgba(201,168,76,.2);border-radius:20px;padding:3px 10px;font-size:10px;color:var(--gold);margin-top:12px}
+/* ─── STATS ─── */
+.stats-strip{display:grid;grid-template-columns:repeat(4,1fr);position:relative;z-index:1}
+.stat-item{padding:40px 24px;text-align:center;border-right:1px solid var(--bg3);border-top:1px solid var(--bg3)}
+.stat-item:last-child{border-right:none}
+.stat-num{font-family:'Playfair Display',serif;font-size:44px;font-weight:700;color:var(--gold);line-height:1;margin-bottom:8px}
+.stat-label{font-size:11px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;line-height:1.5}
 
-/* MEMBRESÍAS */
-.memb-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
-.memb-card{background:var(--bg2);border:1px solid var(--bg3);border-radius:var(--radius);padding:24px;position:relative;transition:transform .2s}
+/* ─── SECTIONS ─── */
+.section{padding:100px 40px;max-width:1140px;margin:0 auto;position:relative;z-index:1}
+.section.full{max-width:100%;padding:100px 0}
+.section.full .inner{max-width:1140px;margin:0 auto;padding:0 40px}
+.sec-tag{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.sec-tag::before{content:'';width:24px;height:1px;background:var(--gold)}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(30px,4vw,50px);font-weight:700;line-height:1.15;margin-bottom:18px}
+.sec-title em{color:var(--gold);font-style:italic}
+.sec-sub{font-size:15px;color:var(--cream2);line-height:1.75;max-width:580px;margin-bottom:56px}
+
+/* ─── ANTES DE ENTRAR ─── */
+.antes-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--bg3)}
+.antes-card{background:var(--bg2);padding:40px;position:relative;overflow:hidden;transition:background .3s}
+.antes-card:hover{background:var(--bg3)}
+.antes-num{font-family:'Playfair Display',serif;font-size:64px;font-weight:700;color:var(--bg3);position:absolute;top:16px;right:24px;line-height:1;transition:color .3s}
+.antes-card:hover .antes-num{color:var(--bg4)}
+.antes-ico{font-size:32px;margin-bottom:16px}
+.antes-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:600;color:var(--cream);margin-bottom:10px}
+.antes-desc{font-size:13px;color:var(--muted);line-height:1.7}
+.antes-badge{display:inline-block;background:var(--gold2);border:1px solid rgba(201,168,76,.2);border-radius:20px;padding:3px 12px;font-size:10px;color:var(--gold);margin-top:14px;letter-spacing:.5px}
+
+/* ─── FILOSOFÍA ─── */
+.filo-wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+.filo-visual{position:relative}
+.filo-card-big{background:var(--bg2);border:1px solid var(--bg3);border-radius:var(--radius);padding:40px;text-align:center}
+.filo-paw{font-size:80px;margin-bottom:16px;display:block}
+.filo-quote{font-family:'Playfair Display',serif;font-size:22px;font-style:italic;color:var(--cream);line-height:1.5}
+.filo-author{font-size:11px;color:var(--muted);margin-top:12px;letter-spacing:1px;text-transform:uppercase}
+.filo-float{position:absolute;bottom:-20px;right:-20px;background:var(--gold);border-radius:var(--radius);padding:20px 24px;font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--bg)}
+.filo-items{display:flex;flex-direction:column;gap:28px}
+.filo-item{display:flex;gap:20px;align-items:flex-start}
+.filo-item-ico{width:44px;height:44px;border-radius:12px;background:var(--gold2);border:1px solid rgba(201,168,76,.2);display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.filo-item-title{font-family:'Playfair Display',serif;font-size:17px;font-weight:600;color:var(--cream);margin-bottom:6px}
+.filo-item-desc{font-size:13px;color:var(--muted);line-height:1.65}
+
+/* ─── SERVICIOS ─── */
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.svc-card{background:var(--bg2);border:1px solid var(--bg3);border-radius:var(--radius);padding:28px;transition:all .25s;position:relative;overflow:hidden;cursor:pointer}
+.svc-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,.05),transparent);opacity:0;transition:opacity .25s}
+.svc-card:hover{border-color:rgba(201,168,76,.35);transform:translateY(-4px)}
+.svc-card:hover::before{opacity:1}
+.svc-ico{font-size:36px;margin-bottom:16px;display:block}
+.svc-name{font-family:'Playfair Display',serif;font-size:17px;font-weight:600;color:var(--cream);margin-bottom:8px}
+.svc-desc{font-size:12px;color:var(--muted);line-height:1.65;margin-bottom:14px}
+.svc-tag{display:inline-block;border-radius:20px;padding:3px 12px;font-size:10px;letter-spacing:.5px}
+.svc-tag.reservable{background:var(--gold2);color:var(--gold);border:1px solid rgba(201,168,76,.2)}
+.svc-tag.aforo{background:rgba(107,175,130,.12);color:var(--green);border:1px solid rgba(107,175,130,.2)}
+.svc-tag.libre{background:var(--bg3);color:var(--muted)}
+
+/* ─── MEMBRESÍAS ─── */
+.memb-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.memb-card{background:var(--bg2);border:1px solid var(--bg3);border-radius:var(--radius);padding:28px;position:relative;transition:transform .25s}
 .memb-card:hover{transform:translateY(-4px)}
-.memb-card.gold{border-color:rgba(201,168,76,.4)}
-.memb-card.founder{background:#120E04;border:2px solid rgba(201,168,76,.5)}
+.memb-card.gold-card{border-color:rgba(201,168,76,.4);background:linear-gradient(160deg,var(--bg2),#1A1408)}
+.memb-card.founder-card{background:#0D0B04;border:2px solid rgba(201,168,76,.5)}
+.memb-popular{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--bg);border-radius:50px;padding:4px 16px;font-size:10px;font-weight:700;letter-spacing:1px;white-space:nowrap}
+.memb-cupos{position:absolute;top:16px;right:16px;background:var(--gold2);border:1px solid rgba(201,168,76,.3);border-radius:50px;padding:3px 10px;font-size:9px;color:var(--gold);letter-spacing:.5px}
 .memb-nivel{font-size:9px;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
-.memb-name{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;margin-bottom:4px}
-.memb-precio{font-size:13px;color:var(--muted);margin-bottom:16px}
-.memb-feats{display:flex;flex-direction:column;gap:8px;margin-bottom:20px}
-.memb-feat{font-size:12px;color:var(--cream2);display:flex;gap:8px}
-.memb-feat::before{content:'✓';color:var(--gold);font-weight:700;flex-shrink:0}
-.memb-cta{width:100%;padding:11px;border-radius:10px;border:none;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:opacity .2s}
-.memb-cta:hover{opacity:.85}
-.popular-badge{position:absolute;top:16px;right:16px;background:var(--gold2);border:1px solid rgba(201,168,76,.3);border-radius:20px;padding:3px 10px;font-size:9px;color:var(--gold)}
-.cupos-badge{position:absolute;top:16px;right:16px;background:var(--gold2);border:1px solid rgba(201,168,76,.4);border-radius:20px;padding:3px 10px;font-size:9px;color:var(--gold)}
+.memb-name{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;margin-bottom:6px}
+.memb-precio{font-size:13px;color:var(--muted);margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--bg3)}
+.memb-feats{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
+.memb-feat{font-size:12px;color:var(--cream2);display:flex;gap:10px;align-items:flex-start;line-height:1.5}
+.memb-feat-ico{color:var(--gold);flex-shrink:0;font-size:11px;margin-top:1px}
+.memb-btn{width:100%;padding:12px;border-radius:12px;border:none;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s;letter-spacing:.3px}
+.memb-btn:hover{opacity:.88;transform:translateY(-1px)}
 
-/* REGISTRO */
-.registro-wrap{background:var(--bg2);border:1px solid var(--bg3);border-radius:var(--radius);padding:48px;max-width:560px;margin:0 auto;text-align:center}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:24px 0;text-align:left}
-.field label{display:block;font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
-.field input,.field select{width:100%;background:var(--bg3);border:1px solid var(--bg3);border-radius:10px;padding:12px 14px;font-size:13px;color:var(--cream);font-family:'DM Sans',sans-serif;outline:none;transition:border .2s}
-.field input:focus,.field select:focus{border-color:var(--gold)}
-.field select option{background:var(--bg3)}
-.field.full{grid-column:1/-1}
-.form-cta{width:100%;padding:14px;border-radius:12px;border:none;background:var(--gold);color:var(--bg);font-family:'Playfair Display',serif;font-size:15px;font-weight:500;cursor:pointer;transition:opacity .2s;margin-top:8px}
-.form-cta:hover{opacity:.88}
-.login-link{font-size:12px;color:var(--muted);margin-top:14px}
-.login-link a{color:var(--gold)}
+/* ─── TESTIMONIOS ─── */
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.test-card{background:var(--bg2);border:1px solid var(--bg3);border-radius:var(--radius);padding:28px;transition:border-color .25s}
+.test-card:hover{border-color:rgba(201,168,76,.25)}
+.test-stars{color:var(--gold);font-size:14px;margin-bottom:14px;letter-spacing:2px}
+.test-text{font-family:'Playfair Display',serif;font-size:16px;font-style:italic;color:var(--cream);line-height:1.65;margin-bottom:20px}
+.test-text em{color:var(--gold)}
+.test-author{font-size:11px;color:var(--muted);letter-spacing:.5px}
+.test-rating{display:flex;align-items:center;gap:10px;margin-top:20px;padding-top:20px;border-top:1px solid var(--bg3)}
+.test-google{font-size:10px;color:var(--muted);letter-spacing:1px;text-transform:uppercase}
 
-/* DAY PASS */
-.daypass-card{background:linear-gradient(135deg,#1A1408,#2C2008);border:1px solid rgba(201,168,76,.35);border-radius:var(--radius);padding:40px;display:flex;gap:32px;align-items:center;flex-wrap:wrap}
-.daypass-info{flex:1;min-width:260px}
-.daypass-price{font-family:'Playfair Display',serif;font-size:42px;font-weight:700;color:var(--gold);margin:8px 0}
-.daypass-feats{display:flex;flex-direction:column;gap:6px;margin:16px 0}
-.daypass-feat{font-size:13px;color:var(--cream2);display:flex;gap:8px}
-.daypass-feat::before{content:'🐾';flex-shrink:0}
-.daypass-form{flex:1;min-width:260px}
-.daypass-input{width:100%;background:rgba(0,0,0,.3);border:1px solid rgba(201,168,76,.2);border-radius:10px;padding:12px 14px;font-size:13px;color:var(--cream);font-family:'DM Sans',sans-serif;outline:none;margin-bottom:10px}
-.daypass-input:focus{border-color:var(--gold)}
+/* ─── ANTES ENTRAR PROCESO ─── */
+.proceso-steps{display:flex;gap:0;position:relative}
+.proceso-steps::before{content:'';position:absolute;top:32px;left:32px;right:32px;height:1px;background:linear-gradient(to right,var(--gold),rgba(201,168,76,.2))}
+.proceso-step{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 16px;position:relative;z-index:1}
+.paso-num{width:64px;height:64px;border-radius:50%;background:var(--bg2);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--gold);margin-bottom:20px}
+.paso-ico{font-size:24px;margin-bottom:12px}
+.paso-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:600;color:var(--cream);margin-bottom:8px}
+.paso-desc{font-size:12px;color:var(--muted);line-height:1.65}
 
-/* EXPRESS */
-.express-card{background:var(--bg2);border:1px solid var(--bg3);border-radius:var(--radius);padding:32px;display:flex;gap:24px;align-items:flex-start;flex-wrap:wrap}
-.express-ico{font-size:52px;flex-shrink:0}
-.express-info{flex:1}
-.tarifas{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin-top:16px}
-.tarifa{background:var(--bg3);border-radius:10px;padding:14px;text-align:center}
-.tarifa-rango{font-size:12px;color:var(--muted);margin-bottom:4px}
-.tarifa-precio{font-size:16px;font-weight:700}
+/* ─── NEWSLETTER ─── */
+.news-wrap{background:var(--bg2);border:1px solid var(--bg3);border-radius:var(--radius);padding:64px;text-align:center;position:relative;overflow:hidden}
+.news-wrap::before{content:'';position:absolute;top:-60px;right:-60px;width:200px;height:200px;background:var(--gold);opacity:.04;border-radius:50%}
+.news-form{display:flex;gap:10px;max-width:420px;margin:0 auto;margin-top:28px}
+.news-input{flex:1;background:var(--bg3);border:1px solid var(--bg4);border-radius:50px;padding:13px 20px;font-size:13px;color:var(--cream);font-family:'DM Sans',sans-serif;outline:none;transition:border .2s}
+.news-input:focus{border-color:var(--gold)}
+.news-input::placeholder{color:var(--muted)}
 
-/* FOOTER */
-footer{background:var(--bg2);border-top:1px solid var(--bg3);padding:48px 24px;text-align:center}
-.footer-logo{font-family:'Playfair Display',serif;font-size:22px;color:var(--gold);margin-bottom:8px}
-.footer-sub{font-size:12px;color:var(--muted);margin-bottom:24px}
-.footer-links{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:24px}
-.footer-links a{font-size:12px;color:var(--muted);transition:color .2s}
-.footer-links a:hover{color:var(--gold)}
-.footer-wa{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;padding:10px 20px;border-radius:20px;font-size:13px;font-weight:500;margin-bottom:24px}
+/* ─── DAYPASS ─── */
+.daypass-wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.daypass-left{}
+.dp-price{font-family:'Playfair Display',serif;font-size:56px;font-weight:700;color:var(--gold);line-height:1;margin:12px 0}
+.dp-price span{font-size:18px;color:var(--muted)}
+.dp-feats{display:flex;flex-direction:column;gap:10px;margin:24px 0}
+.dp-feat{font-size:13px;color:var(--cream2);display:flex;gap:10px;align-items:center}
+.dp-feat::before{content:'🐾';font-size:12px;flex-shrink:0}
+.daypass-form{background:var(--bg2);border:1px solid var(--bg3);border-radius:var(--radius);padding:32px}
+.form-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:20px}
+.form-field{margin-bottom:14px}
+.form-field label{display:block;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.form-field input,.form-field select{width:100%;background:var(--bg3);border:1px solid var(--bg4);border-radius:10px;padding:12px 14px;font-size:13px;color:var(--cream);font-family:'DM Sans',sans-serif;outline:none;transition:border .2s}
+.form-field input:focus,.form-field select:focus{border-color:var(--gold)}
+.form-field select option{background:var(--bg3)}
+.form-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+
+/* ─── REGISTRO ─── */
+.registro-card{background:var(--bg2);border:1px solid var(--bg3);border-radius:var(--radius);padding:48px;max-width:620px;margin:0 auto}
+.registro-card .form-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.registro-card .full{grid-column:1/-1}
+
+/* ─── EXPRESS ─── */
+.express-wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.tarifas-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:24px}
+.tarifa-card{background:var(--bg3);border-radius:12px;padding:16px;text-align:center;border:1px solid var(--bg4)}
+.tarifa-rango{font-size:11px;color:var(--muted);margin-bottom:6px;letter-spacing:.5px}
+.tarifa-precio{font-family:'Playfair Display',serif;font-size:20px;font-weight:700}
+
+/* ─── INSTAGRAM ─── */
+.insta-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:3px}
+.insta-item{aspect-ratio:1;background:var(--bg2);border:1px solid var(--bg3);display:flex;align-items:center;justify-content:center;font-size:32px;transition:all .25s;cursor:pointer;position:relative;overflow:hidden}
+.insta-item:hover{border-color:var(--gold)}
+.insta-overlay{position:absolute;inset:0;background:rgba(201,168,76,.15);opacity:0;transition:opacity .25s;display:flex;align-items:center;justify-content:center;font-size:20px}
+.insta-item:hover .insta-overlay{opacity:1}
+
+/* ─── FOOTER ─── */
+footer{background:var(--bg2);border-top:1px solid var(--bg3);padding:64px 40px 32px;position:relative;z-index:1}
+.footer-inner{max-width:1140px;margin:0 auto}
+.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
+.footer-logo{font-family:'Playfair Display',serif;font-size:22px;color:var(--gold);font-weight:700;margin-bottom:12px}
+.footer-desc{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:20px}
+.footer-social{display:flex;gap:10px}
+.footer-social a{width:36px;height:36px;border-radius:50%;background:var(--bg3);border:1px solid var(--bg4);display:flex;align-items:center;justify-content:center;font-size:14px;transition:border-color .2s}
+.footer-social a:hover{border-color:var(--gold)}
+.footer-col-title{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
+.footer-col a{display:block;font-size:13px;color:var(--muted);margin-bottom:10px;transition:color .2s}
+.footer-col a:hover{color:var(--cream)}
+.footer-bottom{border-top:1px solid var(--bg3);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
 .footer-copy{font-size:11px;color:var(--muted)}
+.footer-wa{display:inline-flex;align-items:center;gap:8px;background:#1A3320;border:1px solid rgba(107,175,130,.3);color:var(--green);padding:8px 18px;border-radius:50px;font-size:12px;font-weight:500;transition:all .2s}
+.footer-wa:hover{background:#25D366;color:#fff;border-color:#25D366}
 
-/* RESPONSIVE */
-@media(max-width:768px){
-  .stats{grid-template-columns:repeat(2,1fr)}
+/* ─── SCROLL REVEAL ─── */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px){
+  nav{padding:16px 20px}
   .nav-links{display:none}
-  .form-grid{grid-template-columns:1fr}
-  .daypass-card{flex-direction:column}
+  .nav-hamburger{display:flex}
+  .stats-strip{grid-template-columns:repeat(2,1fr)}
+  .section{padding:64px 20px}
+  .section.full .inner{padding:0 20px}
+  .svc-grid{grid-template-columns:repeat(2,1fr)}
+  .memb-grid{grid-template-columns:1fr}
+  .test-grid{grid-template-columns:1fr}
+  .filo-wrap{grid-template-columns:1fr}
+  .antes-grid{grid-template-columns:1fr}
+  .daypass-wrap{grid-template-columns:1fr}
+  .express-wrap{grid-template-columns:1fr}
+  .proceso-steps{flex-direction:column;gap:24px}
+  .proceso-steps::before{display:none}
+  .footer-top{grid-template-columns:1fr 1fr}
+  .insta-grid{grid-template-columns:repeat(3,1fr)}
+  .registro-card .form-grid-2{grid-template-columns:1fr}
+  .news-form{flex-direction:column}
+}
+@media(max-width:500px){
+  .hero h1{font-size:36px}
+  .stats-strip{grid-template-columns:1fr 1fr}
+  .svc-grid{grid-template-columns:1fr}
+  .footer-top{grid-template-columns:1fr}
 }
 </style>
 </head>
 <body>
 
+<canvas id="canvas"></canvas>
+
 <!-- NAV -->
-<nav>
-  <div class="nav-logo">Lomitos Dog Club</div>
+<nav id="nav">
+  <div class="nav-logo">Lomitos<span> Dog Club</span></div>
   <div class="nav-links">
     <a href="#servicios">Servicios</a>
+    <a href="#antes">Antes de entrar</a>
     <a href="#membresias">Membresías</a>
     <a href="#express">LomitoExpress</a>
     <a href="#daypass">Day Pass</a>
-    <a href="#registro" class="nav-cta">Registrarse</a>
+    <a href="#registro" class="nav-cta">Unirme al club</a>
+  </div>
+  <div class="nav-hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
   </div>
 </nav>
 
+<div class="mobile-menu" id="mobileMenu">
+  <span class="mobile-close" onclick="toggleMenu()">✕</span>
+  <a href="#servicios" onclick="toggleMenu()">Servicios</a>
+  <a href="#antes" onclick="toggleMenu()">Antes de entrar</a>
+  <a href="#membresias" onclick="toggleMenu()">Membresías</a>
+  <a href="#express" onclick="toggleMenu()">LomitoExpress</a>
+  <a href="#daypass" onclick="toggleMenu()">Day Pass</a>
+  <a href="#registro" onclick="toggleMenu()" style="color:var(--gold)">Unirme al club</a>
+</div>
+
 <!-- HERO -->
-<div class="hero">
-  <div class="hero-tag">🐾 El lomito siempre es el VIP</div>
-  <div class="hero-paw">🐾</div>
-  <h1>El primer club canino<br>premium de <em>Metepec</em></h1>
-  <p>Donde tu lomito es el VIP y tú eres el Invitado de Honor. Áreas de juego, spa, veterinario, hospedaje, cafetería y mucho más.</p>
+<section class="hero">
+  <div class="hero-eyebrow">🐾 El lomito siempre es el VIP</div>
+  <h1>Tu lomito<br>merece lo <em>mejor.</em></h1>
+  <p class="hero-sub">El primer club canino premium de Metepec. Donde tu perro es el VIP y tú eres su Invitado de Honor.</p>
   <div class="hero-btns">
-    <button class="btn-gold" onclick="document.getElementById('registro').scrollIntoView({behavior:'smooth'})">Registrarme ahora</button>
-    <button class="btn-outline" onclick="document.getElementById('servicios').scrollIntoView({behavior:'smooth'})">Ver servicios</button>
+    <button class="btn-gold" onclick="scrollTo('registro')">Unirme al club</button>
+    <button class="btn-outline" onclick="scrollTo('servicios')">Explorar servicios</button>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    scroll
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-item">Experiencia completa</span>
+    <span class="marquee-item">Baño & Grooming</span>
+    <span class="marquee-item">Hospedaje</span>
+    <span class="marquee-item">Veterinario</span>
+    <span class="marquee-item">Adiestramiento</span>
+    <span class="marquee-item">LomitoExpress</span>
+    <span class="marquee-item">Cafetería</span>
+    <span class="marquee-item">Área Kids</span>
+    <span class="marquee-item">Cumpleaños</span>
+    <span class="marquee-item">Experiencia completa</span>
+    <span class="marquee-item">Baño & Grooming</span>
+    <span class="marquee-item">Hospedaje</span>
+    <span class="marquee-item">Veterinario</span>
+    <span class="marquee-item">Adiestramiento</span>
+    <span class="marquee-item">LomitoExpress</span>
+    <span class="marquee-item">Cafetería</span>
+    <span class="marquee-item">Área Kids</span>
+    <span class="marquee-item">Cumpleaños</span>
   </div>
 </div>
 
 <!-- STATS -->
-<div class="stats">
-  <div class="stat"><div class="stat-num">6</div><div class="stat-label">Niveles de membresía</div></div>
-  <div class="stat"><div class="stat-num">7am</div><div class="stat-label">Abierto todos los días</div></div>
-  <div class="stat"><div class="stat-num">50</div><div class="stat-label">Cupos Fundador</div></div>
-  <div class="stat"><div class="stat-num">5km</div><div class="stat-label">Radio LomitoExpress</div></div>
+<div class="stats-strip">
+  <div class="stat-item reveal"><div class="stat-num">6</div><div class="stat-label">Niveles de membresía</div></div>
+  <div class="stat-item reveal"><div class="stat-num">7am</div><div class="stat-label">Abierto todos los días</div></div>
+  <div class="stat-item reveal"><div class="stat-num">50</div><div class="stat-label">Cupos Fundador</div></div>
+  <div class="stat-item reveal"><div class="stat-num">5km</div><div class="stat-label">Radio LomitoExpress</div></div>
+</div>
+
+<!-- FILOSOFÍA -->
+<div class="section">
+  <div class="filo-wrap">
+    <div class="filo-visual reveal">
+      <div class="filo-card-big">
+        <span class="filo-paw">🐾</span>
+        <div class="filo-quote">"Diseñado para perros,<br>pensado para personas."</div>
+        <div class="filo-author">— Lomitos Dog Club, Metepec</div>
+      </div>
+      <div class="filo-float">VIP 🐶</div>
+    </div>
+    <div class="filo-items">
+      <div class="sec-tag">Nuestra filosofía</div>
+      <h2 class="sec-title">Un nuevo estándar<br>para el <em>club canino</em></h2>
+      <div class="filo-item reveal">
+        <div class="filo-item-ico">🛡️</div>
+        <div>
+          <div class="filo-item-title">Seguridad ante todo</div>
+          <div class="filo-item-desc">Cada lomito es evaluado antes de ingresar. Vacunas verificadas, staff entrenado y áreas monitoreadas en todo momento.</div>
+        </div>
+      </div>
+      <div class="filo-item reveal">
+        <div class="filo-item-ico">👑</div>
+        <div>
+          <div class="filo-item-title">El lomito es el VIP</div>
+          <div class="filo-item-desc">Nuestro concepto es único en México: el perro llega primero. Tú como Invitado de Honor disfrutas mientras tu lomito vive la experiencia.</div>
+        </div>
+      </div>
+      <div class="filo-item reveal">
+        <div class="filo-item-ico">🤝</div>
+        <div>
+          <div class="filo-item-title">Comunidad de lomiteros</div>
+          <div class="filo-item-desc">Aquí los perros hablan el mismo idioma. Creamos una comunidad donde las personas que aman a sus perros se conectan.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ANTES DE ENTRAR -->
+<div class="section full" id="antes" style="background:var(--bg2);padding:100px 0">
+  <div class="inner">
+    <div class="sec-tag">Proceso de ingreso</div>
+    <h2 class="sec-title">Antes de entrar<br>al <em>club</em></h2>
+    <p class="sec-sub">La seguridad de todos los lomitos es nuestra prioridad. Por eso tenemos un proceso de evaluación para garantizar una experiencia segura y feliz.</p>
+    <div class="proceso-steps reveal">
+      <div class="proceso-step">
+        <div class="paso-num">01</div>
+        <div class="paso-ico">📋</div>
+        <div class="paso-title">Registro previo</div>
+        <div class="paso-desc">Crea tu cuenta en la web o la app. Llena el perfil completo de tu lomito con raza, edad y temperamento.</div>
+      </div>
+      <div class="proceso-step">
+        <div class="paso-num">02</div>
+        <div class="paso-ico">💉</div>
+        <div class="paso-title">Vacunas al día</div>
+        <div class="paso-desc">Sube las constancias de vacunación. Rabia, parvovirus y bordetella son obligatorias para ingresar.</div>
+      </div>
+      <div class="proceso-step">
+        <div class="paso-num">03</div>
+        <div class="paso-ico">🩺</div>
+        <div class="paso-title">Evaluación inicial</div>
+        <div class="paso-desc">Primera visita con cita agendada. Nuestro staff evalúa el temperamento y comportamiento de tu lomito.</div>
+      </div>
+      <div class="proceso-step">
+        <div class="paso-num">04</div>
+        <div class="paso-ico">✅</div>
+        <div class="paso-title">¡Aprobado!</div>
+        <div class="paso-desc">Tu lomito recibe su badge de miembro. A partir de aquí pueden disfrutar el club cuando quieran.</div>
+      </div>
+    </div>
+    <div class="antes-grid" style="margin-top:48px;border-radius:var(--radius);overflow:hidden">
+      <div class="antes-card reveal">
+        <div class="antes-num">01</div>
+        <div class="antes-ico">🐕</div>
+        <div class="antes-title">Evaluación de temperamento</div>
+        <div class="antes-desc">Cada perro pasa por una sesión de evaluación donde nuestro equipo analiza su comportamiento con otros perros, personas y en distintos ambientes.</div>
+        <span class="antes-badge">Obligatorio</span>
+      </div>
+      <div class="antes-card reveal">
+        <div class="antes-num">02</div>
+        <div class="antes-ico">💉</div>
+        <div class="antes-title">Verificación de vacunas</div>
+        <div class="antes-desc">Revisamos y registramos en nuestra base de datos todas las vacunas de tu lomito. Recibirás alertas automáticas cuando estén por vencer.</div>
+        <span class="antes-badge">Obligatorio</span>
+      </div>
+      <div class="antes-card reveal">
+        <div class="antes-num">03</div>
+        <div class="antes-ico">📅</div>
+        <div class="antes-title">Días de evaluación</div>
+        <div class="antes-desc">Las evaluaciones se realizan los martes y jueves de 9am a 12pm. Agenda tu cita desde la app o WhatsApp con al menos 48 horas de anticipación.</div>
+        <span class="antes-badge">Martes y Jueves</span>
+      </div>
+      <div class="antes-card reveal">
+        <div class="antes-num">04</div>
+        <div class="antes-ico">🎖️</div>
+        <div class="antes-title">Badge de miembro</div>
+        <div class="antes-desc">Al aprobar, tu lomito recibe su identificación digital en la app. El staff la escaneará en cada visita para un check-in tipo aeropuerto.</div>
+        <span class="antes-badge">Digital + Físico</span>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- SERVICIOS -->
-<section id="servicios">
+<div class="section" id="servicios">
   <div class="sec-tag">Lo que ofrecemos</div>
-  <h2 class="sec-title">Todo lo que tu lomito<br>necesita en un solo lugar</h2>
+  <h2 class="sec-title">Todo en un<br>solo <em>lugar</em></h2>
   <p class="sec-sub">Diseñado para que tu lomito viva la mejor experiencia mientras tú disfrutas como Invitado de Honor.</p>
-  <div class="servicios-grid">
-    <div class="svc-card"><div class="svc-ico">🌟</div><div class="svc-name">Experiencia completa</div><div class="svc-desc">Acceso a todas las áreas del día. Área de juegos, chapoteadero y más.</div><span class="svc-badge">Reservable</span></div>
-    <div class="svc-card"><div class="svc-ico">🛁</div><div class="svc-name">Baño & Grooming</div><div class="svc-desc">Spa premium para tu lomito. Baño, corte y secado profesional.</div><span class="svc-badge">Reservable</span></div>
-    <div class="svc-card"><div class="svc-ico">🌙</div><div class="svc-name">Hospedaje</div><div class="svc-desc">Tu lomito en las mejores manos de noche. Atención 24 horas.</div><span class="svc-badge">Reservable</span></div>
-    <div class="svc-card"><div class="svc-ico">🩺</div><div class="svc-name">Veterinario</div><div class="svc-desc">Consulta express en sitio. Revisión general y atención de urgencias.</div><span class="svc-badge">Reservable</span></div>
-    <div class="svc-card"><div class="svc-ico">✂️</div><div class="svc-name">Adiestramiento</div><div class="svc-desc">Sesiones profesionales con nuestro entrenador canino certificado.</div><span class="svc-badge">Reservable</span></div>
-    <div class="svc-card"><div class="svc-ico">🍔</div><div class="svc-name">Cafetería & Food Truck</div><div class="svc-desc">Todo frito, todo al momento. Hamburguesas, alitas, papas y más.</div><span class="svc-badge">Sin reserva</span></div>
-    <div class="svc-card"><div class="svc-ico">⚽</div><div class="svc-name">Área Kids</div><div class="svc-desc">Zona de juegos para niños con animadores. Diversión para toda la familia.</div><span class="svc-badge">Aforo en vivo</span></div>
-    <div class="svc-card"><div class="svc-ico">🚐</div><div class="svc-name">LomitoExpress</div><div class="svc-desc">Recogemos a tu lomito a domicilio. Servicio premium puerta a puerta.</div><span class="svc-badge">A domicilio</span></div>
+  <div class="svc-grid">
+    <div class="svc-card reveal">
+      <span class="svc-ico">🌟</span>
+      <div class="svc-name">Experiencia completa</div>
+      <div class="svc-desc">Acceso a todas las áreas del día. Juegos, chapoteadero y más.</div>
+      <span class="svc-tag reservable">Reservable</span>
+    </div>
+    <div class="svc-card reveal">
+      <span class="svc-ico">🛁</span>
+      <div class="svc-name">Baño & Grooming</div>
+      <div class="svc-desc">Spa premium. Baño, corte y secado profesional.</div>
+      <span class="svc-tag reservable">Reservable</span>
+    </div>
+    <div class="svc-card reveal">
+      <span class="svc-ico">🌙</span>
+      <div class="svc-name">Hospedaje</div>
+      <div class="svc-desc">Tu lomito en las mejores manos de noche. Atención 24h.</div>
+      <span class="svc-tag reservable">Reservable</span>
+    </div>
+    <div class="svc-card reveal">
+      <span class="svc-ico">🩺</span>
+      <div class="svc-name">Veterinario</div>
+      <div class="svc-desc">Consulta express en sitio y atención de urgencias.</div>
+      <span class="svc-tag reservable">Reservable</span>
+    </div>
+    <div class="svc-card reveal">
+      <span class="svc-ico">✂️</span>
+      <div class="svc-name">Adiestramiento</div>
+      <div class="svc-desc">Sesiones con entrenador canino certificado.</div>
+      <span class="svc-tag reservable">Reservable</span>
+    </div>
+    <div class="svc-card reveal">
+      <span class="svc-ico">🎂</span>
+      <div class="svc-name">Cumpleaños</div>
+      <div class="svc-desc">Celebra el día especial de tu lomito con el club.</div>
+      <span class="svc-tag reservable">Reservable</span>
+    </div>
+    <div class="svc-card reveal">
+      <span class="svc-ico">🍔</span>
+      <div class="svc-name">Cafetería & Food Truck</div>
+      <div class="svc-desc">Todo frito, todo al momento. Hamburguesas, alitas y más.</div>
+      <span class="svc-tag libre">Sin reserva</span>
+    </div>
+    <div class="svc-card reveal">
+      <span class="svc-ico">⚽</span>
+      <div class="svc-name">Área Kids</div>
+      <div class="svc-desc">Zona de juegos con animadores. Diversión para todos.</div>
+      <span class="svc-tag aforo">Aforo en vivo</span>
+    </div>
   </div>
-</section>
+</div>
 
 <!-- MEMBRESÍAS -->
-<section id="membresias" style="background:var(--bg2);max-width:100%;padding:80px 24px">
-<div style="max-width:1100px;margin:0 auto">
-  <div class="sec-tag">Elige tu nivel</div>
-  <h2 class="sec-title">Membresías exclusivas</h2>
-  <p class="sec-sub">Desde acceso básico hasta beneficios de por vida. Tu lomito siempre es el VIP.</p>
-  <div class="memb-grid">
-    <div class="memb-card">
-      <div class="memb-nivel" style="color:var(--muted)">Nivel 1</div>
-      <div class="memb-name" style="color:var(--cream2)">Puppy</div>
-      <div class="memb-precio">$599 / mes</div>
-      <div class="memb-feats">
-        <div class="memb-feat">8 visitas al mes</div>
-        <div class="memb-feat">10% descuento en spa</div>
-        <div class="memb-feat">Todas las áreas de juego</div>
+<div class="section full" id="membresias" style="background:var(--bg2);padding:100px 0">
+  <div class="inner">
+    <div class="sec-tag">Elige tu nivel</div>
+    <h2 class="sec-title">Membresías <em>exclusivas</em></h2>
+    <p class="sec-sub">Desde acceso básico hasta beneficios de por vida. Tu lomito siempre es el VIP — tú eliges hasta dónde llegar.</p>
+    <div class="memb-grid">
+      <div class="memb-card reveal">
+        <div class="memb-nivel" style="color:var(--muted)">Nivel 1</div>
+        <div class="memb-name" style="color:var(--cream2)">Puppy</div>
+        <div class="memb-precio">$599 / mes</div>
+        <div class="memb-feats">
+          <div class="memb-feat"><span class="memb-feat-ico">✓</span>8 visitas al mes</div>
+          <div class="memb-feat"><span class="memb-feat-ico">✓</span>10% descuento en spa</div>
+          <div class="memb-feat"><span class="memb-feat-ico">✓</span>Acceso a todas las áreas</div>
+          <div class="memb-feat"><span class="memb-feat-ico">✓</span>Estacionamiento gratis</div>
+        </div>
+        <button class="memb-btn" style="background:var(--bg3);color:var(--cream2)" onclick="scrollTo('registro')">Elegir Puppy</button>
       </div>
-      <button class="memb-cta" style="background:var(--bg3);color:var(--cream2)" onclick="document.getElementById('registro').scrollIntoView({behavior:'smooth'})">Elegir Puppy</button>
-    </div>
-    <div class="memb-card gold">
-      <div class="popular-badge">⭐ Más popular</div>
-      <div class="memb-nivel" style="color:var(--gold)">Nivel 2</div>
-      <div class="memb-name" style="color:var(--gold)">Gold</div>
-      <div class="memb-precio">$999 / mes</div>
-      <div class="memb-feats">
-        <div class="memb-feat">Visitas ilimitadas</div>
-        <div class="memb-feat">1 spa mensual gratis</div>
-        <div class="memb-feat">Prioridad en reservas</div>
+      <div class="memb-card gold-card reveal" style="margin-top:-12px">
+        <div class="memb-popular">⭐ MÁS POPULAR</div>
+        <div class="memb-nivel" style="color:var(--gold);margin-top:20px">Nivel 2</div>
+        <div class="memb-name" style="color:var(--gold)">Gold</div>
+        <div class="memb-precio">$999 / mes</div>
+        <div class="memb-feats">
+          <div class="memb-feat"><span class="memb-feat-ico">✓</span>Visitas ilimitadas</div>
+          <div class="memb-feat"><span class="memb-feat-ico">✓</span>1 spa mensual gratis</div>
+          <div class="memb-feat"><span class="memb-feat-ico">✓</span>Prioridad en reservas</div>
+          <div class="memb-feat"><span class="memb-feat-ico">✓</span>Acceso a chapoteadero</div>
+        </div>
+        <button class="memb-btn" style="background:var(--gold);color:var(--bg)" onclick="scrollTo('registro')">Elegir Gold</button>
       </div>
-      <button class="memb-cta" style="background:var(--gold);color:var(--bg)" onclick="document.getElementById('registro').scrollIntoView({behavior:'smooth'})">Elegir Gold</button>
-    </div>
-    <div class="memb-card">
-      <div class="memb-nivel" style="color:#C8C8C8">Nivel 3</div>
-      <div class="memb-name" style="color:#C8C8C8">Platinum</div>
-      <div class="memb-precio">$1,499 / mes</div>
-      <div class="memb-feats">
-        <div class="memb-feat">Todo lo de Gold</div>
-        <div class="memb-feat">Adiestramiento mensual</div>
-        <div class="memb-feat">1 LomitoExpress incluido</div>
+      <div class="memb-card reveal">
+        <div class="memb-nivel" style="color:#C8C8C8">Nivel 3</div>
+        <div class="memb-name" style="color:#C8C8C8">Platinum</div>
+        <div class="memb-precio">$1,499 / mes</div>
+        <div class="memb-feats">
+          <div class="memb-feat"><span class="memb-feat-ico">✓</span>Todo lo de Gold</div>
+          <div class="memb-feat"><span class="memb-feat-ico">✓</span>Adiestramiento mensual</div>
+          <div class="memb-feat"><span class="memb-feat-ico">✓</span>Foto profesional mensual</div>
+          <div class="memb-feat"><span class="memb-feat-ico">✓</span>1 LomitoExpress incluido</div>
+        </div>
+        <button class="memb-btn" style="background:rgba(200,200,200,.12);color:#C8C8C8" onclick="scrollTo('registro')">Elegir Platinum</button>
       </div>
-      <button class="memb-cta" style="background:rgba(200,200,200,0.15);color:#C8C8C8" onclick="document.getElementById('registro').scrollIntoView({behavior:'smooth'})">Elegir Platinum</button>
-    </div>
-    <div class="memb-card">
-      <div class="memb-nivel" style="color:#88C8E8">Nivel 4</div>
-      <div class="memb-name" style="color:#88C8E8">Diamond</div>
-      <div class="memb-precio">$2,299 / mes</div>
-      <div class="memb-feats">
-        <div class="memb-feat">Todo lo de Platinum</div>
-        <div class="memb-feat">Hospedaje prioritario</div>
-        <div class="memb-feat">2 LomitoExpress incluidos</div>
+      <div class="memb-card reveal">
+        <div class="memb-nivel" style="color:#88C8E8">Nivel 4</div>
+        <div class="memb-name" style="color:#88C8E8">Diamond</div>
+        <div class="memb-precio">$2,299 / mes</div>
+        <div class="memb-feats">
+          <div class="memb-feat"><span class="memb-feat-ico">✓</span>Todo lo de Platinum</div>
+          <div class="memb-feat"><span class="memb-feat-ico">✓</span>Hospedaje prioritario</div>
+          <div class="memb-feat"><span class="memb-feat-ico">✓</span>1 consulta vet mensual</div>
+          <div class="memb-feat"><span class="memb-feat-ico">✓</span>2 LomitoExpress incluidos</div>
+        </div>
+        <button class="memb-btn" style="background:rgba(136,200,232,.12);color:#88C8E8" onclick="scrollTo('registro')">Elegir Diamond</button>
       </div>
-      <button class="memb-cta" style="background:rgba(136,200,232,0.15);color:#88C8E8" onclick="document.getElementById('registro').scrollIntoView({behavior:'smooth'})">Elegir Diamond</button>
-    </div>
-    <div class="memb-card" style="background:#0D0D0B;border-color:#2A2A24">
-      <div class="memb-nivel" style="color:#888">Nivel 5</div>
-      <div class="memb-name" style="color:#CCC">Black</div>
-      <div class="memb-precio">$3,499 / mes</div>
-      <div class="memb-feats">
-        <div class="memb-feat">Todo ilimitado</div>
-        <div class="memb-feat">Concierge canino dedicado</div>
-        <div class="memb-feat">LomitoExpress ilimitado</div>
+      <div class="memb-card reveal" style="background:#0A0804;border-color:#1E1A10">
+        <div class="memb-nivel" style="color:#888">Nivel 5</div>
+        <div class="memb-name" style="color:#CCC">Black</div>
+        <div class="memb-precio">$3,499 / mes</div>
+        <div class="memb-feats">
+          <div class="memb-feat"><span class="memb-feat-ico">✓</span>Todo ilimitado</div>
+          <div class="memb-feat"><span class="memb-feat-ico">✓</span>Concierge canino dedicado</div>
+          <div class="memb-feat"><span class="memb-feat-ico">✓</span>Spa y vet ilimitados</div>
+          <div class="memb-feat"><span class="memb-feat-ico">✓</span>LomitoExpress ilimitado</div>
+        </div>
+        <button class="memb-btn" style="background:#1A1610;color:#CCC;border:1px solid #2A2418" onclick="scrollTo('registro')">Elegir Black</button>
       </div>
-      <button class="memb-cta" style="background:#1A1A16;color:#CCC;border:1px solid #2A2A24" onclick="document.getElementById('registro').scrollIntoView({behavior:'smooth'})">Elegir Black</button>
-    </div>
-    <div class="memb-card founder">
-      <div class="cupos-badge">👑 Quedan 38 de 50</div>
-      <div class="memb-nivel" style="color:var(--gold)">Fundador</div>
-      <div class="memb-name" style="color:var(--gold)">Fundador</div>
-      <div class="memb-precio">Precio especial · Pago único · De por vida</div>
-      <div class="memb-feats">
-        <div class="memb-feat">Todo lo de Black de por vida</div>
-        <div class="memb-feat">Tu nombre en el club</div>
-        <div class="memb-feat">Voto en decisiones del club</div>
+      <div class="memb-card founder-card reveal">
+        <div class="memb-cupos">👑 38 de 50 cupos</div>
+        <div class="memb-nivel" style="color:var(--gold)">Fundador</div>
+        <div class="memb-name" style="color:var(--gold)">Fundador</div>
+        <div class="memb-precio">Precio especial · De por vida</div>
+        <div class="memb-feats">
+          <div class="memb-feat"><span class="memb-feat-ico">✓</span>Todo lo de Black, para siempre</div>
+          <div class="memb-feat"><span class="memb-feat-ico">✓</span>Tu nombre grabado en el club</div>
+          <div class="memb-feat"><span class="memb-feat-ico">✓</span>Voto en decisiones del club</div>
+          <div class="memb-feat"><span class="memb-feat-ico">✓</span>Acceso antes de apertura</div>
+        </div>
+        <button class="memb-btn" style="background:var(--gold);color:#0D0B04" onclick="window.open('https://wa.me/527291432516?text=Hola,%20quiero%20ser%20Miembro%20Fundador%20de%20Lomitos%20Dog%20Club','_blank')">💬 Quiero ser Fundador</button>
       </div>
-      <button class="memb-cta" style="background:var(--gold);color:#120E04" onclick="window.open('https://wa.me/527291432516?text=Hola,%20quiero%20ser%20Miembro%20Fundador','_blank')">💬 Quiero ser Fundador</button>
     </div>
   </div>
 </div>
-</section>
+
+<!-- TESTIMONIOS -->
+<div class="section">
+  <div class="sec-tag">Lo que dicen</div>
+  <h2 class="sec-title">La comunidad<br><em>lomiteros</em></h2>
+  <p class="sec-sub">Invitados de Honor que ya viven la experiencia Lomitos Dog Club.</p>
+  <div class="test-grid">
+    <div class="test-card reveal">
+      <div class="test-stars">★★★★★</div>
+      <div class="test-text">"El mejor lugar para mi lomito en Metepec. Rocky llega feliz y yo puedo trabajar tranquilo mientras él juega. El personal es <em>increíble</em>."</div>
+      <div class="test-author">Carlos M. — Miembro Gold · Metepec</div>
+      <div class="test-rating"><div class="test-google">Google Review</div></div>
+    </div>
+    <div class="test-card reveal">
+      <div class="test-stars">★★★★★</div>
+      <div class="test-text">"Luna nunca había sido tan sociable. El proceso de evaluación me dio mucha confianza. Saber que todos los perros están evaluados es <em>tranquilizador</em>."</div>
+      <div class="test-author">Mariana R. — Miembro Platinum · Toluca</div>
+      <div class="test-rating"><div class="test-google">Google Review</div></div>
+    </div>
+    <div class="test-card reveal">
+      <div class="test-stars">★★★★★</div>
+      <div class="test-text">"El LomitoExpress es una maravilla. Me recogen a Thor en la mañana y yo llego directo al trabajo. <em>Vale cada peso</em> de la membresía Diamond."</div>
+      <div class="test-author">Diego F. — Miembro Diamond · Metepec</div>
+      <div class="test-rating"><div class="test-google">Google Review</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- LOMITOEXPRESS -->
+<div class="section full" id="express" style="background:var(--bg2);padding:100px 0">
+  <div class="inner">
+    <div class="express-wrap">
+      <div>
+        <div class="sec-tag">A domicilio</div>
+        <h2 class="sec-title">LomitoExpress<br><em>🚐</em></h2>
+        <p style="font-size:15px;color:var(--cream2);line-height:1.75;margin-bottom:28px">¿No puedes traer a tu lomito? Nosotros vamos por él. Uno de nuestros cuidadores lo recoge en tu domicilio y lo lleva al club con todo el cuidado.</p>
+        <div class="tarifas-grid">
+          <div class="tarifa-card reveal"><div class="tarifa-rango">0 – 2 km</div><div class="tarifa-precio" style="color:var(--green)">$50 MXN</div></div>
+          <div class="tarifa-card reveal"><div class="tarifa-rango">2 – 4 km</div><div class="tarifa-precio" style="color:var(--gold)">$80 MXN</div></div>
+          <div class="tarifa-card reveal"><div class="tarifa-rango">4 – 5 km</div><div class="tarifa-precio" style="color:#E05555">$120 MXN</div></div>
+          <div class="tarifa-card reveal"><div class="tarifa-rango">+ de 5 km</div><div class="tarifa-precio" style="color:var(--muted)">No disponible</div></div>
+        </div>
+        <div style="margin-top:20px;padding:14px 18px;background:var(--gold2);border:1px solid rgba(201,168,76,.2);border-radius:12px;font-size:12px;color:var(--cream2);line-height:1.65">
+          💡 <strong style="color:var(--gold)">Platinum</strong> incluye 1 recolección/mes · <strong style="color:#88C8E8">Diamond</strong> incluye 2 · <strong style="color:#CCC">Black</strong> y <strong style="color:var(--gold)">Fundador</strong> ilimitado
+        </div>
+        <button class="btn-gold" style="margin-top:28px" onclick="window.open('https://wa.me/527291432516?text=Hola,%20quiero%20solicitar%20LomitoExpress','_blank')">📍 Solicitar recolección</button>
+      </div>
+      <div class="reveal">
+        <div style="background:var(--bg3);border:1px solid var(--bg4);border-radius:var(--radius);padding:32px">
+          <div style="font-size:56px;text-align:center;margin-bottom:20px">🚐</div>
+          <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;text-align:center;margin-bottom:24px">¿Cómo funciona?</div>
+          <div style="display:flex;flex-direction:column;gap:16px">
+            <div style="display:flex;gap:14px;align-items:flex-start">
+              <div style="width:28px;height:28px;border-radius:50%;background:var(--gold2);border:1px solid rgba(201,168,76,.3);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--gold);font-weight:700;flex-shrink:0">1</div>
+              <div><div style="font-size:13px;font-weight:500;color:var(--cream);margin-bottom:3px">Solicita desde la app</div><div style="font-size:12px;color:var(--muted)">Comparte tu ubicación o escribe tu dirección</div></div>
+            </div>
+            <div style="display:flex;gap:14px;align-items:flex-start">
+              <div style="width:28px;height:28px;border-radius:50%;background:var(--gold2);border:1px solid rgba(201,168,76,.3);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--gold);font-weight:700;flex-shrink:0">2</div>
+              <div><div style="font-size:13px;font-weight:500;color:var(--cream);margin-bottom:3px">Tu cuidador sale</div><div style="font-size:12px;color:var(--muted)">Un miembro del staff va por tu lomito</div></div>
+            </div>
+            <div style="display:flex;gap:14px;align-items:flex-start">
+              <div style="width:28px;height:28px;border-radius:50%;background:var(--gold2);border:1px solid rgba(201,168,76,.3);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--gold);font-weight:700;flex-shrink:0">3</div>
+              <div><div style="font-size:13px;font-weight:500;color:var(--cream);margin-bottom:3px">Llega al club</div><div style="font-size:12px;color:var(--muted)">Check-in automático y empieza su día VIP</div></div>
+            </div>
+            <div style="display:flex;gap:14px;align-items:flex-start">
+              <div style="width:28px;height:28px;border-radius:50%;background:var(--gold2);border:1px solid rgba(201,168,76,.3);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--gold);font-weight:700;flex-shrink:0">4</div>
+              <div><div style="font-size:13px;font-weight:500;color:var(--cream);margin-bottom:3px">Te notificamos</div><div style="font-size:12px;color:var(--muted)">Foto de llegada directo a tu app</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- DAY PASS -->
-<section id="daypass">
-  <div class="sec-tag">Visita sin membresía</div>
-  <h2 class="sec-title">Day Pass</h2>
-  <p class="sec-sub">¿Primera vez en el club? Regístrate y vive la experiencia Lomitos Dog Club por un día.</p>
-  <div class="daypass-card">
-    <div class="daypass-info">
-      <div style="font-size:11px;color:var(--gold);letter-spacing:1px;text-transform:uppercase;margin-bottom:8px">Acceso de un día</div>
-      <div class="daypass-price">$150 <span style="font-size:16px;color:var(--muted)">MXN</span></div>
-      <div class="daypass-feats">
-        <div class="daypass-feat">Acceso a todas las áreas de juego</div>
-        <div class="daypass-feat">Chapoteadero incluido</div>
-        <div class="daypass-feat">Área kids y cafetería</div>
-        <div class="daypass-feat">Estacionamiento gratis</div>
-        <div class="daypass-feat">Personal de servicio</div>
+<div class="section" id="daypass">
+  <div class="daypass-wrap">
+    <div>
+      <div class="sec-tag">Primera visita</div>
+      <h2 class="sec-title">Day Pass<br><em>sin membresía</em></h2>
+      <p style="font-size:15px;color:var(--cream2);line-height:1.75;margin-bottom:20px">¿Primera vez en el club? Regístrate, agenda tu evaluación y vive la experiencia Lomitos Dog Club por un día.</p>
+      <div class="dp-price">$150 <span>MXN / día</span></div>
+      <div class="dp-feats">
+        <div class="dp-feat">Acceso a todas las áreas de juego</div>
+        <div class="dp-feat">Chapoteadero incluido</div>
+        <div class="dp-feat">Área kids y cafetería</div>
+        <div class="dp-feat">Estacionamiento gratis</div>
+        <div class="dp-feat">Personal de servicio siempre disponible</div>
+        <div class="dp-feat">Evaluación de temperamento incluida</div>
       </div>
     </div>
-    <div class="daypass-form">
-      <div style="font-family:'Playfair Display',serif;font-size:18px;font-weight:700;margin-bottom:16px">Reserva tu Day Pass</div>
-      <input class="daypass-input" placeholder="Nombre completo" id="dp-nombre">
-      <input class="daypass-input" placeholder="Email" id="dp-email" type="email">
-      <input class="daypass-input" placeholder="Teléfono WhatsApp" id="dp-tel" type="tel">
-      <input class="daypass-input" placeholder="Nombre de tu lomito" id="dp-lomito">
-      <input class="daypass-input" placeholder="Fecha deseada (ej: 28 May)" id="dp-fecha">
-      <button class="btn-gold" style="width:100%;margin-top:4px" onclick="pedirDayPass()">💬 Confirmar por WhatsApp</button>
-    </div>
-  </div>
-</section>
-
-<!-- EXPRESS -->
-<section id="express" style="background:var(--bg2);max-width:100%;padding:80px 24px">
-<div style="max-width:1100px;margin:0 auto">
-  <div class="sec-tag">A domicilio</div>
-  <h2 class="sec-title">LomitoExpress 🚐</h2>
-  <p class="sec-sub">Recogemos a tu lomito donde estés. Servicio premium puerta a puerta en un radio de 5km.</p>
-  <div class="express-card">
-    <div class="express-ico">🚐</div>
-    <div class="express-info">
-      <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:8px">Recolección a domicilio</div>
-      <p style="font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:20px">Uno de nuestros cuidadores va por tu lomito. Tú te quedas tranquilo, él llega feliz al club.</p>
-      <div class="tarifas">
-        <div class="tarifa"><div class="tarifa-rango">0 – 2 km</div><div class="tarifa-precio" style="color:#6BAF82">$50 MXN</div></div>
-        <div class="tarifa"><div class="tarifa-rango">2 – 4 km</div><div class="tarifa-precio" style="color:var(--gold)">$80 MXN</div></div>
-        <div class="tarifa"><div class="tarifa-rango">4 – 5 km</div><div class="tarifa-precio" style="color:#E05555">$120 MXN</div></div>
-        <div class="tarifa"><div class="tarifa-rango">+ 5 km</div><div class="tarifa-precio" style="color:var(--muted)">No disponible</div></div>
+    <div class="daypass-form reveal">
+      <div class="form-title">Reserva tu Day Pass 🎫</div>
+      <div class="form-field"><label>Nombre completo</label><input placeholder="Tu nombre" id="dp-nombre"></div>
+      <div class="form-grid-2">
+        <div class="form-field"><label>Teléfono</label><input placeholder="722 000 0000" id="dp-tel" type="tel"></div>
+        <div class="form-field"><label>Email</label><input placeholder="tu@email.com" id="dp-email" type="email"></div>
       </div>
-      <button class="btn-gold" style="margin-top:20px" onclick="window.open('https://wa.me/527291432516?text=Hola,%20quiero%20solicitar%20LomitoExpress','_blank')">📍 Solicitar recolección</button>
+      <div class="form-field"><label>Nombre de tu lomito</label><input placeholder="¿Cómo se llama tu VIP?" id="dp-lomito"></div>
+      <div class="form-field"><label>Fecha deseada</label><input placeholder="Ej: 28 Mayo 2025" id="dp-fecha"></div>
+      <button class="btn-gold" style="width:100%;margin-top:8px" onclick="pedirDayPass()">💬 Confirmar por WhatsApp</button>
     </div>
   </div>
 </div>
-</section>
+
+<!-- INSTAGRAM / GALERÍA -->
+<div class="section full" style="background:var(--bg2);padding:80px 0">
+  <div class="inner" style="text-align:center;margin-bottom:32px">
+    <div class="sec-tag" style="justify-content:center">Síguenos</div>
+    <h2 class="sec-title">La manada<br><em>en acción</em></h2>
+  </div>
+  <div class="insta-grid">
+    <div class="insta-item">🐕<div class="insta-overlay">❤️</div></div>
+    <div class="insta-item">🐩<div class="insta-overlay">❤️</div></div>
+    <div class="insta-item">🦴<div class="insta-overlay">❤️</div></div>
+    <div class="insta-item">🐾<div class="insta-overlay">❤️</div></div>
+    <div class="insta-item">🎾<div class="insta-overlay">❤️</div></div>
+    <div class="insta-item">🛁<div class="insta-overlay">❤️</div></div>
+    <div class="insta-item">🌙<div class="insta-overlay">❤️</div></div>
+    <div class="insta-item">🏆<div class="insta-overlay">❤️</div></div>
+    <div class="insta-item">🎂<div class="insta-overlay">❤️</div></div>
+    <div class="insta-item">👑<div class="insta-overlay">❤️</div></div>
+  </div>
+  <div style="text-align:center;margin-top:28px">
+    <a href="https://instagram.com" target="_blank" class="btn-outline" style="display:inline-block;padding:12px 28px">📸 @lomitosdogclub</a>
+  </div>
+</div>
+
+<!-- NEWSLETTER -->
+<div class="section">
+  <div class="news-wrap reveal">
+    <div class="sec-tag" style="justify-content:center">Mantente informado</div>
+    <h2 class="sec-title" style="text-align:center">Treats para<br>tu <em>inbox</em> 🐾</h2>
+    <p style="font-size:14px;color:var(--cream2);text-align:center;margin-top:12px">Novedades del club, consejos para tu lomito y acceso a eventos exclusivos.</p>
+    <div class="news-form">
+      <input class="news-input" placeholder="tu@email.com" id="news-email" type="email">
+      <button class="btn-gold" onclick="suscribir()">Suscribirme</button>
+    </div>
+  </div>
+</div>
 
 <!-- REGISTRO -->
-<section id="registro">
-  <div class="sec-tag">Únete al club</div>
-  <h2 class="sec-title" style="text-align:center">Crea tu cuenta de<br>Invitado de Honor</h2>
-  <p class="sec-sub" style="text-align:center;margin:0 auto 40px">Regístrate en la web y recibe tu ID y contraseña para acceder a la app de Lomitos Dog Club.</p>
-  <div class="registro-wrap">
-    <div style="font-size:48px;margin-bottom:16px">🐾</div>
-    <div class="form-grid">
-      <div class="field"><label>Nombre completo</label><input placeholder="Tu nombre" id="r-nombre"></div>
-      <div class="field"><label>Teléfono WhatsApp</label><input placeholder="722 000 0000" id="r-tel" type="tel"></div>
-      <div class="field full"><label>Email</label><input placeholder="tu@email.com" id="r-email" type="email"></div>
-      <div class="field"><label>Contraseña</label><input placeholder="••••••••" id="r-pass" type="password"></div>
-      <div class="field"><label>Confirmar contraseña</label><input placeholder="••••••••" id="r-pass2" type="password"></div>
-      <div class="field full"><label>Membresía de interés</label>
-        <select id="r-memb">
-          <option>Puppy — $599/mes</option>
-          <option>Gold — $999/mes</option>
-          <option>Platinum — $1,499/mes</option>
-          <option>Diamond — $2,299/mes</option>
-          <option>Black — $3,499/mes</option>
-          <option>Fundador — Precio especial</option>
-          <option>Day Pass — $150 MXN</option>
-        </select>
-      </div>
-      <div class="field full"><label>Nombre de tu lomito</label><input placeholder="¿Cómo se llama tu VIP?" id="r-lomito"></div>
+<div class="section full" id="registro" style="background:var(--bg2);padding:100px 0">
+  <div class="inner">
+    <div style="text-align:center;margin-bottom:48px">
+      <div class="sec-tag" style="justify-content:center">Únete al club</div>
+      <h2 class="sec-title">Crea tu cuenta de<br><em>Invitado de Honor</em></h2>
+      <p style="font-size:15px;color:var(--cream2);margin-top:12px">Regístrate y recibe tu ID para acceder a la app de Lomitos Dog Club.</p>
     </div>
-    <button class="form-cta" onclick="registrar()">Crear mi cuenta 🐾</button>
-    <div class="login-link">¿Ya tienes cuenta? <a href="#" onclick="alert('Usa tu ID y contraseña en la app de Lomitos Dog Club')">Inicia sesión en la app</a></div>
+    <div class="registro-card reveal">
+      <div style="font-size:48px;text-align:center;margin-bottom:20px">🐾</div>
+      <div class="form-grid-2">
+        <div class="form-field"><label>Nombre completo</label><input placeholder="Tu nombre" id="r-nombre"></div>
+        <div class="form-field"><label>Teléfono WhatsApp</label><input placeholder="722 000 0000" id="r-tel" type="tel"></div>
+        <div class="form-field full"><label>Email</label><input placeholder="tu@email.com" id="r-email" type="email"></div>
+        <div class="form-field"><label>Contraseña</label><input placeholder="••••••••" id="r-pass" type="password"></div>
+        <div class="form-field"><label>Confirmar contraseña</label><input placeholder="••••••••" id="r-pass2" type="password"></div>
+        <div class="form-field full"><label>Membresía de interés</label>
+          <select id="r-memb">
+            <option>Puppy — $599/mes</option>
+            <option>Gold — $999/mes</option>
+            <option>Platinum — $1,499/mes</option>
+            <option>Diamond — $2,299/mes</option>
+            <option>Black — $3,499/mes</option>
+            <option>Fundador — Precio especial</option>
+            <option>Day Pass — $150 MXN</option>
+          </select>
+        </div>
+        <div class="form-field full"><label>Nombre de tu lomito</label><input placeholder="¿Cómo se llama tu VIP?" id="r-lomito"></div>
+      </div>
+      <button class="btn-gold" style="width:100%;margin-top:8px" onclick="registrar()">Crear mi cuenta y unirme al club 🐾</button>
+      <p style="text-align:center;font-size:12px;color:var(--muted);margin-top:14px">¿Ya tienes cuenta? <a href="#" style="color:var(--gold)" onclick="alert('Descarga la app de Lomitos Dog Club y usa tu ID y contraseña')">Inicia sesión en la app</a></p>
+    </div>
   </div>
-</section>
+</div>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Lomitos Dog Club</div>
-  <div class="footer-sub">Metepec, Estado de México · Est. 2025</div>
-  <a href="https://wa.me/527291432516" target="_blank" class="footer-wa">💬 WhatsApp · 729 143 2516</a>
-  <div class="footer-links">
-    <a href="#servicios">Servicios</a>
-    <a href="#membresias">Membresías</a>
-    <a href="#daypass">Day Pass</a>
-    <a href="#express">LomitoExpress</a>
-    <a href="#registro">Registro</a>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-logo">Lomitos Dog Club</div>
+        <div class="footer-desc">El primer club canino premium de Metepec. Donde tu lomito es el VIP y tú eres el Invitado de Honor.</div>
+        <a href="https://wa.me/527291432516" target="_blank" class="footer-wa">💬 729 143 2516</a>
+        <div class="footer-social" style="margin-top:16px">
+          <a href="#">📸</a>
+          <a href="#">🎵</a>
+          <a href="#">🐦</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Servicios</div>
+        <a href="#servicios">Experiencia completa</a>
+        <a href="#servicios">Baño & Grooming</a>
+        <a href="#servicios">Hospedaje</a>
+        <a href="#servicios">Veterinario</a>
+        <a href="#servicios">Adiestramiento</a>
+        <a href="#servicios">Cumpleaños</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Club</div>
+        <a href="#antes">Antes de entrar</a>
+        <a href="#membresias">Membresías</a>
+        <a href="#express">LomitoExpress</a>
+        <a href="#daypass">Day Pass</a>
+        <a href="#registro">Registro</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-col-title">Contacto</div>
+        <a href="https://wa.me/527291432516" target="_blank">WhatsApp</a>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">Metepec, Edo. Méx.</a>
+        <a href="#">7:00am – 8:00pm</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Lomitos Dog Club · Todos los derechos reservados · El lomito siempre es el VIP 🐾</div>
+      <div style="display:flex;gap:16px">
+        <a href="#" style="font-size:11px;color:var(--muted)">Privacidad</a>
+        <a href="#" style="font-size:11px;color:var(--muted)">Términos</a>
+      </div>
+    </div>
   </div>
-  <div class="footer-copy">© 2025 Lomitos Dog Club · Todos los derechos reservados · El lomito siempre es el VIP 🐾</div>
 </footer>
 
 <script>
+// ─── PARTICLES ───
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+let particles = [];
+let W, H;
+
+function resize(){
+  W = canvas.width = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener('resize', resize);
+
+class Particle {
+  constructor(){this.reset()}
+  reset(){
+    this.x = Math.random()*W;
+    this.y = Math.random()*H;
+    this.size = Math.random()*1.5+0.5;
+    this.speedX = (Math.random()-.5)*.3;
+    this.speedY = (Math.random()-.5)*.3;
+    this.opacity = Math.random()*.4+.1;
+    this.life = 0;
+    this.maxLife = Math.random()*300+200;
+  }
+  update(){
+    this.x += this.speedX;
+    this.y += this.speedY;
+    this.life++;
+    if(this.life>this.maxLife||this.x<0||this.x>W||this.y<0||this.y>H) this.reset();
+  }
+  draw(){
+    ctx.save();
+    ctx.globalAlpha = this.opacity*(1-this.life/this.maxLife);
+    ctx.fillStyle = '#C9A84C';
+    ctx.beginPath();
+    ctx.arc(this.x,this.y,this.size,0,Math.PI*2);
+    ctx.fill();
+    ctx.restore();
+  }
+}
+
+for(let i=0;i<120;i++) particles.push(new Particle());
+
+function animateParticles(){
+  ctx.clearRect(0,0,W,H);
+  // Draw connections
+  for(let i=0;i<particles.length;i++){
+    for(let j=i+1;j<particles.length;j++){
+      const dx=particles[i].x-particles[j].x;
+      const dy=particles[i].y-particles[j].y;
+      const dist=Math.sqrt(dx*dx+dy*dy);
+      if(dist<100){
+        ctx.save();
+        ctx.globalAlpha=(.15*(1-dist/100))*(1-particles[i].life/particles[i].maxLife);
+        ctx.strokeStyle='#C9A84C';
+        ctx.lineWidth=.5;
+        ctx.beginPath();
+        ctx.moveTo(particles[i].x,particles[i].y);
+        ctx.lineTo(particles[j].x,particles[j].y);
+        ctx.stroke();
+        ctx.restore();
+      }
+    }
+    particles[i].update();
+    particles[i].draw();
+  }
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+// ─── NAV SCROLL ───
+window.addEventListener('scroll',()=>{
+  document.getElementById('nav').classList.toggle('scrolled',window.scrollY>50);
+});
+
+// ─── MOBILE MENU ───
+function toggleMenu(){
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+
+// ─── SCROLL TO ───
+function scrollTo(id){
+  document.getElementById(id)?.scrollIntoView({behavior:'smooth'});
+}
+
+// ─── SCROLL REVEAL ───
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add('visible');
+  });
+},{threshold:0.1});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+// ─── FORMS ───
 function pedirDayPass(){
   const n=document.getElementById('dp-nombre').value;
-  const e=document.getElementById('dp-email').value;
   const t=document.getElementById('dp-tel').value;
+  const e=document.getElementById('dp-email').value;
   const l=document.getElementById('dp-lomito').value;
   const f=document.getElementById('dp-fecha').value;
   if(!n||!t){alert('Por favor llena nombre y teléfono');return;}
-  const msg=`Hola, quiero reservar un *Day Pass* en Lomitos Dog Club 🐾\n\n👤 Nombre: ${n}\n📧 Email: ${e}\n📱 Tel: ${t}\n🐕 Lomito: ${l}\n📅 Fecha: ${f}\n\n¿Está disponible?`;
+  const msg=`Hola, quiero reservar un *Day Pass* en Lomitos Dog Club 🐾\n\n👤 Nombre: ${n}\n📱 Tel: ${t}\n📧 Email: ${e}\n🐕 Lomito: ${l}\n📅 Fecha: ${f}\n\n¿Está disponible?`;
   window.open(`https://wa.me/527291432516?text=${encodeURIComponent(msg)}`,'_blank');
 }
 
@@ -375,9 +917,16 @@ function registrar(){
   if(!n||!e||!t||!p){alert('Por favor llena todos los campos');return;}
   if(p!==p2){alert('Las contraseñas no coinciden');return;}
   const id='LDC-'+Math.random().toString(36).substr(2,6).toUpperCase();
-  const msg=`Hola, me acabo de registrar en Lomitos Dog Club 🐾\n\n👤 Nombre: ${n}\n📧 Email: ${e}\n📱 Tel: ${t}\n🎯 Membresía: ${m}\n🐕 Lomito: ${l}\n\n¿Pueden confirmar mi registro y enviarme mi ID de acceso?`;
+  const msg=`Hola, me acabo de registrar en Lomitos Dog Club 🐾\n\n👤 Nombre: ${n}\n📧 Email: ${e}\n📱 Tel: ${t}\n🎯 Membresía: ${m}\n🐕 Lomito: ${l}\n\n¿Pueden confirmar mi registro?`;
   window.open(`https://wa.me/527291432516?text=${encodeURIComponent(msg)}`,'_blank');
-  alert(`¡Registro enviado! Tu ID temporal es: ${id}\n\nRecibirás tu acceso completo por WhatsApp en breve. 🐾`);
+  setTimeout(()=>alert(`¡Bienvenido al club! 🐾\n\nTu ID temporal es: ${id}\n\nRecibirás tu acceso completo por WhatsApp en breve.`),500);
+}
+
+function suscribir(){
+  const e=document.getElementById('news-email').value;
+  if(!e){alert('Ingresa tu email');return;}
+  const msg=`Hola, quiero suscribirme al newsletter de Lomitos Dog Club 🐾\n\nEmail: ${e}`;
+  window.open(`https://wa.me/527291432516?text=${encodeURIComponent(msg)}`,'_blank');
 }
 </script>
 </body>
