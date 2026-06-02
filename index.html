@@ -457,43 +457,15 @@ footer{background:var(--bg2);border-top:1px solid var(--bg3);padding:64px 40px 3
         </div>
         <button class="memb-btn" style="background:var(--gold);color:var(--bg)" onclick="document.getElementById('registro').scrollIntoView({behavior:'smooth'})">Elegir Gold</button>
       </div>
-      <div class="memb-card reveal">
-        <div class="memb-nivel" style="color:#C0C0C0">Membresía</div>
-        <div class="memb-name" style="color:#C0C0C0">Platinum</div>
-        <div class="memb-precio">$1,499 / mes</div>
-        <div class="memb-feats">
-          <div class="memb-feat"><span class="memb-feat-ico">✓</span>Todo lo de Gold</div>
-          <div class="memb-feat"><span class="memb-feat-ico">✓</span>Guardería L-V con 24hrs anticipación</div>
-          <div class="memb-feat"><span class="memb-feat-ico">✓</span>1 LomitoExpress al mes con tarifa especial</div>
-          <div class="memb-feat"><span class="memb-feat-ico">✓</span>1 evidencia de video al mes</div>
-          <div class="memb-feat"><span class="memb-feat-ico">✓</span>Festejo de cumpleaños con 5 invitados</div>
-          <div class="memb-feat"><span class="memb-feat-ico">✓</span>Foto profesional mensual</div>
-        </div>
-        <button class="memb-btn" style="background:rgba(200,200,200,.1);color:#C0C0C0" onclick="document.getElementById('registro').scrollIntoView({behavior:'smooth'})">Elegir Platinum</button>
-      </div>
-      <div class="memb-card reveal" style="background:#0A0804;border-color:#1E1A10">
-        <div class="memb-nivel" style="color:#888">Membresía</div>
-        <div class="memb-name" style="color:#CCC">Black</div>
-        <div class="memb-precio">$3,499 / mes</div>
-        <div class="memb-feats">
-          <div class="memb-feat"><span class="memb-feat-ico">✓</span>Todo lo de Platinum</div>
-          <div class="memb-feat"><span class="memb-feat-ico">✓</span>LomitoExpress con tarifa especial preferencial</div>
-          <div class="memb-feat"><span class="memb-feat-ico">✓</span>Concierge canino dedicado</div>
-          <div class="memb-feat"><span class="memb-feat-ico">✓</span>Baño &amp; Grooming ilimitado</div>
-          <div class="memb-feat"><span class="memb-feat-ico">✓</span>Acceso a todos los servicios premium</div>
-          <div class="memb-feat"><span class="memb-feat-ico">✓</span>Invitado de Honor en eventos exclusivos</div>
-        </div>
-        <button class="memb-btn" style="background:#1A1610;color:#CCC;border:1px solid #2A2418" onclick="document.getElementById('registro').scrollIntoView({behavior:'smooth'})">Elegir Black</button>
-      </div>
       <div class="memb-card founder-card reveal">
         <div class="memb-cupos">38 de 50 cupos disponibles</div>
         <div class="founder-inner">
           <div>
             <div class="memb-nivel" style="color:var(--gold)">Membresía especial</div>
             <div class="memb-name" style="color:var(--gold)">Fundador</div>
-            <div class="memb-precio">Precio especial · Solo 50 cupos en el mundo</div>
+            <div class="memb-precio">Precio especial · Solo 50 cupos</div>
             <div class="memb-feats">
-              <div class="memb-feat"><span class="memb-feat-ico">✓</span>Entrada ilimitada con Invitado de Honor incluido</div>
+              <div class="memb-feat"><span class="memb-feat-ico">✓</span>Entrada ilimitada todos los días del mes</div>
               <div class="memb-feat"><span class="memb-feat-ico">✓</span>Guardería L-V con 24hrs anticipación antes 2pm</div>
               <div class="memb-feat"><span class="memb-feat-ico">✓</span>10% descuento en alimentos y pet shop</div>
               <div class="memb-feat"><span class="memb-feat-ico">✓</span>Cumpleaños — hasta 5 lomitos invitados, evaluación gratis</div>
@@ -529,7 +501,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bg3);padding:64px 40px 3
           <div class="tarifa-card reveal"><div class="tarifa-rango">+ de 5 km</div><div class="tarifa-precio" style="color:var(--muted)">No disponible</div></div>
         </div>
         <div style="margin-top:16px;padding:14px 18px;background:var(--gold2);border:1px solid rgba(201,168,76,.2);border-radius:12px;font-size:12px;color:var(--cream2);line-height:1.65">
-          💡 Miembros <strong style="color:#C0C0C0">Platinum</strong>, <strong style="color:#CCC">Black</strong> y <strong style="color:var(--gold)">Fundador</strong> acceden a tarifa especial preferencial
+          💡 Miembros <strong style="color:var(--gold)">Fundador</strong> acceden a tarifa especial preferencial
         </div>
         <div class="calc-wrap reveal">
           <div class="calc-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Calcula tu costo</div>
@@ -640,7 +612,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bg3);padding:64px 40px 3
         <div class="form-field"><label>Contraseña</label><input placeholder="••••••••" id="r-pass" type="password"></div>
         <div class="form-field"><label>Confirmar contraseña</label><input placeholder="••••••••" id="r-pass2" type="password"></div>
         <div class="form-field full"><label>Membresía de interés</label>
-          <select id="r-memb"><option>Day Pass — $150 MXN</option><option>Gold — $999/mes</option><option>Platinum — $1,499/mes</option><option>Black — $3,499/mes</option><option>Fundador — Precio especial</option></select>
+          <select id="r-memb"><option>Day Pass — $150 MXN</option><option>Gold — $999/mes</option><option>Fundador — Precio especial</option></select>
         </div>
         <div class="form-field full"><label>Nombre de tu lomito</label><input placeholder="¿Cómo se llama tu VIP?" id="r-lomito"></div>
       </div>
