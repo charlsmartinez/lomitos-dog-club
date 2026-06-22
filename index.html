@@ -319,68 +319,10 @@ footer{background:var(--bg2);border-top:1px solid var(--bg3);padding:64px 40px 3
   </div>
 </div>
 
-<!-- ── AFORO EN VIVO ──────────────────────────────────── -->
-<div id="aforo-live" style="position:relative;z-index:1;padding:40px 40px 0">
-  <div style="max-width:1140px;margin:0 auto">
-    <div id="aforo-card" style="background:linear-gradient(135deg,#0D0D0A,#161610);border:1px solid rgba(201,168,76,.2);border-radius:16px;padding:20px 28px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;transition:border-color .4s">
-      <div style="display:flex;align-items:center;gap:14px">
-        <div id="aforo-dot" style="width:10px;height:10px;border-radius:50%;background:#6BAF82;box-shadow:0 0 10px #6BAF82;animation:afoRepulse 2s ease-in-out infinite;flex-shrink:0"></div>
-        <div>
-          <div style="font-size:9px;letter-spacing:2px;color:#6B6B5E;text-transform:uppercase;margin-bottom:3px">Aforo en tiempo real</div>
-          <div id="aforo-txt" style="font-family:'Playfair Display',serif;font-size:15px;color:#F5F0E8;font-weight:500">Verificando disponibilidad…</div>
-        </div>
-      </div>
-      <div style="display:flex;align-items:center;gap:12px;flex:1;min-width:160px;max-width:300px">
-        <div style="flex:1;height:5px;background:rgba(245,240,232,.08);border-radius:3px;overflow:hidden">
-          <div id="aforo-bar" style="height:100%;width:0%;border-radius:3px;transition:width .8s ease,background .5s ease;background:#6BAF82"></div>
-        </div>
-        <div id="aforo-nums" style="font-size:12px;color:#6B6B5E;white-space:nowrap;font-family:'Playfair Display',serif">—</div>
-      </div>
-      <div style="text-align:right">
-        <div style="font-size:9px;letter-spacing:1.5px;color:#6B6B5E;text-transform:uppercase;margin-bottom:3px">Hoy</div>
-        <div id="aforo-horario" style="font-size:12px;color:#C9A84C;font-weight:500">—</div>
-      </div>
-    </div>
-  </div>
-</div>
-<style>
-@keyframes afoRepulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(1.2)}}
-@media(max-width:600px){#aforo-live{padding:24px 16px 0}#aforo-card{padding:14px 16px}}
-</style>
-<script>
-(function(){
-  var U='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRwbGpyaG9tbmZjdWJ4b2FobWlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAyNDc1NjQsImV4cCI6MjA5NTgyMzU2NH0';
-  var K='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRwbGpyaG9tbmZjdWJ4b2FobWlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAyNDc1NjQsImV4cCI6MjA5NTgyMzU2NH0.XPyq60LUgjQTExNWQYMX2lKR0O5Yc8yl5J4tCkcCnPw';
-  var SB='https://dpljrhomnfcubxoahmiq.supabase.co';
-  function hor(){var d=new Date().getDay();return d===0?'Cerrado hoy':d===6?'8:00 – 14:00 hrs':'7:00 – 19:00 hrs';}
-  function upd(){
-    fetch(SB+'/rest/v1/club_config?id=eq.1&select=aforo_actual,aforo_maximo,abierto',{headers:{'apikey':K,'Authorization':'Bearer '+K}})
-    .then(function(r){return r.json();})
-    .then(function(data){
-      if(!data||!data[0])return;
-      var a=data[0].aforo_actual||0,m=data[0].aforo_maximo||20,ab=data[0].abierto;
-      var pct=Math.round(a/m*100);
-      var libre=m-a;
-      var col=pct>=90?'#E74C3C':pct>=70?'#F5A623':'#6BAF82';
-      var dot=document.getElementById('aforo-dot');
-      var bar=document.getElementById('aforo-bar');
-      var txt=document.getElementById('aforo-txt');
-      var nums=document.getElementById('aforo-nums');
-      var card=document.getElementById('aforo-card');
-      dot.style.background=col;dot.style.boxShadow='0 0 10px '+col;
-      bar.style.width=Math.min(pct,100)+'%';bar.style.background=col;
-      nums.textContent=a+' / '+m;
-      card.style.borderColor=col.replace('#','rgba(').replace(/^rgba\((..)(..)(..)$/,function(x,r,g,b){return 'rgba('+parseInt(r,16)+','+parseInt(g,16)+','+parseInt(b,16)+',0.35)';});
-      if(!ab){txt.textContent='🔒 Club cerrado hoy';}
-      else if(pct>=100){txt.textContent='🔴 Aforo completo · Contáctanos para lista de espera';}
-      else if(pct>=80){txt.textContent='🟡 Quedan '+libre+(libre===1?' lugar':' lugares')+' disponibles';}
-      else{txt.textContent='🟢 ¡Hay espacio! '+libre+' lugares disponibles hoy';}
-      document.getElementById('aforo-horario').textContent=hor();
-    }).catch(function(){document.getElementById('aforo-txt').textContent='Disponibilidad no disponible';document.getElementById('aforo-horario').textContent=hor();});
-  }
-  upd();setInterval(upd,60000);
-})();
-</script>
+
+
+
+
 <!-- ────────────────────────────────────────────────────── -->
 
 
