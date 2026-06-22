@@ -3,203 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lomitos Dog Club · Metepec</title>
+<title>Lomitos Dog Club Â· Metepec</title>
 <meta name="description" content="El primer club canino premium de Metepec. App propia, check-in digital, LomitoExpress y comunidad real.">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Lomitos Dog Club">
+  <link rel="canonical" href="https://charlsmartinez.github.io/lomitos-dog-club/">
+  <meta property="og:title" content="Lomitos Dog Club · El primer club canino premium de Metepec">
+  <meta property="og:description" content="El primer club canino premium de Metepec. Guardería, grooming, LomitoExpress y más. Tu lomito es el VIP.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://charlsmartinez.github.io/lomitos-dog-club/">
+  <meta property="og:image" content="https://charlsmartinez.github.io/lomitos-dog-club/logo.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Lomitos Dog Club · Metepec">
+  <meta name="twitter:description" content="El primer club canino premium de Metepec. Tu lomito es el VIP.">
+  <meta name="twitter:image" content="https://charlsmartinez.github.io/lomitos-dog-club/logo.png">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-:root{
-  --bg:#0A0A08;--bg2:#141410;--bg3:#1E1E1A;--bg4:#282822;
-  --gold:#C9A84C;--gold2:rgba(201,168,76,0.15);--gold3:rgba(201,168,76,0.08);
-  --cream:#F5F0E8;--cream2:rgba(245,240,232,0.75);--cream3:rgba(245,240,232,0.4);
-  --muted:#6B6B5E;--green:#6BAF82;--radius:20px;
-}
-html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--cream);-webkit-font-smoothing:antialiased;overflow-x:hidden}
-a{text-decoration:none;color:inherit}
-#canvas{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.45}
-nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:18px 40px;display:flex;justify-content:space-between;align-items:center;transition:background .3s}
-nav.scrolled{background:rgba(10,10,8,0.94);backdrop-filter:blur(16px);border-bottom:1px solid var(--bg3)}
-.nav-logo{font-family:'Playfair Display',serif;font-size:20px;color:var(--gold);font-weight:700;display:flex;align-items:center;gap:8px}
-.nav-logo-img{width:38px;height:38px;object-fit:contain;flex-shrink:0}
-.nav-logo span{color:var(--cream2);font-weight:400}
-.nav-links{display:flex;gap:28px;align-items:center}
-.nav-links a{font-size:13px;color:var(--cream3);transition:color .2s}
-.nav-links a:hover{color:var(--gold)}
-.nav-cta{background:var(--gold)!important;color:var(--bg)!important;padding:9px 20px;border-radius:50px;font-weight:500!important;font-size:12px!important}
-.nav-hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer}
-.nav-hamburger span{width:22px;height:1.5px;background:var(--cream)}
-.mobile-menu{display:none;position:fixed;inset:0;background:var(--bg);z-index:300;flex-direction:column;align-items:center;justify-content:center;gap:32px}
-.mobile-menu.open{display:flex}
-.mobile-menu a{font-family:'Playfair Display',serif;font-size:28px;color:var(--cream2)}
-.mobile-close{position:absolute;top:24px;right:32px;font-size:28px;cursor:pointer;color:var(--muted)}
-.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:120px 24px 80px;position:relative;z-index:1}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--gold2);border:1px solid rgba(201,168,76,.25);border-radius:50px;padding:7px 18px;font-size:11px;color:var(--gold);letter-spacing:2px;text-transform:uppercase;margin-bottom:28px;animation:fadeUp .8s ease both}
-.hero h1{font-family:'Playfair Display',serif;font-size:clamp(44px,7vw,88px);font-weight:700;line-height:1.05;margin-bottom:20px;animation:fadeUp .8s .15s ease both}
-.hero h1 em{color:var(--gold);font-style:italic}
-.hero-sub{font-size:clamp(15px,2vw,18px);color:var(--cream2);max-width:560px;line-height:1.75;margin-bottom:44px;animation:fadeUp .8s .3s ease both}
-.hero-btns{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;animation:fadeUp .8s .45s ease both}
-.hero-scroll{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;font-size:10px;color:var(--muted);letter-spacing:2px;text-transform:uppercase}
-.scroll-line{width:1px;height:48px;background:linear-gradient(to bottom,var(--gold),transparent)}
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-.btn-gold{background:var(--gold);color:var(--bg);padding:15px 32px;border-radius:50px;font-size:14px;font-weight:500;font-family:'Playfair Display',serif;transition:all .25s;cursor:pointer;border:none}
-.btn-gold:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(201,168,76,.3)}
-.btn-outline{background:transparent;color:var(--cream);padding:15px 32px;border-radius:50px;font-size:14px;border:1px solid rgba(245,240,232,.2);transition:all .25s;cursor:pointer}
-.btn-outline:hover{border-color:var(--gold);color:var(--gold)}
-.marquee-wrap{overflow:hidden;border-top:1px solid var(--bg3);border-bottom:1px solid var(--bg3);background:var(--bg2);padding:16px 0;position:relative;z-index:1}
-.marquee-track{display:flex;gap:48px;white-space:nowrap;animation:marquee 35s linear infinite}
-.marquee-item{font-family:'Playfair Display',serif;font-size:14px;color:var(--muted);letter-spacing:1px;display:flex;align-items:center;gap:12px;flex-shrink:0}
-.marquee-item svg{opacity:.5}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.stats-strip{display:grid;grid-template-columns:repeat(4,1fr);position:relative;z-index:1}
-.stat-item{padding:40px 24px;text-align:center;border-right:1px solid var(--bg3);border-top:1px solid var(--bg3)}
-.stat-item:last-child{border-right:none}
-.stat-num{font-family:'Playfair Display',serif;font-size:44px;font-weight:700;color:var(--gold);line-height:1;margin-bottom:8px}
-.stat-label{font-size:11px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;line-height:1.5}
-.section{padding:100px 40px;max-width:1140px;margin:0 auto;position:relative;z-index:1}
-.section.full{max-width:100%;padding:100px 0}
-.section.full .inner{max-width:1140px;margin:0 auto;padding:0 40px}
-.sec-tag{font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:14px;display:flex;align-items:center;gap:10px}
-.sec-tag::before{content:'';width:24px;height:1px;background:var(--gold)}
-.sec-title{font-family:'Playfair Display',serif;font-size:clamp(30px,4vw,50px);font-weight:700;line-height:1.15;margin-bottom:18px}
-.sec-title em{color:var(--gold);font-style:italic}
-.sec-sub{font-size:15px;color:var(--cream2);line-height:1.75;max-width:580px;margin-bottom:56px}
-.filo-wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
-.filo-card-big{background:var(--bg2);border:1px solid var(--bg3);border-radius:var(--radius);padding:40px;text-align:center}
-.filo-paw{margin-bottom:16px;display:flex;justify-content:center}
-.filo-quote{font-family:'Playfair Display',serif;font-size:22px;font-style:italic;color:var(--cream);line-height:1.5}
-.filo-author{font-size:11px;color:var(--muted);margin-top:12px;letter-spacing:1px;text-transform:uppercase}
-.filo-float{position:absolute;bottom:-20px;right:-20px;background:var(--gold);border-radius:var(--radius);padding:20px 24px;font-family:'Playfair Display',serif;font-size:28px;font-weight:700;color:var(--bg);display:flex;align-items:center;gap:8px}
-.filo-visual{position:relative}
-.filo-items{display:flex;flex-direction:column;gap:28px}
-.filo-item{display:flex;gap:20px;align-items:flex-start}
-.filo-item-ico{width:44px;height:44px;border-radius:12px;background:var(--gold2);border:1px solid rgba(201,168,76,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.filo-item-title{font-family:'Playfair Display',serif;font-size:17px;font-weight:600;color:var(--cream);margin-bottom:6px}
-.filo-item-desc{font-size:13px;color:var(--muted);line-height:1.65}
-.app-banner{background:linear-gradient(135deg,#0D0B04,#1A1408);border:1px solid rgba(201,168,76,.3);border-radius:var(--radius);padding:40px 48px;display:flex;justify-content:space-between;align-items:center;gap:32px;margin:0 40px;position:relative;z-index:1;flex-wrap:wrap}
-.app-banner-text h3{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--gold);margin-bottom:8px}
-.app-banner-text p{font-size:14px;color:var(--cream2);line-height:1.65;max-width:480px}
-.app-banner-steps{display:flex;gap:24px;margin-top:16px;flex-wrap:wrap}
-.app-step{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--cream2)}
-.app-step-num{width:24px;height:24px;border-radius:50%;background:var(--gold);color:var(--bg);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0}
-.app-banner-btns{display:flex;flex-direction:column;gap:10px}
-.app-btn{display:flex;align-items:center;gap:12px;background:var(--bg3);border:1px solid var(--bg4);border-radius:12px;padding:12px 20px;transition:border-color .2s;cursor:pointer}
-.app-btn:hover{border-color:var(--gold)}
-.app-btn-label{font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
-.app-btn-store{font-size:14px;font-weight:500;color:var(--cream)}
-.proceso-wrap{display:flex;gap:0;position:relative;margin-bottom:56px}
-.proceso-wrap::before{content:'';position:absolute;top:32px;left:32px;right:32px;height:1px;background:linear-gradient(to right,var(--gold),rgba(201,168,76,.15))}
-.proceso-step{flex:1;display:flex;flex-direction:column;align-items:center;text-align:center;padding:0 16px;position:relative;z-index:1}
-.paso-num{width:64px;height:64px;border-radius:50%;background:var(--bg2);border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--gold);margin-bottom:20px}
-.paso-ico{margin-bottom:12px;display:flex;justify-content:center}
-.paso-title{font-family:'Playfair Display',serif;font-size:16px;font-weight:600;color:var(--cream);margin-bottom:8px}
-.paso-desc{font-size:12px;color:var(--muted);line-height:1.65}
-.antes-grid{display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--bg3);border-radius:var(--radius);overflow:hidden}
-.antes-card{background:var(--bg2);padding:40px;position:relative;overflow:hidden;transition:background .3s}
-.antes-card:hover{background:var(--bg3)}
-.antes-ico{margin-bottom:16px;display:flex}
-.antes-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:600;color:var(--cream);margin-bottom:10px}
-.antes-desc{font-size:13px;color:var(--muted);line-height:1.7}
-.antes-badge{display:inline-block;background:var(--gold2);border:1px solid rgba(201,168,76,.2);border-radius:20px;padding:3px 12px;font-size:10px;color:var(--gold);margin-top:14px;letter-spacing:.5px}
-.dias-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.3);border-radius:12px;padding:10px 16px;margin-top:16px}
-.dias-badge-txt{font-size:12px;color:var(--gold);font-weight:500}
-.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.svc-card{background:var(--bg2);border:1px solid var(--bg3);border-radius:var(--radius);padding:28px;transition:all .25s;position:relative;overflow:hidden}
-.svc-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,.05),transparent);opacity:0;transition:opacity .25s}
-.svc-card:hover{border-color:rgba(201,168,76,.35);transform:translateY(-4px)}
-.svc-card:hover::before{opacity:1}
-.svc-ico{margin-bottom:16px;display:flex}
-.svc-name{font-family:'Playfair Display',serif;font-size:17px;font-weight:600;color:var(--cream);margin-bottom:8px}
-.svc-desc{font-size:12px;color:var(--muted);line-height:1.65}
-.memb-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.memb-card{background:var(--bg2);border:1px solid var(--bg3);border-radius:var(--radius);padding:28px;position:relative;transition:transform .25s}
-.memb-card:hover{transform:translateY(-4px)}
-.memb-card.gold-card{border-color:rgba(201,168,76,.4);background:linear-gradient(160deg,var(--bg2),#1A1408)}
-.memb-card.founder-card{background:#0D0B04;border:2px solid rgba(201,168,76,.5);grid-column:1/-1}
-.memb-popular{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--bg);border-radius:50px;padding:4px 16px;font-size:10px;font-weight:700;letter-spacing:1px;white-space:nowrap}
-.memb-cupos{position:absolute;top:16px;right:16px;background:var(--gold2);border:1px solid rgba(201,168,76,.3);border-radius:50px;padding:3px 10px;font-size:9px;color:var(--gold)}
-.memb-nivel{font-size:9px;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
-.memb-name{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;margin-bottom:6px}
-.memb-precio{font-size:13px;color:var(--muted);margin-bottom:20px;padding-bottom:20px;border-bottom:1px solid var(--bg3)}
-.memb-feats{display:flex;flex-direction:column;gap:10px;margin-bottom:24px}
-.memb-feat{font-size:12px;color:var(--cream2);display:flex;gap:10px;align-items:flex-start;line-height:1.5}
-.memb-feat-ico{color:var(--gold);flex-shrink:0;font-size:11px;margin-top:1px}
-.memb-btn{width:100%;padding:12px;border-radius:12px;border:none;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .2s}
-.memb-btn:hover{opacity:.88;transform:translateY(-1px)}
-.founder-inner{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
-.express-wrap{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
-.tarifas-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:24px}
-.tarifa-card{background:var(--bg3);border-radius:12px;padding:16px;text-align:center;border:1px solid var(--bg4)}
-.tarifa-rango{font-size:11px;color:var(--muted);margin-bottom:6px}
-.tarifa-precio{font-family:'Playfair Display',serif;font-size:20px;font-weight:700}
-.calc-wrap{background:var(--bg2);border:1px solid var(--bg3);border-radius:var(--radius);padding:28px;margin-top:24px}
-.calc-title{font-family:'Playfair Display',serif;font-size:18px;font-weight:600;color:var(--cream);margin-bottom:8px;display:flex;align-items:center;gap:8px}
-.calc-sub{font-size:13px;color:var(--muted);margin-bottom:16px}
-.calc-form{display:flex;gap:10px}
-.calc-input{flex:1;background:var(--bg3);border:1px solid var(--bg4);border-radius:10px;padding:12px 16px;font-size:16px;color:var(--cream);font-family:'DM Sans',sans-serif;outline:none;letter-spacing:4px;font-weight:700;transition:border .2s;text-align:center}
-.calc-input:focus{border-color:var(--gold)}
-.calc-btn{background:var(--gold);color:var(--bg);padding:12px 20px;border-radius:10px;border:none;font-size:13px;font-weight:500;cursor:pointer;white-space:nowrap}
-.calc-result{margin-top:14px;padding:14px;border-radius:10px;display:none}
-.calc-result.show{display:flex;justify-content:space-between;align-items:center}
-.daypass-wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
-.dp-price{font-family:'Playfair Display',serif;font-size:56px;font-weight:700;color:var(--gold);line-height:1;margin:12px 0}
-.dp-price span{font-size:18px;color:var(--muted)}
-.dp-feats{display:flex;flex-direction:column;gap:10px;margin:24px 0}
-.dp-feat{font-size:13px;color:var(--cream2);display:flex;gap:10px;align-items:center}
-.dp-feat svg{flex-shrink:0;color:var(--gold)}
-.daypass-form{background:var(--bg2);border:1px solid var(--bg3);border-radius:var(--radius);padding:32px}
-.form-title{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;margin-bottom:20px}
-.form-field{margin-bottom:14px}
-.form-field label{display:block;font-size:10px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
-.form-field input,.form-field select{width:100%;background:var(--bg3);border:1px solid var(--bg4);border-radius:10px;padding:12px 14px;font-size:13px;color:var(--cream);font-family:'DM Sans',sans-serif;outline:none;transition:border .2s}
-.form-field input:focus,.form-field select:focus{border-color:var(--gold)}
-.form-field select option{background:var(--bg3)}
-.form-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.registro-card{background:var(--bg2);border:1px solid var(--bg3);border-radius:var(--radius);padding:48px;max-width:620px;margin:0 auto}
-.registro-card .form-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-.registro-card .full{grid-column:1/-1}
-.insta-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
-.insta-item{aspect-ratio:1;position:relative;overflow:hidden;cursor:pointer;background:var(--bg2)}
-.insta-item:hover .insta-overlay{opacity:1}
-.insta-item:hover svg.scene{transform:scale(1.04)}
-.insta-item svg.scene{transition:transform .4s ease;width:100%;height:100%}
-.insta-overlay{position:absolute;inset:0;background:rgba(201,168,76,.15);opacity:0;transition:opacity .3s;display:flex;align-items:center;justify-content:center;z-index:2}
-footer{background:var(--bg2);border-top:1px solid var(--bg3);padding:64px 40px 32px;position:relative;z-index:1}
-.footer-inner{max-width:1140px;margin:0 auto}
-.footer-top{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:48px;margin-bottom:48px}
-.footer-logo{font-family:'Playfair Display',serif;font-size:22px;color:var(--gold);font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:10px}
-.footer-logo img{width:32px;height:32px;object-fit:contain;flex-shrink:0}
-.footer-desc{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:20px}
-.footer-social{display:flex;gap:10px}
-.footer-social a{width:36px;height:36px;border-radius:50%;background:var(--bg3);border:1px solid var(--bg4);display:flex;align-items:center;justify-content:center;transition:border-color .2s;color:var(--muted)}
-.footer-social a:hover{border-color:var(--gold);color:var(--gold)}
-.footer-col-title{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--gold);margin-bottom:16px}
-.footer-col a{display:block;font-size:13px;color:var(--muted);margin-bottom:10px;transition:color .2s}
-.footer-col a:hover{color:var(--cream)}
-.footer-bottom{border-top:1px solid var(--bg3);padding-top:24px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
-.footer-copy{font-size:11px;color:var(--muted)}
-.footer-wa{display:inline-flex;align-items:center;gap:8px;background:#1A3320;border:1px solid rgba(107,175,130,.3);color:var(--green);padding:8px 18px;border-radius:50px;font-size:12px;font-weight:500;transition:all .2s}
-.footer-wa:hover{background:#25D366;color:#fff;border-color:#25D366}
-.reveal{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
-@media(max-width:900px){
-  nav{padding:16px 20px}.nav-links{display:none}.nav-hamburger{display:flex}
-  .stats-strip{grid-template-columns:repeat(2,1fr)}.section{padding:64px 20px}
-  .section.full .inner{padding:0 20px}.svc-grid{grid-template-columns:repeat(2,1fr)}
-  .memb-grid{grid-template-columns:1fr}.memb-card.founder-card{grid-column:1}
-  .founder-inner{grid-template-columns:1fr}.filo-wrap{grid-template-columns:1fr}
-  .antes-grid{grid-template-columns:1fr}.daypass-wrap{grid-template-columns:1fr}
-  .express-wrap{grid-template-columns:1fr}.proceso-wrap{flex-direction:column;gap:24px}
-  .proceso-wrap::before{display:none}.footer-top{grid-template-columns:1fr 1fr}
-  .insta-grid{grid-template-columns:repeat(3,1fr)}.registro-card .form-grid-2{grid-template-columns:1fr}
-  .calc-form{flex-direction:column}.app-banner{flex-direction:column;margin:0 20px}
-}
-@media(max-width:500px){
-  .hero h1{font-size:36px}.stats-strip{grid-template-columns:1fr 1fr}
-  .svc-grid{grid-template-columns:1fr}.footer-top{grid-template-columns:1fr}
-  .insta-grid{grid-template-columns:repeat(2,1fr)}
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 <canvas id="canvas"></canvas>
@@ -211,7 +30,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bg3);padding:64px 40px 3
   <div class="nav-links">
     <a href="#servicios">Servicios</a>
     <a href="#antes">Antes de entrar</a>
-    <a href="#membresias">Membresías</a>
+    <a href="#membresias">MembresÃ­as</a>
     <a href="#express">LomitoExpress</a>
     <a href="#daypass">Day Pass</a>
     <a href="#registro" class="nav-cta">Unirme al club</a>
@@ -219,10 +38,10 @@ footer{background:var(--bg2);border-top:1px solid var(--bg3);padding:64px 40px 3
   <div class="nav-hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
 </nav>
 <div class="mobile-menu" id="mobileMenu">
-  <span class="mobile-close" onclick="toggleMenu()">✕</span>
+  <span class="mobile-close" onclick="toggleMenu()">â</span>
   <a href="#servicios" onclick="toggleMenu()">Servicios</a>
   <a href="#antes" onclick="toggleMenu()">Antes de entrar</a>
-  <a href="#membresias" onclick="toggleMenu()">Membresías</a>
+  <a href="#membresias" onclick="toggleMenu()">MembresÃ­as</a>
   <a href="#express" onclick="toggleMenu()">LomitoExpress</a>
   <a href="#daypass" onclick="toggleMenu()">Day Pass</a>
   <a href="#registro" onclick="toggleMenu()" style="color:var(--gold)">Unirme al club</a>
@@ -234,7 +53,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bg3);padding:64px 40px 3
     El lomito siempre es el VIP
   </div>
   <h1>Tu lomito<br>merece lo <em>mejor.</em></h1>
-  <p class="hero-sub">El primer club canino premium de Metepec. Donde tu perro es el VIP y tú eres su Invitado de Honor.</p>
+  <p class="hero-sub">El primer club canino premium de Metepec. Donde tu perro es el VIP y tÃº eres su Invitado de Honor.</p>
   <div class="hero-btns">
     <button class="btn-gold" onclick="document.getElementById('registro').scrollIntoView({behavior:'smooth'})">Unirme al club</button>
     <button class="btn-outline" onclick="document.getElementById('servicios').scrollIntoView({behavior:'smooth'})">Explorar servicios</button>
@@ -245,53 +64,53 @@ footer{background:var(--bg2);border-top:1px solid var(--bg3);padding:64px 40px 3
 <div class="marquee-wrap">
   <div class="marquee-track">
     <span class="marquee-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Experiencia completa</span>
-    <span class="marquee-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-2.06 0L3 5"/><path d="M3 9h18v5a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9z"/><path d="M11 9V5a2 2 0 0 1 4 0v4"/></svg>Baño &amp; Grooming</span>
-    <span class="marquee-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Guardería</span>
+    <span class="marquee-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-2.06 0L3 5"/><path d="M3 9h18v5a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9z"/><path d="M11 9V5a2 2 0 0 1 4 0v4"/></svg>BaÃ±o &amp; Grooming</span>
+    <span class="marquee-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>GuarderÃ­a</span>
     <span class="marquee-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>LomitoExpress</span>
-    <span class="marquee-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>Cafetería &amp; Snacks</span>
-    <span class="marquee-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"/><path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1"/><path d="M2 21h20"/></svg>Cumpleaños VIP</span>
+    <span class="marquee-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>CafeterÃ­a &amp; Snacks</span>
+    <span class="marquee-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"/><path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1"/><path d="M2 21h20"/></svg>CumpleaÃ±os VIP</span>
     <span class="marquee-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>Check-in Digital</span>
     <span class="marquee-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Experiencia completa</span>
-    <span class="marquee-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-2.06 0L3 5"/><path d="M3 9h18v5a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9z"/><path d="M11 9V5a2 2 0 0 1 4 0v4"/></svg>Baño &amp; Grooming</span>
-    <span class="marquee-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Guardería</span>
+    <span class="marquee-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-2.06 0L3 5"/><path d="M3 9h18v5a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9z"/><path d="M11 9V5a2 2 0 0 1 4 0v4"/></svg>BaÃ±o &amp; Grooming</span>
+    <span class="marquee-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>GuarderÃ­a</span>
     <span class="marquee-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>LomitoExpress</span>
-    <span class="marquee-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>Cafetería &amp; Snacks</span>
-    <span class="marquee-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"/><path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1"/><path d="M2 21h20"/></svg>Cumpleaños VIP</span>
+    <span class="marquee-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>CafeterÃ­a &amp; Snacks</span>
+    <span class="marquee-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"/><path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1"/><path d="M2 21h20"/></svg>CumpleaÃ±os VIP</span>
     <span class="marquee-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>Check-in Digital</span>
   </div>
 </div>
 <!-- STATS -->
 <div class="stats-strip">
-  <div class="stat-item reveal"><div class="stat-num">3</div><div class="stat-label">Niveles de membresía</div></div>
-  <div class="stat-item reveal"><div class="stat-num">7am</div><div class="stat-label">Abierto todos los días</div></div>
+  <div class="stat-item reveal"><div class="stat-num">3</div><div class="stat-label">Niveles de membresÃ­a</div></div>
+  <div class="stat-item reveal"><div class="stat-num">7am</div><div class="stat-label">Abierto todos los dÃ­as</div></div>
   <div class="stat-item reveal"><div class="stat-num">50</div><div class="stat-label">Cupos Fundador</div></div>
   <div class="stat-item reveal"><div class="stat-num">5km</div><div class="stat-label">Radio LomitoExpress</div></div>
 </div>
-<!-- FILOSOFÍA -->
+<!-- FILOSOFÃA -->
 <div class="section">
   <div class="filo-wrap">
     <div class="filo-visual reveal">
       <div class="filo-card-big">
         <div class="filo-paw"><svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="4" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="4" cy="8" r="2"/><circle cx="7" cy="13" r="2"/><path d="M15 12a3 3 0 0 1 3 3c0 3-3 6-6 6s-6-3-6-6a3 3 0 0 1 3-3h6z"/></svg></div>
         <div class="filo-quote">"No solo cuidamos lomitos.<br>Construimos comunidad."</div>
-        <div class="filo-author">— Lomitos Dog Club, Metepec</div>
+        <div class="filo-author">â Lomitos Dog Club, Metepec</div>
       </div>
       <div class="filo-float">VIP <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--bg)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="4" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="4" cy="8" r="2"/><circle cx="7" cy="13" r="2"/><path d="M15 12a3 3 0 0 1 3 3c0 3-3 6-6 6s-6-3-6-6a3 3 0 0 1 3-3h6z"/></svg></div>
     </div>
     <div class="filo-items">
-      <div class="sec-tag">Nuestra filosofía</div>
-      <h2 class="sec-title">Un nuevo estándar<br>para el <em>club canino</em></h2>
+      <div class="sec-tag">Nuestra filosofÃ­a</div>
+      <h2 class="sec-title">Un nuevo estÃ¡ndar<br>para el <em>club canino</em></h2>
       <div class="filo-item reveal">
         <div class="filo-item-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
         <div><div class="filo-item-title">Seguridad ante todo</div><div class="filo-item-desc">Cada lomito evaluado, vacunas verificadas y staff entrenado. Garantizamos una experiencia segura para todos.</div></div>
       </div>
       <div class="filo-item reveal">
         <div class="filo-item-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 20h20M4 20l2-8 4 4 2-8 2 8 4-4 2 8"/></svg></div>
-        <div><div class="filo-item-title">El lomito es el VIP</div><div class="filo-item-desc">Concepto único en México: el perro llega primero. Tú como Invitado de Honor disfrutas mientras tu lomito vive la experiencia.</div></div>
+        <div><div class="filo-item-title">El lomito es el VIP</div><div class="filo-item-desc">Concepto Ãºnico en MÃ©xico: el perro llega primero. TÃº como Invitado de Honor disfrutas mientras tu lomito vive la experiencia.</div></div>
       </div>
       <div class="filo-item reveal">
         <div class="filo-item-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
-        <div><div class="filo-item-title">Comunidad lomiteros</div><div class="filo-item-desc">Las personas que aman a sus perros hablan el mismo idioma. Aquí construimos esa comunidad — porque lo que vendemos no es un servicio, es pertenencia.</div></div>
+        <div><div class="filo-item-title">Comunidad lomiteros</div><div class="filo-item-desc">Las personas que aman a sus perros hablan el mismo idioma. AquÃ­ construimos esa comunidad â porque lo que vendemos no es un servicio, es pertenencia.</div></div>
       </div>
     </div>
   </div>
@@ -300,11 +119,11 @@ footer{background:var(--bg2);border-top:1px solid var(--bg3);padding:64px 40px 3
 <div class="app-banner reveal">
   <div class="app-banner-text">
     <h3><svg width="20" height="20" style="vertical-align:middle;margin-right:8px" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>Descarga la app del club</h3>
-    <p>Regístrate aquí en la web, recibe tu acceso y descarga la app de Lomitos Dog Club para gestionar visitas, reservaciones, check-in digital y más. El registro solo está disponible desde la web.</p>
+    <p>RegÃ­strate aquÃ­ en la web, recibe tu acceso y descarga la app de Lomitos Dog Club para gestionar visitas, reservaciones, check-in digital y mÃ¡s. El registro solo estÃ¡ disponible desde la web.</p>
     <div class="app-banner-steps">
       <div class="app-step"><div class="app-step-num">1</div>Crea tu cuenta en la web</div>
       <div class="app-step"><div class="app-step-num">2</div>Recibe tu acceso por WhatsApp</div>
-      <div class="app-step"><div class="app-step-num">3</div>Descarga la app e inicia sesión</div>
+      <div class="app-step"><div class="app-step-num">3</div>Descarga la app e inicia sesiÃ³n</div>
     </div>
   </div>
   <div class="app-banner-btns">
@@ -314,7 +133,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bg3);padding:64px 40px 3
     </div>
     <div class="app-btn" onclick="window.open('https://wa.me/527291432516?text=Hola, quiero descargar la app en iPhone','_blank')">
       <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-      <div><div class="app-btn-label">Próximamente en</div><div class="app-btn-store">iPhone</div></div>
+      <div><div class="app-btn-label">PrÃ³ximamente en</div><div class="app-btn-store">iPhone</div></div>
     </div>
   </div>
 </div>
@@ -323,35 +142,35 @@ footer{background:var(--bg2);border-top:1px solid var(--bg3);padding:64px 40px 3
 
 
 
-<!-- ────────────────────────────────────────────────────── -->
+<!-- ââââââââââââââââââââââââââââââââââââââââââââââââââââââ -->
 
 
 <!-- VENTAJAS LOMITOS -->
 <div class="section full" style="background:var(--bg2);padding:72px 0;border-top:1px solid var(--bg3)">
   <div class="inner">
-    <div class="sec-tag" style="justify-content:center;margin-bottom:10px">¿Por qué Lomitos?</div>
-    <h2 class="sec-title" style="text-align:center;margin-bottom:8px">Lo que ningún otro<br>club canino <em>tiene</em></h2>
-    <p style="text-align:center;font-size:14px;color:var(--muted);margin-bottom:40px;max-width:540px;margin-left:auto;margin-right:auto">Tecnología propia, experiencia premium y comunidad real. El estándar más alto del cuidado canino en México.</p>
+    <div class="sec-tag" style="justify-content:center;margin-bottom:10px">Â¿Por quÃ© Lomitos?</div>
+    <h2 class="sec-title" style="text-align:center;margin-bottom:8px">Lo que ningÃºn otro<br>club canino <em>tiene</em></h2>
+    <p style="text-align:center;font-size:14px;color:var(--muted);margin-bottom:40px;max-width:540px;margin-left:auto;margin-right:auto">TecnologÃ­a propia, experiencia premium y comunidad real. El estÃ¡ndar mÃ¡s alto del cuidado canino en MÃ©xico.</p>
     <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px">
       <div class="reveal" style="background:var(--bg3);border:1px solid var(--bg4);border-radius:16px;padding:24px;text-align:center;transition:border-color .2s,transform .2s">
-        <div style="font-size:28px;margin-bottom:12px">📱</div>
+        <div style="font-size:28px;margin-bottom:12px">ð±</div>
         <div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--cream);margin-bottom:8px">App exclusiva</div>
-        <div style="font-size:12px;color:var(--muted);line-height:1.65">Nuestra propia app — no una genérica de terceros. Reservas, historial, vacunas y más desde tu teléfono.</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.65">Nuestra propia app â no una genÃ©rica de terceros. Reservas, historial, vacunas y mÃ¡s desde tu telÃ©fono.</div>
       </div>
       <div class="reveal" style="background:linear-gradient(135deg,#0F0D06,#1A1408);border:1px solid rgba(201,168,76,.25);border-radius:16px;padding:24px;text-align:center">
-        <div style="font-size:28px;margin-bottom:12px">✈️</div>
+        <div style="font-size:28px;margin-bottom:12px">âï¸</div>
         <div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--gold);margin-bottom:8px">Boarding pass digital</div>
-        <div style="font-size:12px;color:var(--muted);line-height:1.65">Check-in tipo aeropuerto con QR único. Sin filas, sin papeles. Premium desde la primera entrada.</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.65">Check-in tipo aeropuerto con QR Ãºnico. Sin filas, sin papeles. Premium desde la primera entrada.</div>
       </div>
       <div class="reveal" style="background:var(--bg3);border:1px solid var(--bg4);border-radius:16px;padding:24px;text-align:center;transition:border-color .2s,transform .2s">
-        <div style="font-size:28px;margin-bottom:12px">🚐</div>
+        <div style="font-size:28px;margin-bottom:12px">ð</div>
         <div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--cream);margin-bottom:8px">LomitoExpress</div>
-        <div style="font-size:12px;color:var(--muted);line-height:1.65">Recolección a domicilio con staff especializado. Hasta 5km de radio. Sin que tú muevas un dedo.</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.65">RecolecciÃ³n a domicilio con staff especializado. Hasta 5km de radio. Sin que tÃº muevas un dedo.</div>
       </div>
       <div class="reveal" style="background:var(--bg3);border:1px solid var(--bg4);border-radius:16px;padding:24px;text-align:center;transition:border-color .2s,transform .2s">
-        <div style="font-size:28px;margin-bottom:12px">🤝</div>
+        <div style="font-size:28px;margin-bottom:12px">ð¤</div>
         <div style="font-family:'Playfair Display',serif;font-size:15px;font-weight:700;color:var(--cream);margin-bottom:8px">Comunidad real</div>
-        <div style="font-size:12px;color:var(--muted);line-height:1.65">No solo cuidado. Un club con identidad, eventos, cumpleaños VIP y pertenencia real. Como ningún otro.</div>
+        <div style="font-size:12px;color:var(--muted);line-height:1.65">No solo cuidado. Un club con identidad, eventos, cumpleaÃ±os VIP y pertenencia real. Como ningÃºn otro.</div>
       </div>
     </div>
   </div>
@@ -368,51 +187,51 @@ footer{background:var(--bg2);border-top:1px solid var(--bg3);padding:64px 40px 3
         <div class="paso-num">01</div>
         <div class="paso-ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg></div>
         <div class="paso-title">Registro previo</div>
-        <div class="paso-desc">Crea tu cuenta en nuestra página web con el perfil completo de tu lomito.</div>
+        <div class="paso-desc">Crea tu cuenta en nuestra pÃ¡gina web con el perfil completo de tu lomito.</div>
       </div>
       <div class="proceso-step">
         <div class="paso-num">02</div>
         <div class="paso-ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="m18 2 4 4"/><path d="m17 7 3-3"/><path d="M19 9 8.7 19.3c-1 1-2.5 1-3.4 0l-.6-.6c-1-1-1-2.5 0-3.4L15 5"/><path d="m9 11 4 4"/><path d="m5 19-3 3"/><path d="m14 4 6 6"/></svg></div>
-        <div class="paso-title">Vacunas al día</div>
-        <div class="paso-desc">Rabia, parvovirus, bordetella y esterilización. Sube las constancias a tu perfil.</div>
+        <div class="paso-title">Vacunas al dÃ­a</div>
+        <div class="paso-desc">Rabia, parvovirus, bordetella y esterilizaciÃ³n. Sube las constancias a tu perfil.</div>
       </div>
       <div class="proceso-step">
         <div class="paso-num">03</div>
         <div class="paso-ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="4" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="4" cy="8" r="2"/><circle cx="7" cy="13" r="2"/><path d="M15 12a3 3 0 0 1 3 3c0 3-3 6-6 6s-6-3-6-6a3 3 0 0 1 3-3h6z"/></svg></div>
-        <div class="paso-title">Evaluación</div>
-        <div class="paso-desc">Cita de temperamento dentro de nuestras instalaciones. Martes y jueves 9am–12pm.</div>
+        <div class="paso-title">EvaluaciÃ³n</div>
+        <div class="paso-desc">Cita de temperamento dentro de nuestras instalaciones. Martes y jueves 9amâ12pm.</div>
       </div>
       <div class="proceso-step">
         <div class="paso-num">04</div>
         <div class="paso-ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
-        <div class="paso-title">¡Aprobado!</div>
+        <div class="paso-title">Â¡Aprobado!</div>
         <div class="paso-desc">Check-in digital activado. Acceso con boarding pass en cada visita desde la app.</div>
       </div>
     </div>
     <div class="antes-grid">
       <div class="antes-card reveal">
         <div class="antes-ico"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="4" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="4" cy="8" r="2"/><circle cx="7" cy="13" r="2"/><path d="M15 12a3 3 0 0 1 3 3c0 3-3 6-6 6s-6-3-6-6a3 3 0 0 1 3-3h6z"/></svg></div>
-        <div class="antes-title">Evaluación de temperamento</div>
-        <div class="antes-desc">Nuestro equipo analiza el comportamiento de tu lomito con otros perros, personas y distintos ambientes. La cita se realiza dentro de nuestras instalaciones para que tu lomito conozca su nuevo hogar desde el primer día.</div>
-        <div class="dias-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span class="dias-badge-txt">Martes y Jueves · 9:00am – 12:00pm · Cita con 48hrs anticipación</span></div>
+        <div class="antes-title">EvaluaciÃ³n de temperamento</div>
+        <div class="antes-desc">Nuestro equipo analiza el comportamiento de tu lomito con otros perros, personas y distintos ambientes. La cita se realiza dentro de nuestras instalaciones para que tu lomito conozca su nuevo hogar desde el primer dÃ­a.</div>
+        <div class="dias-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg><span class="dias-badge-txt">Martes y Jueves Â· 9:00am â 12:00pm Â· Cita con 48hrs anticipaciÃ³n</span></div>
       </div>
       <div class="antes-card reveal">
         <div class="antes-ico"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 2 4 4"/><path d="m17 7 3-3"/><path d="M19 9 8.7 19.3c-1 1-2.5 1-3.4 0l-.6-.6c-1-1-1-2.5 0-3.4L15 5"/><path d="m9 11 4 4"/><path d="m5 19-3 3"/><path d="m14 4 6 6"/></svg></div>
-        <div class="antes-title">Verificación de vacunas</div>
-        <div class="antes-desc">Registramos y verificamos todas las vacunas de tu lomito. Recibirás alertas automáticas en la app cuando estén próximas a vencer. También registramos si tu lomito está esterilizado.</div>
-        <span class="antes-badge">Rabia · Parvovirus · Bordetella · Esterilización — Requeridas</span>
+        <div class="antes-title">VerificaciÃ³n de vacunas</div>
+        <div class="antes-desc">Registramos y verificamos todas las vacunas de tu lomito. RecibirÃ¡s alertas automÃ¡ticas en la app cuando estÃ©n prÃ³ximas a vencer. TambiÃ©n registramos si tu lomito estÃ¡ esterilizado.</div>
+        <span class="antes-badge">Rabia Â· Parvovirus Â· Bordetella Â· EsterilizaciÃ³n â Requeridas</span>
       </div>
       <div class="antes-card reveal">
         <div class="antes-ico"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1z"/><path d="m2 16 3-8 3 8c-.87.65-1.92 1-3 1s-2.13-.35-3-1z"/><path d="M7 21h10"/><path d="M12 3v18"/><path d="M3 7h2c2 0 5-1 7-2 2 1 5 2 7 2h2"/></svg></div>
-        <div class="antes-title">Clasificación por talla</div>
-        <div class="antes-desc">Clasificamos a tu lomito por peso para asignarle el área correcta: Pequeña (hasta 10kg), Mediana (10–25kg) o Grande (más de 25kg).</div>
-        <span class="antes-badge">Automático al registrar el peso</span>
+        <div class="antes-title">ClasificaciÃ³n por talla</div>
+        <div class="antes-desc">Clasificamos a tu lomito por peso para asignarle el Ã¡rea correcta: PequeÃ±a (hasta 10kg), Mediana (10â25kg) o Grande (mÃ¡s de 25kg).</div>
+        <span class="antes-badge">AutomÃ¡tico al registrar el peso</span>
       </div>
       <div class="antes-card reveal">
         <div class="antes-ico"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div>
         <div class="antes-title">Check-in digital</div>
-        <div class="antes-desc">Al aprobar, tu lomito queda activado en la app. En cada visita haces check-in tipo aeropuerto con boarding pass digital — rápido, elegante y sin filas.</div>
-        <span class="antes-badge">100% Digital · App Lomitos Dog Club</span>
+        <div class="antes-desc">Al aprobar, tu lomito queda activado en la app. En cada visita haces check-in tipo aeropuerto con boarding pass digital â rÃ¡pido, elegante y sin filas.</div>
+        <span class="antes-badge">100% Digital Â· App Lomitos Dog Club</span>
       </div>
     </div>
   </div>
@@ -421,51 +240,51 @@ footer{background:var(--bg2);border-top:1px solid var(--bg3);padding:64px 40px 3
 <div class="section" id="servicios">
   <div class="sec-tag">Lo que ofrecemos</div>
   <h2 class="sec-title">Todo en un<br>solo <em>lugar</em></h2>
-  <p class="sec-sub">Diseñado para que tu lomito viva la mejor experiencia. Todos los servicios se reservan desde la app.</p>
+  <p class="sec-sub">DiseÃ±ado para que tu lomito viva la mejor experiencia. Todos los servicios se reservan desde la app.</p>
   <div class="svc-grid">
-    <div class="svc-card reveal"><div class="svc-ico"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="svc-name">Experiencia completa</div><div class="svc-desc">Acceso exclusivo a todas nuestras áreas, chapoteadero premium y convivencia curada con la manada. La experiencia Lomitos en su máxima expresión.</div></div>
-    <div class="svc-card reveal"><div class="svc-ico"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-2.06 0L3 5"/><path d="M3 9h18v5a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9z"/><path d="M11 9V5a2 2 0 0 1 4 0v4"/></svg></div><div class="svc-name">Baño &amp; Grooming</div><div class="svc-desc">Spa premium con productos de primera calidad. Baño profundo, corte personalizado, secado profesional y aromaterapia canina.</div></div>
-    <div class="svc-card reveal"><div class="svc-ico"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div class="svc-name">Guardería</div><div class="svc-desc">Cuidado profesional de lunes a viernes. Reserva con 24 horas de anticipación antes de las 2pm para el día siguiente.</div></div>
-    <div class="svc-card reveal"><div class="svc-ico"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"/><path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1"/><path d="M2 21h20"/><path d="M7 8v2"/><path d="M12 8v2"/><path d="M17 8v2"/></svg></div><div class="svc-name">Cumpleaños VIP</div><div class="svc-desc">Área privada exclusiva, pastel canino artesanal, sesión fotográfica y hasta 5 lomitos invitados con evaluación de temperamento gratuita.</div></div>
-    <div class="svc-card reveal"><div class="svc-ico"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div><div class="svc-name">Cafetería &amp; Snacks</div><div class="svc-desc">Smoothies artesanales, café de especialidad y snacks caninos premium. El rincón perfecto para los Invitados de Honor.</div></div>
-    <div class="svc-card reveal"><div class="svc-ico"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4" r="2"/><path d="M12 7c-2.8 0-5 2.2-5 5v3h2l1 5h4l1-5h2v-3c0-2.8-2.2-5-5-5z"/></svg></div><div class="svc-name">Área Kids</div><div class="svc-desc">Zona de juegos para los más pequeños de la familia mientras su lomito disfruta el club. Todos en su mejor versión.</div></div>
-    <div class="svc-card reveal"><div class="svc-ico"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><div class="svc-name">LomitoExpress</div><div class="svc-desc">Recolección y traslado a domicilio con staff especializado. Tu lomito llega al club sin que tú muevas un dedo. Radio hasta 5km.</div></div>
+    <div class="svc-card reveal"><div class="svc-ico"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div><div class="svc-name">Experiencia completa</div><div class="svc-desc">Acceso exclusivo a todas nuestras Ã¡reas, chapoteadero premium y convivencia curada con la manada. La experiencia Lomitos en su mÃ¡xima expresiÃ³n.</div></div>
+    <div class="svc-card reveal"><div class="svc-ico"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6 6.5 3.5a1.5 1.5 0 0 0-2.06 0L3 5"/><path d="M3 9h18v5a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4V9z"/><path d="M11 9V5a2 2 0 0 1 4 0v4"/></svg></div><div class="svc-name">BaÃ±o &amp; Grooming</div><div class="svc-desc">Spa premium con productos de primera calidad. BaÃ±o profundo, corte personalizado, secado profesional y aromaterapia canina.</div></div>
+    <div class="svc-card reveal"><div class="svc-ico"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div><div class="svc-name">GuarderÃ­a</div><div class="svc-desc">Cuidado profesional de lunes a viernes. Reserva con 24 horas de anticipaciÃ³n antes de las 2pm para el dÃ­a siguiente.</div></div>
+    <div class="svc-card reveal"><div class="svc-ico"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8"/><path d="M4 16s.5-1 2-1 2.5 2 4 2 2.5-2 4-2 2.5 2 4 2 2-1 2-1"/><path d="M2 21h20"/><path d="M7 8v2"/><path d="M12 8v2"/><path d="M17 8v2"/></svg></div><div class="svc-name">CumpleaÃ±os VIP</div><div class="svc-desc">Ãrea privada exclusiva, pastel canino artesanal, sesiÃ³n fotogrÃ¡fica y hasta 5 lomitos invitados con evaluaciÃ³n de temperamento gratuita.</div></div>
+    <div class="svc-card reveal"><div class="svc-ico"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg></div><div class="svc-name">CafeterÃ­a &amp; Snacks</div><div class="svc-desc">Smoothies artesanales, cafÃ© de especialidad y snacks caninos premium. El rincÃ³n perfecto para los Invitados de Honor.</div></div>
+    <div class="svc-card reveal"><div class="svc-ico"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="4" r="2"/><path d="M12 7c-2.8 0-5 2.2-5 5v3h2l1 5h4l1-5h2v-3c0-2.8-2.2-5-5-5z"/></svg></div><div class="svc-name">Ãrea Kids</div><div class="svc-desc">Zona de juegos para los mÃ¡s pequeÃ±os de la familia mientras su lomito disfruta el club. Todos en su mejor versiÃ³n.</div></div>
+    <div class="svc-card reveal"><div class="svc-ico"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div><div class="svc-name">LomitoExpress</div><div class="svc-desc">RecolecciÃ³n y traslado a domicilio con staff especializado. Tu lomito llega al club sin que tÃº muevas un dedo. Radio hasta 5km.</div></div>
     <div class="svc-card reveal"><div class="svc-ico"><svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div><div class="svc-name">Check-in Digital</div><div class="svc-desc">Boarding pass digital exclusivo en tu app. Registro de cada visita, historial completo y acceso express sin filas ni esperas.</div></div>
   </div>
 </div>
-<!-- MEMBRESÍAS -->
+<!-- MEMBRESÃAS -->
 <div class="section full" id="membresias" style="background:var(--bg2);padding:100px 0">
   <div class="inner">
     <div class="sec-tag">Elige tu nivel</div>
-    <h2 class="sec-title">Membresías <em>exclusivas</em></h2>
-    <p class="sec-sub">Desde una primera visita hasta la membresía más exclusiva. Tu lomito siempre merece lo mejor.</p>
+    <h2 class="sec-title">MembresÃ­as <em>exclusivas</em></h2>
+    <p class="sec-sub">Desde una primera visita hasta la membresÃ­a mÃ¡s exclusiva. Tu lomito siempre merece lo mejor.</p>
     <div class="memb-grid">
       <div class="memb-card reveal">
-        <div class="memb-nivel" style="color:var(--muted)">Acceso único</div>
+        <div class="memb-nivel" style="color:var(--muted)">Acceso Ãºnico</div>
         <div class="memb-name" style="color:var(--cream2)">Day Pass</div>
-        <div class="memb-precio">$150 MXN / día</div>
+        <div class="memb-precio">$150 MXN / dÃ­a</div>
         <div class="memb-feats">
-          <div class="memb-feat"><span class="memb-feat-ico">✓</span>Acceso a todas las áreas de juego</div>
-          <div class="memb-feat"><span class="memb-feat-ico">✓</span>Chapoteadero incluido</div>
-          <div class="memb-feat"><span class="memb-feat-ico">✓</span>Cafetería &amp; Snacks</div>
-          <div class="memb-feat"><span class="memb-feat-ico">✓</span>Evaluación de temperamento incluida</div>
-          <div class="memb-feat"><span class="memb-feat-ico">✓</span>Check-in digital en la app</div>
-          <div class="memb-feat"><span class="memb-feat-ico">✓</span>Estacionamiento gratis</div>
+          <div class="memb-feat"><span class="memb-feat-ico">â</span>Acceso a todas las Ã¡reas de juego</div>
+          <div class="memb-feat"><span class="memb-feat-ico">â</span>Chapoteadero incluido</div>
+          <div class="memb-feat"><span class="memb-feat-ico">â</span>CafeterÃ­a &amp; Snacks</div>
+          <div class="memb-feat"><span class="memb-feat-ico">â</span>EvaluaciÃ³n de temperamento incluida</div>
+          <div class="memb-feat"><span class="memb-feat-ico">â</span>Check-in digital en la app</div>
+          <div class="memb-feat"><span class="memb-feat-ico">â</span>Estacionamiento gratis</div>
         </div>
         <button class="memb-btn" style="background:var(--bg3);color:var(--cream2)" onclick="document.getElementById('daypass').scrollIntoView({behavior:'smooth'})">Reservar Day Pass</button>
       </div>
       <div class="memb-card gold-card reveal" style="margin-top:-12px">
-        <div class="memb-popular">⭐ MÁS POPULAR</div>
-        <div class="memb-nivel" style="color:var(--gold);margin-top:20px">Membresía</div>
+        <div class="memb-popular">â­ MÃS POPULAR</div>
+        <div class="memb-nivel" style="color:var(--gold);margin-top:20px">MembresÃ­a</div>
         <div class="memb-name" style="color:var(--gold)">Gold</div>
         <div class="memb-precio">$999 / mes</div>
         <div class="memb-feats">
-          <div class="memb-feat"><span class="memb-feat-ico">✓</span>Visitas ilimitadas todos los días</div>
-          <div class="memb-feat"><span class="memb-feat-ico">✓</span>1 baño gratis al mes</div>
-          <div class="memb-feat"><span class="memb-feat-ico">✓</span>10% descuento en alimentos y pet shop</div>
-          <div class="memb-feat"><span class="memb-feat-ico">✓</span>Acceso a chapoteadero</div>
-          <div class="memb-feat"><span class="memb-feat-ico">✓</span>Prioridad en reservas</div>
-          <div class="memb-feat"><span class="memb-feat-ico">✓</span>Check-in digital</div>
+          <div class="memb-feat"><span class="memb-feat-ico">â</span>Visitas ilimitadas todos los dÃ­as</div>
+          <div class="memb-feat"><span class="memb-feat-ico">â</span>1 baÃ±o gratis al mes</div>
+          <div class="memb-feat"><span class="memb-feat-ico">â</span>10% descuento en alimentos y pet shop</div>
+          <div class="memb-feat"><span class="memb-feat-ico">â</span>Acceso a chapoteadero</div>
+          <div class="memb-feat"><span class="memb-feat-ico">â</span>Prioridad en reservas</div>
+          <div class="memb-feat"><span class="memb-feat-ico">â</span>Check-in digital</div>
         </div>
         <button class="memb-btn" style="background:var(--gold);color:var(--bg)" onclick="document.getElementById('registro').scrollIntoView({behavior:'smooth'})">Elegir Gold</button>
       </div>
@@ -473,24 +292,24 @@ footer{background:var(--bg2);border-top:1px solid var(--bg3);padding:64px 40px 3
         <div class="memb-cupos">38 de 50 cupos disponibles</div>
         <div class="founder-inner">
           <div>
-            <div class="memb-nivel" style="color:var(--gold)">Membresía especial</div>
+            <div class="memb-nivel" style="color:var(--gold)">MembresÃ­a especial</div>
             <div class="memb-name" style="color:var(--gold)">Fundador</div>
-            <div class="memb-precio">Precio especial · Solo 50 cupos</div>
+            <div class="memb-precio">Precio especial Â· Solo 50 cupos</div>
             <div class="memb-feats">
-              <div class="memb-feat"><span class="memb-feat-ico">✓</span>Entrada ilimitada todos los días del mes en compañía de su Invitado de Honor</div>
-              <div class="memb-feat"><span class="memb-feat-ico">✓</span>Guardería L-V con 24hrs anticipación antes 2pm</div>
-              <div class="memb-feat"><span class="memb-feat-ico">✓</span>10% descuento en alimentos y pet shop</div>
-              <div class="memb-feat"><span class="memb-feat-ico">✓</span>Cumpleaños — hasta 5 lomitos invitados, evaluación gratis</div>
-              <div class="memb-feat"><span class="memb-feat-ico">✓</span>1 baño gratis al mes</div>
-              <div class="memb-feat"><span class="memb-feat-ico">✓</span>1 evidencia de video al mes</div>
-              <div class="memb-feat"><span class="memb-feat-ico">✓</span>LomitoExpress con tarifa especial preferencial</div>
-              <div class="memb-feat"><span class="memb-feat-ico">✓</span>Tu nombre grabado en el club</div>
+              <div class="memb-feat"><span class="memb-feat-ico">â</span>Entrada ilimitada todos los dÃ­as del mes en compaÃ±Ã­a de su Invitado de Honor</div>
+              <div class="memb-feat"><span class="memb-feat-ico">â</span>GuarderÃ­a L-V con 24hrs anticipaciÃ³n antes 2pm</div>
+              <div class="memb-feat"><span class="memb-feat-ico">â</span>10% descuento en alimentos y pet shop</div>
+              <div class="memb-feat"><span class="memb-feat-ico">â</span>CumpleaÃ±os â hasta 5 lomitos invitados, evaluaciÃ³n gratis</div>
+              <div class="memb-feat"><span class="memb-feat-ico">â</span>1 baÃ±o gratis al mes</div>
+              <div class="memb-feat"><span class="memb-feat-ico">â</span>1 evidencia de video al mes</div>
+              <div class="memb-feat"><span class="memb-feat-ico">â</span>LomitoExpress con tarifa especial preferencial</div>
+              <div class="memb-feat"><span class="memb-feat-ico">â</span>Tu nombre grabado en el club</div>
             </div>
           </div>
           <div style="text-align:center">
             <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:16px"><path d="M2 20h20M4 20l2-8 4 4 2-8 2 8 4-4 2 8"/></svg>
-            <div style="font-family:'Playfair Display',serif;font-size:18px;color:var(--gold);margin-bottom:12px">Sé parte de la historia</div>
-            <div style="font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:24px">Forma parte de Lomitos Dog Club desde el primer día. Solo 50 cupos disponibles.</div>
+            <div style="font-family:'Playfair Display',serif;font-size:18px;color:var(--gold);margin-bottom:12px">SÃ© parte de la historia</div>
+            <div style="font-size:13px;color:var(--muted);line-height:1.65;margin-bottom:24px">Forma parte de Lomitos Dog Club desde el primer dÃ­a. Solo 50 cupos disponibles.</div>
             <button class="memb-btn" style="background:var(--gold);color:#0D0B04;padding:14px 24px" onclick="window.open('https://wa.me/527291432516?text=Hola,%20quiero%20ser%20Miembro%20Fundador','_blank')">Quiero ser Fundador</button>
           </div>
         </div>
@@ -505,33 +324,33 @@ footer{background:var(--bg2);border-top:1px solid var(--bg3);padding:64px 40px 3
       <div>
         <div class="sec-tag">A domicilio</div>
         <h2 class="sec-title">LomitoExpress</h2>
-        <p style="font-size:15px;color:var(--cream2);line-height:1.75;margin-bottom:8px">¿No puedes traer a tu lomito? Nosotros vamos por él. Reserva con <strong style="color:var(--gold)">24 horas de anticipación</strong>.</p>
+        <p style="font-size:15px;color:var(--cream2);line-height:1.75;margin-bottom:8px">Â¿No puedes traer a tu lomito? Nosotros vamos por Ã©l. Reserva con <strong style="color:var(--gold)">24 horas de anticipaciÃ³n</strong>.</p>
         <div class="tarifas-grid">
-          <div class="tarifa-card reveal"><div class="tarifa-rango">0 – 2 km</div><div class="tarifa-precio" style="color:#6BAF82">$50 MXN</div></div>
-          <div class="tarifa-card reveal"><div class="tarifa-rango">2 – 4 km</div><div class="tarifa-precio" style="color:var(--gold)">$80 MXN</div></div>
-          <div class="tarifa-card reveal"><div class="tarifa-rango">4 – 5 km</div><div class="tarifa-precio" style="color:#E05555">$120 MXN</div></div>
+          <div class="tarifa-card reveal"><div class="tarifa-rango">0 â 2 km</div><div class="tarifa-precio" style="color:#6BAF82">$50 MXN</div></div>
+          <div class="tarifa-card reveal"><div class="tarifa-rango">2 â 4 km</div><div class="tarifa-precio" style="color:var(--gold)">$80 MXN</div></div>
+          <div class="tarifa-card reveal"><div class="tarifa-rango">4 â 5 km</div><div class="tarifa-precio" style="color:#E05555">$120 MXN</div></div>
           <div class="tarifa-card reveal"><div class="tarifa-rango">+ de 5 km</div><div class="tarifa-precio" style="color:var(--muted)">No disponible</div></div>
         </div>
         <div style="margin-top:16px;padding:14px 18px;background:var(--gold2);border:1px solid rgba(201,168,76,.2);border-radius:12px;font-size:12px;color:var(--cream2);line-height:1.65">
-          💡 Miembros <strong style="color:var(--gold)">Fundador</strong> acceden a tarifa especial preferencial
+          ð¡ Miembros <strong style="color:var(--gold)">Fundador</strong> acceden a tarifa especial preferencial
         </div>
         <div class="calc-wrap reveal">
           <div class="calc-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Calcula tu costo</div>
-          <div class="calc-sub">Ingresa tu código postal para saber el costo de recolección</div>
+          <div class="calc-sub">Ingresa tu cÃ³digo postal para saber el costo de recolecciÃ³n</div>
           <div class="calc-form">
             <input class="calc-input" id="cp-input" placeholder="50000" maxlength="5" type="number" oninput="calcularCP()">
             <button class="calc-btn" onclick="calcularCP()">Calcular</button>
           </div>
           <div class="calc-result" id="calc-result"></div>
         </div>
-        <button class="btn-gold" style="margin-top:24px" onclick="window.open('https://wa.me/527291432516?text=Hola,%20quiero%20solicitar%20LomitoExpress','_blank')">Solicitar recolección</button>
+        <button class="btn-gold" style="margin-top:24px" onclick="window.open('https://wa.me/527291432516?text=Hola,%20quiero%20solicitar%20LomitoExpress','_blank')">Solicitar recolecciÃ³n</button>
       </div>
       <div class="reveal">
         <div style="background:var(--bg3);border:1px solid var(--bg4);border-radius:var(--radius);padding:32px">
           <div style="display:flex;justify-content:center;margin-bottom:20px"><svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg></div>
-          <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;text-align:center;margin-bottom:24px">¿Cómo funciona?</div>
+          <div style="font-family:'Playfair Display',serif;font-size:20px;font-weight:700;text-align:center;margin-bottom:24px">Â¿CÃ³mo funciona?</div>
           <div style="display:flex;flex-direction:column;gap:16px">
-            <div style="display:flex;gap:14px;align-items:flex-start"><div style="width:28px;height:28px;border-radius:50%;background:var(--gold2);border:1px solid rgba(201,168,76,.3);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--gold);font-weight:700;flex-shrink:0">1</div><div><div style="font-size:13px;font-weight:500;color:var(--cream);margin-bottom:3px">Reserva con 24hrs</div><div style="font-size:12px;color:var(--muted)">Solicita el día anterior antes de las 6pm</div></div></div>
+            <div style="display:flex;gap:14px;align-items:flex-start"><div style="width:28px;height:28px;border-radius:50%;background:var(--gold2);border:1px solid rgba(201,168,76,.3);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--gold);font-weight:700;flex-shrink:0">1</div><div><div style="font-size:13px;font-weight:500;color:var(--cream);margin-bottom:3px">Reserva con 24hrs</div><div style="font-size:12px;color:var(--muted)">Solicita el dÃ­a anterior antes de las 6pm</div></div></div>
             <div style="display:flex;gap:14px;align-items:flex-start"><div style="width:28px;height:28px;border-radius:50%;background:var(--gold2);border:1px solid rgba(201,168,76,.3);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--gold);font-weight:700;flex-shrink:0">2</div><div><div style="font-size:13px;font-weight:500;color:var(--cream);margin-bottom:3px">Confirmamos tu slot</div><div style="font-size:12px;color:var(--muted)">Te confirmamos horario exacto por WhatsApp</div></div></div>
             <div style="display:flex;gap:14px;align-items:flex-start"><div style="width:28px;height:28px;border-radius:50%;background:var(--gold2);border:1px solid rgba(201,168,76,.3);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--gold);font-weight:700;flex-shrink:0">3</div><div><div style="font-size:13px;font-weight:500;color:var(--cream);margin-bottom:3px">Tu cuidador llega</div><div style="font-size:12px;color:var(--muted)">Staff especializado va por tu lomito</div></div></div>
             <div style="display:flex;gap:14px;align-items:flex-start"><div style="width:28px;height:28px;border-radius:50%;background:var(--gold2);border:1px solid rgba(201,168,76,.3);display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--gold);font-weight:700;flex-shrink:0">4</div><div><div style="font-size:13px;font-weight:500;color:var(--cream);margin-bottom:3px">Foto de llegada</div><div style="font-size:12px;color:var(--muted)">Te notificamos cuando llegue al club</div></div></div>
@@ -546,15 +365,15 @@ footer{background:var(--bg2);border-top:1px solid var(--bg3);padding:64px 40px 3
   <div class="daypass-wrap">
     <div>
       <div class="sec-tag">Primera visita</div>
-      <h2 class="sec-title">Day Pass<br><em>sin membresía</em></h2>
-      <p style="font-size:15px;color:var(--cream2);line-height:1.75;margin-bottom:20px">¿Primera vez? Regístrate en la web, agenda tu evaluación y vive la experiencia completa por un día.</p>
-      <div class="dp-price">$150 <span>MXN / día</span></div>
+      <h2 class="sec-title">Day Pass<br><em>sin membresÃ­a</em></h2>
+      <p style="font-size:15px;color:var(--cream2);line-height:1.75;margin-bottom:20px">Â¿Primera vez? RegÃ­strate en la web, agenda tu evaluaciÃ³n y vive la experiencia completa por un dÃ­a.</p>
+      <div class="dp-price">$150 <span>MXN / dÃ­a</span></div>
       <div class="dp-feats">
-        <div class="dp-feat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Acceso a todas las áreas de juego</div>
+        <div class="dp-feat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Acceso a todas las Ã¡reas de juego</div>
         <div class="dp-feat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Chapoteadero incluido</div>
-        <div class="dp-feat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Área Kids y Cafetería &amp; Snacks</div>
+        <div class="dp-feat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Ãrea Kids y CafeterÃ­a &amp; Snacks</div>
         <div class="dp-feat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Estacionamiento gratis</div>
-        <div class="dp-feat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Evaluación de temperamento incluida</div>
+        <div class="dp-feat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>EvaluaciÃ³n de temperamento incluida</div>
         <div class="dp-feat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>Check-in digital en la app</div>
       </div>
     </div>
@@ -562,20 +381,20 @@ footer{background:var(--bg2);border-top:1px solid var(--bg3);padding:64px 40px 3
       <div class="form-title">Reserva tu Day Pass</div>
       <div class="form-field"><label>Nombre completo</label><input placeholder="Tu nombre" id="dp-nombre"></div>
       <div class="form-grid-2">
-        <div class="form-field"><label>Teléfono</label><input placeholder="722 000 0000" id="dp-tel" type="tel"></div>
+        <div class="form-field"><label>TelÃ©fono</label><input placeholder="722 000 0000" id="dp-tel" type="tel"></div>
         <div class="form-field"><label>Email</label><input placeholder="tu@email.com" id="dp-email" type="email"></div>
       </div>
-      <div class="form-field"><label>Nombre de tu lomito</label><input placeholder="¿Cómo se llama tu VIP?" id="dp-lomito"></div>
-      <div class="form-field"><label>Fecha deseada</label><input placeholder="Ej: Sábado 7 Junio 2025" id="dp-fecha"></div>
+      <div class="form-field"><label>Nombre de tu lomito</label><input placeholder="Â¿CÃ³mo se llama tu VIP?" id="dp-lomito"></div>
+      <div class="form-field"><label>Fecha deseada</label><input placeholder="Ej: SÃ¡bado 7 Junio 2025" id="dp-fecha"></div>
       <button class="btn-gold" style="width:100%;margin-top:8px" onclick="pedirDayPass()">Confirmar por WhatsApp</button>
     </div>
   </div>
 </div>
-<!-- GALERÍA -->
+<!-- GALERÃA -->
 <div class="section full" style="background:var(--bg2);padding:80px 0">
   <div class="inner" style="text-align:center;margin-bottom:32px">
     <div class="sec-tag" style="justify-content:center">La manada</div>
-    <h2 class="sec-title">La manada<br><em>en acción</em></h2>
+    <h2 class="sec-title">La manada<br><em>en acciÃ³n</em></h2>
   </div>
   <div class="insta-grid">
     <div class="insta-item"><svg class="scene" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg"><rect width="300" height="300" fill="#141410"/><rect x="20" y="40" width="6" height="220" fill="#1a1a16" rx="2"/><rect x="274" y="40" width="6" height="220" fill="#1a1a16" rx="2"/><rect x="20" y="40" width="260" height="6" fill="#1a1a16" rx="2"/><rect x="0" y="240" width="300" height="60" fill="#0f0f0c"/><ellipse cx="150" cy="225" rx="55" ry="18" fill="#0c0c09"/><ellipse cx="150" cy="200" rx="42" ry="30" fill="#b8860b" opacity=".85"/><ellipse cx="150" cy="175" rx="28" ry="22" fill="#c8960c" opacity=".9"/><circle cx="150" cy="158" r="18" fill="#c8960c" opacity=".9"/><ellipse cx="140" cy="152" rx="4" ry="5" fill="#0a0a08"/><ellipse cx="160" cy="152" rx="4" ry="5" fill="#0a0a08"/><ellipse cx="133" cy="148" rx="8" ry="12" fill="#b8860b" opacity=".9" transform="rotate(-15 133 148)"/><ellipse cx="167" cy="148" rx="8" ry="12" fill="#b8860b" opacity=".9" transform="rotate(15 167 148)"/><rect x="118" y="218" width="14" height="22" fill="#b8860b" opacity=".8" rx="4"/><rect x="168" y="218" width="14" height="22" fill="#b8860b" opacity=".8" rx="4"/><text x="150" y="288" font-family="serif" font-size="8" fill="rgba(201,168,76,0.3)" text-anchor="middle" letter-spacing="2">LOMITOS DOG CLUB</text></svg><div class="insta-overlay"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" fill="white"/></svg></div></div>
@@ -600,25 +419,25 @@ footer{background:var(--bg2);border-top:1px solid var(--bg3);padding:64px 40px 3
 <div class="section full" id="registro" style="background:var(--bg2);padding:100px 0">
   <div class="inner">
     <div style="text-align:center;margin-bottom:48px">
-      <div class="sec-tag" style="justify-content:center">Únete al club</div>
+      <div class="sec-tag" style="justify-content:center">Ãnete al club</div>
       <h2 class="sec-title">Crea tu cuenta de<br><em>Invitado de Honor</em></h2>
-      <p style="font-size:15px;color:var(--cream2);margin-top:12px">El registro solo está disponible desde la web. Después descarga la app e inicia sesión.</p>
+      <p style="font-size:15px;color:var(--cream2);margin-top:12px">El registro solo estÃ¡ disponible desde la web. DespuÃ©s descarga la app e inicia sesiÃ³n.</p>
     </div>
     <div class="registro-card reveal"><div id="registro-form-inner">
       <div style="display:flex;justify-content:center;margin-bottom:20px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="4" r="2"/><circle cx="18" cy="8" r="2"/><circle cx="4" cy="8" r="2"/><circle cx="7" cy="13" r="2"/><path d="M15 12a3 3 0 0 1 3 3c0 3-3 6-6 6s-6-3-6-6a3 3 0 0 1 3-3h6z"/></svg></div>
       <div class="form-grid-2">
         <div class="form-field"><label>Nombre completo</label><input placeholder="Tu nombre" id="r-nombre"></div>
-        <div class="form-field"><label>Teléfono WhatsApp</label><input placeholder="722 000 0000" id="r-tel" type="tel"></div>
+        <div class="form-field"><label>TelÃ©fono WhatsApp</label><input placeholder="722 000 0000" id="r-tel" type="tel"></div>
         <div class="form-field full"><label>Email</label><input placeholder="tu@email.com" id="r-email" type="email"></div>
-        <div class="form-field"><label>Contraseña</label><input placeholder="••••••••" id="r-pass" type="password"></div>
-        <div class="form-field"><label>Confirmar contraseña</label><input placeholder="••••••••" id="r-pass2" type="password"></div>
-        <div class="form-field full"><label>Membresía de interés</label>
-          <select id="r-memb"><option>Day Pass — $150 MXN</option><option>Gold — $999/mes</option><option>Fundador — Precio especial</option></select>
+        <div class="form-field"><label>ContraseÃ±a</label><input placeholder="â¢â¢â¢â¢â¢â¢â¢â¢" id="r-pass" type="password"></div>
+        <div class="form-field"><label>Confirmar contraseÃ±a</label><input placeholder="â¢â¢â¢â¢â¢â¢â¢â¢" id="r-pass2" type="password"></div>
+        <div class="form-field full"><label>MembresÃ­a de interÃ©s</label>
+          <select id="r-memb"><option>Day Pass â $150 MXN</option><option>Gold â $999/mes</option><option>Fundador â Precio especial</option></select>
         </div>
-        <div class="form-field full"><label>Nombre de tu lomito</label><input placeholder="¿Cómo se llama tu VIP?" id="r-lomito"></div>
+        <div class="form-field full"><label>Nombre de tu lomito</label><input placeholder="Â¿CÃ³mo se llama tu VIP?" id="r-lomito"></div>
       </div>
       <button class="btn-gold" style="width:100%;margin-top:8px" onclick="registrar()">Crear mi cuenta y unirme al club</button>
-      <p style="text-align:center;font-size:12px;color:var(--muted);margin-top:14px">¿Ya tienes cuenta? <a href="#" style="color:var(--gold)" onclick="alert('Descarga la app de Lomitos Dog Club e inicia sesión con tu email y contraseña')">Inicia sesión en la app</a></p>
+      <p style="text-align:center;font-size:12px;color:var(--muted);margin-top:14px">Â¿Ya tienes cuenta? <a href="#" style="color:var(--gold)" onclick="alert('Descarga la app de Lomitos Dog Club e inicia sesiÃ³n con tu email y contraseÃ±a')">Inicia sesiÃ³n en la app</a></p>
     </div></div>
   </div>
 </div>
@@ -628,7 +447,7 @@ footer{background:var(--bg2);border-top:1px solid var(--bg3);padding:64px 40px 3
     <div class="footer-top">
       <div>
         <div class="footer-logo"><img src="logo.png" alt="Lomitos Dog Club">Lomitos Dog Club</div>
-        <div class="footer-desc">El primer club canino premium de Metepec. Donde tu lomito es el VIP y tú eres el Invitado de Honor.</div>
+        <div class="footer-desc">El primer club canino premium de Metepec. Donde tu lomito es el VIP y tÃº eres el Invitado de Honor.</div>
         <a href="https://wa.me/527291432516" target="_blank" class="footer-wa">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
           729 143 2516
@@ -641,79 +460,26 @@ footer{background:var(--bg2);border-top:1px solid var(--bg3);padding:64px 40px 3
       </div>
       <div class="footer-col">
         <div class="footer-col-title">Servicios</div>
-        <a href="#servicios">Experiencia completa</a><a href="#servicios">Baño &amp; Grooming</a><a href="#servicios">Guardería</a><a href="#servicios">Cafetería &amp; Snacks</a><a href="#servicios">Cumpleaños VIP</a><a href="#express">LomitoExpress</a>
+        <a href="#servicios">Experiencia completa</a><a href="#servicios">BaÃ±o &amp; Grooming</a><a href="#servicios">GuarderÃ­a</a><a href="#servicios">CafeterÃ­a &amp; Snacks</a><a href="#servicios">CumpleaÃ±os VIP</a><a href="#express">LomitoExpress</a>
       </div>
       <div class="footer-col">
         <div class="footer-col-title">Club</div>
-        <a href="#antes">Antes de entrar</a><a href="#membresias">Membresías</a><a href="#express">LomitoExpress</a><a href="#daypass">Day Pass</a><a href="#registro">Registro</a>
+        <a href="#antes">Antes de entrar</a><a href="#membresias">MembresÃ­as</a><a href="#express">LomitoExpress</a><a href="#daypass">Day Pass</a><a href="#registro">Registro</a>
       </div>
       <div class="footer-col">
         <div class="footer-col-title">Contacto</div>
         <a href="https://wa.me/527291432516" target="_blank">WhatsApp</a>
-        <a href="#">Instagram</a><a href="#">TikTok</a>
-        <a href="#">Metepec, Edo. Méx.</a>
-        <a href="#">7:00am – 8:00pm</a>
+        <span>Instagram</span><span>TikTok</span>
+        <a href="#">Metepec, Edo. MÃ©x.</a>
+        <a href="#">7:00am â 8:00pm</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="footer-copy">© 2025 Lomitos Dog Club · El lomito siempre es el VIP</div>
-      <div style="display:flex;gap:16px"><a href="#" style="font-size:11px;color:var(--muted)">Privacidad</a><a href="#" style="font-size:11px;color:var(--muted)">Términos</a></div>
+      <div class="footer-copy">Â© 2025 Lomitos Dog Club Â· El lomito siempre es el VIP</div>
+      <div style="display:flex;gap:16px"><a href="#" style="font-size:11px;color:var(--muted)">TÃ©rminos</a></div>
     </div>
   </div>
 </footer>
-<script>
-const canvas=document.getElementById('canvas'),ctx=canvas.getContext('2d');
-let W,H,particles=[];
-function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight}
-resize();window.addEventListener('resize',resize);
-class P{constructor(){this.reset()}reset(){this.x=Math.random()*W;this.y=Math.random()*H;this.size=Math.random()*1.5+.5;this.sx=(Math.random()-.5)*.3;this.sy=(Math.random()-.5)*.3;this.op=Math.random()*.3+.1;this.life=0;this.max=Math.random()*300+200}update(){this.x+=this.sx;this.y+=this.sy;this.life++;if(this.life>this.max||this.x<0||this.x>W||this.y<0||this.y>H)this.reset()}draw(){ctx.save();ctx.globalAlpha=this.op*(1-this.life/this.max);ctx.fillStyle='#C9A84C';ctx.beginPath();ctx.arc(this.x,this.y,this.size,0,Math.PI*2);ctx.fill();ctx.restore()}}
-for(let i=0;i<80;i++)particles.push(new P());
-function anim(){ctx.clearRect(0,0,W,H);for(let i=0;i<particles.length;i++){for(let j=i+1;j<particles.length;j++){const dx=particles[i].x-particles[j].x,dy=particles[i].y-particles[j].y,d=Math.sqrt(dx*dx+dy*dy);if(d<90){ctx.save();ctx.globalAlpha=.1*(1-d/90);ctx.strokeStyle='#C9A84C';ctx.lineWidth=.5;ctx.beginPath();ctx.moveTo(particles[i].x,particles[i].y);ctx.lineTo(particles[j].x,particles[j].y);ctx.stroke();ctx.restore()}}particles[i].update();particles[i].draw()}requestAnimationFrame(anim)}
-anim();
-window.addEventListener('scroll',()=>document.getElementById('nav').classList.toggle('scrolled',scrollY>50));
-function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
-const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible')}),{threshold:.1});
-document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
-const TARIFAS={'50000':{p:50,l:'Centro Metepec',c:'#6BAF82'},'50001':{p:50,l:'Metepec Centro',c:'#6BAF82'},'50002':{p:80,l:'Metepec Norte',c:'#C9A84C'},'50003':{p:80,l:'Metepec Sur',c:'#C9A84C'},'50004':{p:80,l:'Metepec Oriente',c:'#C9A84C'},'50005':{p:120,l:'Zona límite Metepec',c:'#E05555'},'50010':{p:50,l:'San Jerónimo Chicahualco',c:'#6BAF82'},'50020':{p:80,l:'La Asunción',c:'#C9A84C'},'50040':{p:80,l:'San Bartolomé Tlaltelulco',c:'#C9A84C'},'50090':{p:80,l:'San Francisco Coaxusco',c:'#C9A84C'},'50110':{p:80,l:'San Mateo Atenco',c:'#C9A84C'},'50140':{p:80,l:'San Lorenzo Tlalmimilolpan',c:'#C9A84C'},'50160':{p:80,l:'Mexicaltzingo',c:'#C9A84C'},'50170':{p:80,l:'Calimaya',c:'#C9A84C'},'50200':{p:120,l:'Zinacantepec',c:'#E05555'},'52140':{p:80,l:'Toluca Centro',c:'#C9A84C'},'52000':{p:80,l:'Toluca',c:'#C9A84C'}};
-function calcularCP(){
-  const cp=String(document.getElementById('cp-input').value).padStart(5,'0');
-  const r=document.getElementById('calc-result');
-  if(cp.replace(/\D/g,'').length!==5){r.style.display='none';return}
-  let t=TARIFAS[cp];
-  if(!t){if(cp.startsWith('500'))t={p:80,l:'Zona Metepec estimada',c:'#C9A84C'};else if(cp.startsWith('521')||cp.startsWith('520'))t={p:80,l:'Toluca zona estimada',c:'#C9A84C'};}
-  r.className='calc-result show';
-  if(t){r.style.cssText='display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding:14px;border-radius:10px;background:rgba(0,0,0,0.3);border:1px solid '+t.c+'44';r.innerHTML='<div><div style="font-size:11px;color:#6B6B5E;margin-bottom:4px">'+t.l+'</div><div style="font-size:12px;color:rgba(245,240,232,0.75)">Costo estimado de recolección</div></div><span style="font-family:\'Playfair Display\',serif;font-size:26px;font-weight:700;color:'+t.c+'">$'+t.p+' <span style="font-size:13px">MXN</span></span>';}
-  else{r.style.cssText='display:flex;margin-top:14px;padding:14px;border-radius:10px;background:rgba(224,85,85,0.08);border:1px solid rgba(224,85,85,0.2)';r.innerHTML='<span style="color:#E05555;font-size:13px">Fuera de zona de servicio (máx 5km de Metepec)</span>';}
-}
-function pedirDayPass(){
-  const n=document.getElementById('dp-nombre').value,t=document.getElementById('dp-tel').value,e=document.getElementById('dp-email').value,l=document.getElementById('dp-lomito').value,f=document.getElementById('dp-fecha').value;
-  if(!n||!t){alert('Por favor llena nombre y teléfono');return}
-  window.open('https://wa.me/527291432516?text='+encodeURIComponent('Hola, quiero reservar un *Day Pass* 🐾\n\n👤 '+n+'\n📱 '+t+'\n📧 '+e+'\n🐕 '+l+'\n📅 '+f+'\n\n¿Está disponible?'),'_blank');
-}
-async function registrar(){
-  const btn=document.querySelector('#registro .btn-gold');
-  const n=document.getElementById('r-nombre').value.trim();
-  const e=document.getElementById('r-email').value.trim();
-  const t=document.getElementById('r-tel').value.trim();
-  const p=document.getElementById('r-pass').value;
-  const p2=document.getElementById('r-pass2').value;
-  const m=document.getElementById('r-memb').value;
-  const l=document.getElementById('r-lomito').value.trim();
-  if(!n||!e||!t||!p){alert('Por favor llena todos los campos');return}
-  if(p.length<6){alert('La contraseña debe tener al menos 6 caracteres');return}
-  if(p!==p2){alert('Las contraseñas no coinciden');return}
-  if(!e.includes('@')){alert('Ingresa un email válido');return}
-  btn.disabled=true;btn.textContent='Creando tu cuenta...';
-  try{
-    const res=await fetch('https://dpljrhomnfcubxoahmiq.supabase.co/auth/v1/signup',{method:'POST',headers:{'Content-Type':'application/json','apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRwbGpyaG9tbmZjdWJ4b2FobWlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAyNDc1NjQsImV4cCI6MjA5NTgyMzU2NH0.XPyq60LUgjQTExNWQYMX2lKR0O5Yc8yl5J4tCkcCnPw','Authorization':'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRwbGpyaG9tbmZjdWJ4b2FobWlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAyNDc1NjQsImV4cCI6MjA5NTgyMzU2NH0.XPyq60LUgjQTExNWQYMX2lKR0O5Yc8yl5J4tCkcCnPw'},body:JSON.stringify({email:e,password:p,data:{nombre:n,telefono:t,membresia:m,lomito:l}})});
-    const data=await res.json();
-    if(data.error||data.msg){const msg=data.error||data.msg||'';if(msg.toLowerCase().includes('already registered')){btn.disabled=false;btn.textContent='Crear mi cuenta y unirme al club';alert('Este email ya tiene una cuenta.\nDescarga la app e inicia sesión con tu email y contraseña.');return;}throw new Error(msg);}
-    const userId=data.user?.id||data.id;
-    if(userId){await fetch('https://dpljrhomnfcubxoahmiq.supabase.co/rest/v1/profiles',{method:'POST',headers:{'Content-Type':'application/json','apikey':'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRwbGpyaG9tbmZjdWJ4b2FobWlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAyNDc1NjQsImV4cCI6MjA5NTgyMzU2NH0.XPyq60LUgjQTExNWQYMX2lKR0O5Yc8yl5J4tCkcCnPw','Authorization':'Bearer '+(data.access_token||''),'Prefer':'return=minimal'},body:JSON.stringify({id:userId,nombre:n,telefono:t,email:e,membresia:m})});}
-    window.open('https://wa.me/527291432516?text='+encodeURIComponent('🐾 *NUEVO REGISTRO WEB*\n\n👤 '+n+'\n📧 '+e+'\n📱 '+t+'\n🎯 '+m+'\n🐕 '+(l||'No indicado')+'\n\n✅ Ya puede iniciar sesión en la app.'),'_blank');
-    document.getElementById('registro-form-inner').innerHTML=`<div style="text-align:center;padding:32px 0"><svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#6BAF82" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 20px;display:block"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg><div style="font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:#F5F0E8;margin-bottom:12px">¡Bienvenido al club!</div><div style="font-size:14px;color:rgba(245,240,232,0.75);line-height:1.75;margin-bottom:24px">Tu cuenta fue creada exitosamente.<br>Inicia sesión en la app con:<br><strong style="color:#C9A84C">${e}</strong></div><div style="background:#1E1E1A;border-radius:12px;padding:16px;margin-bottom:20px;font-size:13px;color:#6B6B5E;line-height:1.65"><strong style="color:#F5F0E8;display:block;margin-bottom:6px">Próximos pasos:</strong>1. Descarga la app de Lomitos Dog Club<br>2. Inicia sesión con tu email y contraseña<br>3. Agenda tu evaluación de temperamento</div><button class="btn-gold" onclick="window.open('https://wa.me/527291432516?text=Hola,%20acabo%20de%20registrarme.%20Mi%20email%20es%20${encodeURIComponent(e)}','_blank')">Contactar asesor</button></div>`;
-  }catch(err){btn.disabled=false;btn.textContent='Crear mi cuenta y unirme al club';alert('Error: '+err.message);}
-}
-</script>
+<script src="script.js"></script>
 </body>
 </html>
