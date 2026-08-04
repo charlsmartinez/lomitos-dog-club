@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lomitos Dog Club · Únete al club</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#080806;--bg2:#0F0F0C;--bg3:#171714;--gold:#C9A84C;--gold2:rgba(201,168,76,0.12);--cream:#F5F0E8;--cream2:rgba(245,240,232,0.72);--muted:#5A5A4E;--green:#6BAF82;--red:#E05555;--r:12px}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--cream);min-height:100vh;padding:32px 16px}
+.wrap{max-width:580px;margin:0 auto}
+.header{text-align:center;margin-bottom:28px}
+.logo-img{width:72px;height:72px;border-radius:50%;object-fit:cover;margin-bottom:12px}
+.logo{font-family:'Playfair Display',serif;font-size:26px;color:var(--gold)}
+.sub{font-size:11px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:4px}
+.card{background:var(--bg2);border:1px solid var(--bg3);border-radius:18px;padding:28px 24px;margin-bottom:16px}
+.greeting{font-size:14px;color:var(--cream2);line-height:1.8;border-left:3px solid var(--gold);padding-left:14px}
+.greeting strong{color:var(--cream)}
+.section-title{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:14px}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+.field input,.field textarea{width:100%;background:var(--bg3);border:1px solid #1F1F1B;border-radius:var(--r);padding:12px 14px;font-size:14px;color:var(--cream);font-family:'DM Sans',sans-serif;outline:none;transition:border .2s;-webkit-appearance:none}
+.field input:focus,.field textarea:focus{border-color:rgba(201,168,76,.5);background:#1A1A14}
+.field textarea{height:90px;resize:none}
+.opt-group{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.opt{display:inline-flex;align-items:center;padding:9px 16px;background:var(--bg3);border:1px solid #1F1F1B;border-radius:8px;cursor:pointer;font-size:13px;color:var(--muted);transition:all .2s;user-select:none;-webkit-tap-highlight-color:transparent}
+.opt:hover,.opt:active{border-color:var(--gold);color:var(--cream2)}
+.opt.sel{background:rgba(201,168,76,.1);border-color:var(--gold);color:var(--gold);font-weight:500}
+.opt input{display:none}
+.divider{border:none;border-top:1px solid var(--bg3);margin:18px 0}
+.submit-btn{width:100%;background:linear-gradient(135deg,#C9A84C,#E8C96A);color:#080806;border:none;border-radius:var(--r);padding:15px;font-size:15px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:8px;-webkit-tap-highlight-color:transparent}
+.submit-btn:active{opacity:.9;transform:scale(.99)}
+.submit-btn:disabled{opacity:.6;cursor:default}
+.success{text-align:center;padding:48px 20px;display:none}
+.success-ico{font-size:52px;margin-bottom:16px}
+.success h2{font-family:'Playfair Display',serif;font-size:24px;color:var(--cream);margin-bottom:10px}
+.success p{font-size:14px;color:var(--muted);line-height:1.75}
+.err{font-size:12px;color:var(--red);margin-top:10px;text-align:center;display:none}
+.badge{display:inline-block;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.3);border-radius:20px;padding:3px 12px;font-size:11px;color:var(--gold);margin-top:10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="header">
+    <img class="logo-img" src="logo.png" alt="Lomitos Dog Club" onerror="this.style.display='none'">
+    <div class="logo">Lomitos Dog Club</div>
+    <div class="sub">Metepec · Lista de interés</div>
+  </div>
+
+  <div id="form-wrap">
+    <div class="card">
+      <p class="greeting"><strong>¡Hola, bienvenido! 🐾</strong><br>
+      Estamos a punto de abrir el primer club canino premium de Metepec. Cuéntanos sobre ti y tu lomito para enviarte información personalizada antes que a nadie.</p>
+      <div class="badge">🏆 50 cupos Fundador disponibles</div>
+    </div>
+
+    <div class="card">
+      <div class="section-title">Tus datos</div>
+      <div class="field"><label>Nombre</label><input type="text" id="f-nombre" placeholder="¿Cómo te llamamos?"></div>
+      <div class="field"><label>WhatsApp / Teléfono</label><input type="tel" id="f-tel" placeholder="722 000 0000"></div>
+      <div class="field"><label>Correo electrónico</label><input type="email" id="f-email" placeholder="tu@email.com"></div>
+    </div>
+
+    <div class="card">
+      <div class="section-title">Tu lomito</div>
+      <div class="field">
+        <label>¿Cuántos lomitos tienes?</label>
+        <div class="opt-group">
+          <label class="opt"><input type="radio" name="num" value="1">1</label>
+          <label class="opt"><input type="radio" name="num" value="2">2</label>
+          <label class="opt"><input type="radio" name="num" value="3">3</label>
+          <label class="opt"><input type="radio" name="num" value="4 o más">4 o más</label>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="field"><label>¿Qué raza(s) son?</label><input type="text" id="f-razas" placeholder="Golden, Labrador, French Bulldog..."></div>
+      <div class="divider"></div>
+      <div class="field">
+        <label>Tamaño</label>
+        <div class="opt-group">
+          <label class="opt"><input type="checkbox" name="talla" value="Pequeño (hasta 10kg)">Pequeño</label>
+          <label class="opt"><input type="checkbox" name="talla" value="Mediano (10–25kg)">Mediano</label>
+          <label class="opt"><input type="checkbox" name="talla" value="Grande (+25kg)">Grande</label>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="field">
+        <label>¿Está esterilizado?</label>
+        <div class="opt-group">
+          <label class="opt"><input type="radio" name="ester" value="Sí">Sí</label>
+          <label class="opt"><input type="radio" name="ester" value="No">No</label>
+          <label class="opt"><input type="radio" name="ester" value="Algunos sí">Algunos sí</label>
+          <label class="opt"><input type="radio" name="ester" value="Aún no sé">Aún no sé</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="section-title">Tu interés</div>
+      <div class="field">
+        <label>¿Qué membresía te llama la atención?</label>
+        <div class="opt-group">
+          <label class="opt"><input type="radio" name="memb" value="Fundador (precio especial)">🏆 Fundador</label>
+          <label class="opt"><input type="radio" name="memb" value="Gold mensual $999">💛 Gold $999/mes</label>
+          <label class="opt"><input type="radio" name="memb" value="Day Pass $150">☀️ Day Pass</label>
+          <label class="opt"><input type="radio" name="memb" value="Aún no sé">Aún no sé</label>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="field"><label>Comentarios o preguntas (opcional)</label><textarea id="f-notas" placeholder="Pregunta lo que quieras sobre el club..."></textarea></div>
+      <button class="submit-btn" id="send-btn" onclick="enviar()">Quiero información 🐾</button>
+      <div class="err" id="err-msg">Algo salió mal. Intenta de nuevo.</div>
+    </div>
+  </div>
+
+  <div class="success" id="success">
+    <div class="success-ico">🐾</div>
+    <h2>¡Ya estás en la lista!</h2>
+    <p>Nos comunicaremos contigo por WhatsApp muy pronto con información exclusiva.<br><br>
+    Mientras tanto, síguenos en Instagram:<br>
+    <strong style="color:var(--gold)">@lomitos.dog.club</strong></p>
+  </div>
+</div>
+
+<script>
+const SUPA='https://dpljrhomnfcubxoahmiq.supabase.co';
+const KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRwbGpyaG9tbmZjdWJ4b2FobWlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAyNDc1NjQsImV4cCI6MjA5NTgyMzU2NH0.XPyq60LUgjQTExNWQYMX2lKR0O5Yc8yl5J4tCkcCnPw';
+
+document.querySelectorAll('.opt').forEach(el=>{
+  el.addEventListener('click',function(){
+    const inp=this.querySelector('input');
+    if(inp.type==='radio'){
+      this.closest('.opt-group').querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));
+      this.classList.add('sel');
+    } else {
+      this.classList.toggle('sel');
+      inp.checked=this.classList.contains('sel');
+    }
+  });
+});
+
+function gv(id){return(document.getElementById(id)||{}).value?.trim()||'';}
+function gr(n){const e=document.querySelector(`input[name="${n}"]:checked`);return e?e.value:'';}
+function gc(n){return[...document.querySelectorAll(`input[name="${n}"]:checked`)].map(e=>e.value).join(', ');}
+
+async function enviar(){
+  const btn=document.getElementById('send-btn');
+  const err=document.getElementById('err-msg');
+  btn.disabled=true; btn.textContent='Enviando...'; err.style.display='none';
+  const body={
+    nombre:gv('f-nombre')||null,
+    telefono:gv('f-tel')||null,
+    email:gv('f-email')||null,
+    num_perros:gr('num')||null,
+    razas:gv('f-razas')||null,
+    talla:gc('talla')||null,
+    esterilizado:gr('ester')||null,
+    membresia_interes:gr('memb')||null,
+    notas:gv('f-notas')||null,
+  };
+  try{
+    const res=await fetch(SUPA+'/rest/v1/leads',{
+      method:'POST',
+      headers:{'apikey':KEY,'Authorization':'Bearer '+KEY,'Content-Type':'application/json','Prefer':'return=minimal'},
+      body:JSON.stringify(body)
+    });
+    if(res.ok||res.status===201){
+      document.getElementById('form-wrap').style.display='none';
+      document.getElementById('success').style.display='block';
+    } else {
+      throw new Error('status '+res.status);
+    }
+  } catch(e){
+    err.style.display='block';
+    btn.disabled=false; btn.textContent='Quiero información 🐾';
+  }
+}
+</script>
+</body>
+</html>
