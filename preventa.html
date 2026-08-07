@@ -299,7 +299,6 @@ async function enviar(){
   const btn=document.getElementById('send-btn');
   const err=document.getElementById('err-msg');
   btn.disabled=true;btn.textContent='Enviando...';err.style.display='none';
-  const esterNota=gv('f-ester-nota');
   const body={
     nombre:gv('f-nombre')||null,
     telefono:gv('f-tel')||null,
