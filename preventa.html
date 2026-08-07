@@ -125,8 +125,8 @@ canvas#bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-e
     <div class="card">
       <div class="card-title">Sobre tu lomito</div>
       <div class="field">
-        <label>¿Cómo se llama tu perro?</label>
-        <input type="text" id="f-nombre-lomito" placeholder="El nombre de tu Invitado de Honor">
+        <label>¿Cómo se llama tu lomito?</label>
+        <input type="text" id="f-nombre-lomito" placeholder="Nombre de tu mejor amig@">
       </div>
       <div class="divider"></div>
       <div class="field">
@@ -281,7 +281,11 @@ document.querySelectorAll('.opt').forEach(el=>{
   });
 });
 document.querySelectorAll('.area-opt').forEach(el=>{
-  el.addEventListener('click',function(){this.classList.toggle('sel');this.querySelector('input').checked=this.classList.contains('sel');});
+  el.addEventListener('click',function(e){
+    e.preventDefault();
+    this.classList.toggle('sel');
+    this.querySelector('input').checked=this.classList.contains('sel');
+  });
 });
 document.querySelectorAll('.fund-opt').forEach(el=>{
   el.addEventListener('click',function(){
