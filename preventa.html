@@ -3,47 +3,88 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lomitos Dog Club · Únete al club</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<title>Lomitos Dog Club · Membresía Fundador</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;400i&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--bg:#12120F;--bg2:#1C1C17;--bg3:#252520;--bg4:#2E2E28;--gold:#C9A84C;--gold2:rgba(201,168,76,0.15);--cream:#F5F0E8;--cream2:rgba(245,240,232,0.82);--muted:#7A7A6A;--green:#6BAF82;--r:12px}
-body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--cream);min-height:100vh;padding:32px 16px;position:relative;overflow-x:hidden}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--cream);min-height:100vh;padding:28px 16px 48px;position:relative;overflow-x:hidden}
 canvas#bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-events:none}
 .wrap{max-width:580px;margin:0 auto;position:relative;z-index:1}
-.header{text-align:center;margin-bottom:28px}
-.logo-img{width:80px;height:80px;border-radius:50%;object-fit:cover;margin-bottom:14px;border:2px solid rgba(201,168,76,.3)}
+
+/* HEADER */
+.header{text-align:center;margin-bottom:24px}
+.logo-img{width:82px;height:82px;border-radius:50%;object-fit:cover;margin-bottom:14px;border:2px solid rgba(201,168,76,.35);box-shadow:0 0 24px rgba(201,168,76,.15)}
 .logo{font-family:'Playfair Display',serif;font-size:27px;color:var(--gold)}
 .sub{font-size:11px;color:var(--muted);letter-spacing:2.5px;text-transform:uppercase;margin-top:5px}
-.card{background:rgba(28,28,23,0.92);backdrop-filter:blur(12px);border:1px solid rgba(201,168,76,.18);border-radius:18px;padding:26px 22px;margin-bottom:14px}
-.greeting{font-size:14px;color:var(--cream2);line-height:1.85;border-left:3px solid var(--gold);padding-left:14px}
-.greeting strong{color:var(--cream);font-size:15px}
+
+/* CARDS */
+.card{background:rgba(28,28,23,0.93);backdrop-filter:blur(14px);border:1px solid rgba(201,168,76,.2);border-radius:18px;padding:26px 22px;margin-bottom:14px}
+.card-title{font-family:'Playfair Display',serif;font-size:17px;color:var(--gold);margin-bottom:18px;padding-bottom:12px;border-bottom:1px solid rgba(201,168,76,.15)}
+
+/* INTRO */
+.intro-logo{font-size:28px;margin-bottom:12px}
+.intro-title{font-family:'Playfair Display',serif;font-size:20px;color:var(--cream);margin-bottom:12px}
+.intro-text{font-size:14px;color:var(--cream2);line-height:1.85;margin-bottom:14px}
+.intro-cta{font-size:14px;color:var(--cream2);line-height:1.85}
+.intro-cta strong{color:var(--cream)}
 .badge{display:inline-block;background:rgba(201,168,76,.14);border:1px solid rgba(201,168,76,.35);border-radius:20px;padding:5px 14px;font-size:11px;color:var(--gold);margin-top:12px;font-weight:500}
+
+/* FIELDS */
 .section-title{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:16px;font-weight:500}
 .field{margin-bottom:16px}
 .field:last-child{margin-bottom:0}
 .field label{display:block;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
-.field input,.field textarea,.field select{width:100%;background:var(--bg3);border:1px solid var(--bg4);border-radius:var(--r);padding:13px 15px;font-size:14px;color:var(--cream);font-family:'DM Sans',sans-serif;outline:none;transition:border .2s,background .2s;-webkit-appearance:none;appearance:none}
-.field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A7A6A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:38px}
+.field input,.field select,.field textarea{width:100%;background:var(--bg3);border:1px solid var(--bg4);border-radius:var(--r);padding:13px 15px;font-size:14px;color:var(--cream);font-family:'DM Sans',sans-serif;outline:none;transition:border .2s,background .2s;-webkit-appearance:none;appearance:none}
+.field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A7A6A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:40px}
 .field select option{background:#252520;color:var(--cream)}
-.field input:focus,.field textarea:focus,.field select:focus{border-color:rgba(201,168,76,.55);background:#2A2A24}
-.field textarea{height:90px;resize:none}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:rgba(201,168,76,.55);background:#2A2A24}
+.field textarea{height:80px;resize:none}
+.divider{border:none;border-top:1px solid rgba(201,168,76,.1);margin:16px 0}
+
+/* OPTS */
 .opt-group{display:flex;gap:9px;flex-wrap:wrap;margin-top:6px}
 .opt{display:inline-flex;align-items:center;padding:10px 18px;background:var(--bg3);border:1px solid var(--bg4);border-radius:9px;cursor:pointer;font-size:13px;color:var(--muted);transition:all .2s;user-select:none;-webkit-tap-highlight-color:transparent}
 .opt:hover{border-color:var(--gold);color:var(--cream2)}
 .opt.sel{background:rgba(201,168,76,.12);border-color:var(--gold);color:var(--gold);font-weight:500}
 .opt input{display:none}
-.divider{border:none;border-top:1px solid rgba(201,168,76,.1);margin:18px 0}
+
+/* AREAS GRID */
+.areas-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:6px}
+.area-opt{display:flex;align-items:center;gap:9px;padding:11px 14px;background:var(--bg3);border:1px solid var(--bg4);border-radius:9px;cursor:pointer;font-size:13px;color:var(--muted);transition:all .2s;user-select:none;-webkit-tap-highlight-color:transparent}
+.area-opt:hover{border-color:var(--gold);color:var(--cream2)}
+.area-opt.sel{background:rgba(201,168,76,.12);border-color:var(--gold);color:var(--gold)}
+.area-opt input{display:none}
+.area-ico{font-size:17px}
+
+/* FUNDADOR OPTS */
+.fund-opt{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:var(--bg3);border:1px solid var(--bg4);border-radius:var(--r);cursor:pointer;transition:all .2s;user-select:none;margin-bottom:10px;-webkit-tap-highlight-color:transparent}
+.fund-opt:last-child{margin-bottom:0}
+.fund-opt:hover{border-color:var(--gold)}
+.fund-opt.sel{background:rgba(201,168,76,.1);border-color:var(--gold)}
+.fund-opt input{display:none}
+.fund-dot{width:18px;height:18px;border-radius:50%;border:2px solid var(--bg4);margin-top:2px;flex-shrink:0;transition:all .2s;background:transparent}
+.fund-opt.sel .fund-dot{border-color:var(--gold);background:var(--gold)}
+.fund-text{font-size:14px;color:var(--cream2);line-height:1.5}
+.fund-opt.sel .fund-text{color:var(--cream)}
+
+/* SUBMIT */
 .submit-btn{width:100%;background:linear-gradient(135deg,#C9A84C,#E8C96A);color:#0A0A08;border:none;border-radius:var(--r);padding:15px;font-size:15px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:8px;letter-spacing:.3px;transition:all .2s}
 .submit-btn:hover{transform:translateY(-1px);box-shadow:0 10px 28px rgba(201,168,76,.28)}
 .submit-btn:active{transform:scale(.99);opacity:.92}
 .submit-btn:disabled{opacity:.55;cursor:default;transform:none}
-.success{text-align:center;padding:52px 20px;display:none}
-.success-ico{font-size:56px;margin-bottom:18px}
-.success h2{font-family:'Playfair Display',serif;font-size:24px;color:var(--cream);margin-bottom:10px}
-.success p{font-size:14px;color:var(--cream2);line-height:1.8}
-.success .ig{color:var(--gold);font-weight:500;font-size:15px}
 .err{font-size:12px;color:#E05555;margin-top:10px;text-align:center;display:none}
+
+/* SUCCESS */
+.success{display:none;position:relative;z-index:1}
+.success-card{background:rgba(28,28,23,0.93);backdrop-filter:blur(14px);border:1px solid rgba(201,168,76,.2);border-radius:18px;padding:36px 26px;text-align:center;margin-bottom:14px}
+.success-ico{font-size:52px;margin-bottom:18px}
+.success-h{font-family:'Playfair Display',serif;font-size:24px;color:var(--gold);margin-bottom:14px}
+.success-p{font-size:14px;color:var(--cream2);line-height:1.85;margin-bottom:12px}
+.success-p strong{color:var(--cream)}
+.success-p em{font-style:italic;color:var(--muted)}
+.success-divider{border:none;border-top:1px solid rgba(201,168,76,.15);margin:18px 0}
+.ig-tag{display:inline-block;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.3);border-radius:20px;padding:6px 16px;font-size:14px;color:var(--gold);font-weight:500;margin-top:8px}
 </style>
 </head>
 <body>
@@ -53,42 +94,43 @@ canvas#bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-e
   <div class="header">
     <img class="logo-img" src="logo.png" alt="Lomitos Dog Club" onerror="this.style.display='none'">
     <div class="logo">Lomitos Dog Club</div>
-    <div class="sub">Metepec · Lista de interés</div>
+    <div class="sub">Membresía Fundador</div>
   </div>
 
   <div id="form-wrap">
+
+    <!-- INTRO -->
     <div class="card">
-      <p class="greeting"><strong>¡Hola, bienvenido! 🐾</strong><br>
-      Estamos a punto de abrir el primer club canino de Metepec. Cuéntanos sobre ti y tu lomito para enviarte información exclusiva antes que a nadie.</p>
-      <span class="badge">🏆 60 cupos Fundador disponibles</span>
+      <div class="intro-logo">🐾</div>
+      <div class="intro-title">¡Bienvenido a LOMITOS Dog Club!</div>
+      <p class="intro-text">Gracias por tu interés en formar parte de nuestra comunidad. Estamos creando un espacio donde los perros son la prioridad y sus familias podrán disfrutar de un lugar seguro, divertido y exclusivo.</p>
+      <p class="intro-cta">Solo necesitamos unos minutos para conocerte y reservar tu lugar como <strong>Miembro Fundador</strong>.</p>
+      <span class="badge">🏆 Solo 60 lugares Fundador disponibles</span>
     </div>
 
+    <!-- DATOS -->
     <div class="card">
-      <div class="section-title">Tus datos</div>
+      <div class="card-title">Datos del propietario</div>
       <div class="field">
-        <label>Nombre tuyo y/o de tus lomitos</label>
-        <input type="text" id="f-nombre" placeholder="¿Cómo te llamamos?">
+        <label>Nombre completo</label>
+        <input type="text" id="f-nombre" placeholder="Tu nombre">
       </div>
       <div class="field">
-        <label>WhatsApp / Teléfono</label>
+        <label>Teléfono / WhatsApp</label>
         <input type="tel" id="f-tel" placeholder="722 000 0000">
       </div>
     </div>
 
+    <!-- SOBRE TU LOMITO -->
     <div class="card">
-      <div class="section-title">Tu lomito</div>
+      <div class="card-title">Sobre tu lomito</div>
       <div class="field">
-        <label>¿Cuántos lomitos tienes?</label>
-        <div class="opt-group">
-          <label class="opt"><input type="radio" name="num" value="1">1</label>
-          <label class="opt"><input type="radio" name="num" value="2">2</label>
-          <label class="opt"><input type="radio" name="num" value="3">3</label>
-          <label class="opt"><input type="radio" name="num" value="4 o más">4 o más</label>
-        </div>
+        <label>¿Cómo se llama tu perro?</label>
+        <input type="text" id="f-nombre-lomito" placeholder="El nombre de tu Invitado de Honor">
       </div>
       <div class="divider"></div>
       <div class="field">
-        <label>¿Qué raza(s) son?</label>
+        <label>¿Qué raza es?</label>
         <select id="f-razas">
           <option value="">Selecciona la raza principal</option>
           <option>Labrador Retriever</option>
@@ -121,11 +163,20 @@ canvas#bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-e
       </div>
       <div class="divider"></div>
       <div class="field">
-        <label>Tamaño</label>
+        <label>¿Qué tamaño es?</label>
         <div class="opt-group">
           <label class="opt"><input type="checkbox" name="talla" value="Pequeño (hasta 10kg)">Pequeño</label>
           <label class="opt"><input type="checkbox" name="talla" value="Mediano (10–25kg)">Mediano</label>
           <label class="opt"><input type="checkbox" name="talla" value="Grande (+25kg)">Grande</label>
+        </div>
+      </div>
+      <div class="divider"></div>
+      <div class="field">
+        <label>¿Cuántos perros deseas registrar?</label>
+        <div class="opt-group">
+          <label class="opt"><input type="radio" name="num" value="1">1</label>
+          <label class="opt"><input type="radio" name="num" value="2">2</label>
+          <label class="opt"><input type="radio" name="num" value="3 o más">3 o más</label>
         </div>
       </div>
       <div class="divider"></div>
@@ -136,67 +187,106 @@ canvas#bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-e
           <label class="opt"><input type="radio" name="ester" value="No">No</label>
         </div>
       </div>
-      <div class="field" style="margin-top:10px">
+      <div class="field" style="margin-top:12px">
         <label>Comentario adicional sobre tu lomito</label>
         <input type="text" id="f-ester-nota" placeholder="Algún detalle que quieras compartir...">
       </div>
     </div>
 
+    <!-- INTERESES -->
     <div class="card">
+      <div class="card-title">Lo que más te interesa del club</div>
       <div class="field">
-        <label>¿Qué te gustaría que tenga el club?</label>
-        <textarea id="f-notas" placeholder="Cuéntanos tus ideas, servicios que te gustarían, lo que sea..."></textarea>
+        <label>¿Qué área disfrutarías más? (Puedes elegir varias)</label>
+        <div class="areas-grid">
+          <label class="area-opt"><input type="checkbox" name="area" value="Áreas de juego"><span class="area-ico">🏃</span>Áreas de juego</label>
+          <label class="area-opt"><input type="checkbox" name="area" value="Agility"><span class="area-ico">🏅</span>Agility</label>
+          <label class="area-opt"><input type="checkbox" name="area" value="Patio social"><span class="area-ico">🌿</span>Patio social</label>
+          <label class="area-opt"><input type="checkbox" name="area" value="Snack Café"><span class="area-ico">☕</span>Snack Café</label>
+          <label class="area-opt"><input type="checkbox" name="area" value="Pet Shop"><span class="area-ico">🛍</span>Pet Shop</label>
+          <label class="area-opt"><input type="checkbox" name="area" value="Photo Zone"><span class="area-ico">📸</span>Photo Zone</label>
+          <label class="area-opt"><input type="checkbox" name="area" value="Eventos exclusivos"><span class="area-ico">🎉</span>Eventos exclusivos</label>
+          <label class="area-opt"><input type="checkbox" name="area" value="Kids Zone"><span class="area-ico">👶</span>Kids Zone</label>
+        </div>
       </div>
-      <button class="submit-btn" id="send-btn" onclick="enviar()">Quiero información 🐾</button>
-      <div class="err" id="err-msg">Algo salió mal. Intenta de nuevo.</div>
+    </div>
+
+    <!-- MEMBRESÍA FUNDADOR -->
+    <div class="card">
+      <div class="card-title">Membresía Fundador</div>
+      <div class="field">
+        <label>¿Te gustaría asegurar uno de los lugares limitados?</label>
+        <div style="margin-top:10px">
+          <label class="fund-opt" id="fund-1">
+            <input type="radio" name="fundador" value="Sí, quiero apartar mi lugar">
+            <div class="fund-dot"></div>
+            <div class="fund-text">Sí, quiero apartar mi lugar.</div>
+          </label>
+          <label class="fund-opt" id="fund-2">
+            <input type="radio" name="fundador" value="Quiero recibir más información antes de decidir">
+            <div class="fund-dot"></div>
+            <div class="fund-text">Quiero recibir más información antes de decidir.</div>
+          </label>
+        </div>
+      </div>
+      <button class="submit-btn" id="send-btn" onclick="enviar()">Enviar registro 🐾</button>
+      <div class="err" id="err-msg">Algo salió mal. Por favor intenta de nuevo.</div>
+    </div>
+
+  </div><!-- /form-wrap -->
+
+  <!-- SUCCESS -->
+  <div class="success" id="success">
+    <div class="success-card">
+      <div class="success-ico">🏆</div>
+      <div class="success-h">¡Estás muy cerca de ser Fundador!</div>
+      <p class="success-p">La <strong>Membresía Fundador</strong> te dará acceso a beneficios exclusivos que no estarán disponibles nuevamente cuando el club abra sus puertas.</p>
+      <div class="success-divider"></div>
+      <p class="success-p"><strong>Solo habrá 60 Membresías Fundador.</strong></p>
+      <p class="success-p">Si deseas asegurar la tuya, uno de nuestros asesores se pondrá en contacto contigo para completar el proceso de inscripción y resolver cualquier duda.</p>
+      <div class="success-divider"></div>
+      <p class="success-p"><strong>¡Gracias por confiar en LOMITOS Dog Club!</strong><br>
+      <em>"Donde cada visita se convierte en una experiencia inolvidable para tu mejor amigo."</em></p>
+      <span class="ig-tag">@lomitos.dog.club</span>
     </div>
   </div>
 
-  <div class="success" id="success">
-    <div class="success-ico">🐾</div>
-    <h2>¡Ya estás en la lista!</h2>
-    <p>Nos comunicaremos contigo muy pronto con información exclusiva del club.<br><br>
-    Mientras tanto síguenos en Instagram:<br>
-    <span class="ig">@lomitos.dog.club</span></p>
-  </div>
-</div>
+</div><!-- /wrap -->
 
 <script>
 const SUPA='https://dpljrhomnfcubxoahmiq.supabase.co';
 const KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRwbGpyaG9tbmZjdWJ4b2FobWlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAyNDc1NjQsImV4cCI6MjA5NTgyMzU2NH0.XPyq60LUgjQTExNWQYMX2lKR0O5Yc8yl5J4tCkcCnPw';
 
-// ── Partículas de fondo ──
+// Partículas
 (function(){
-  const c=document.getElementById('bg');
-  const ctx=c.getContext('2d');
+  const c=document.getElementById('bg'),ctx=c.getContext('2d');
   let W,H,pts=[];
-  function resize(){W=c.width=innerWidth;H=c.height=innerHeight;pts=[];for(let i=0;i<55;i++)pts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.8+.4,vx:(Math.random()-.5)*.28,vy:(Math.random()-.5)*.28,a:Math.random()*.5+.2});}
+  function resize(){W=c.width=innerWidth;H=c.height=innerHeight;pts=[];for(let i=0;i<55;i++)pts.push({x:Math.random()*W,y:Math.random()*H,r:Math.random()*1.8+.4,vx:(Math.random()-.5)*.28,vy:(Math.random()-.5)*.28,a:Math.random()*.5+.18});}
   resize();window.addEventListener('resize',resize);
   function draw(){
     ctx.clearRect(0,0,W,H);
-    pts.forEach(p=>{
-      p.x+=p.vx;p.y+=p.vy;
-      if(p.x<0)p.x=W;if(p.x>W)p.x=0;
-      if(p.y<0)p.y=H;if(p.y>H)p.y=0;
-      ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-      ctx.fillStyle=`rgba(201,168,76,${p.a})`;ctx.fill();
-    });
+    pts.forEach(p=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);ctx.fillStyle=`rgba(201,168,76,${p.a})`;ctx.fill();});
     pts.forEach((a,i)=>{pts.slice(i+1).forEach(b=>{const d=Math.hypot(a.x-b.x,a.y-b.y);if(d<110){ctx.beginPath();ctx.moveTo(a.x,a.y);ctx.lineTo(b.x,b.y);ctx.strokeStyle=`rgba(201,168,76,${.12*(1-d/110)})`;ctx.lineWidth=.6;ctx.stroke();}});});
     requestAnimationFrame(draw);
   }
   draw();
 })();
 
+// Opts interactivos
 document.querySelectorAll('.opt').forEach(el=>{
   el.addEventListener('click',function(){
     const inp=this.querySelector('input');
-    if(inp.type==='radio'){
-      this.closest('.opt-group').querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));
-      this.classList.add('sel');
-    } else {
-      this.classList.toggle('sel');
-      inp.checked=this.classList.contains('sel');
-    }
+    if(inp.type==='radio'){this.closest('.opt-group').querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));this.classList.add('sel');}
+    else{this.classList.toggle('sel');inp.checked=this.classList.contains('sel');}
+  });
+});
+document.querySelectorAll('.area-opt').forEach(el=>{
+  el.addEventListener('click',function(){this.classList.toggle('sel');this.querySelector('input').checked=this.classList.contains('sel');});
+});
+document.querySelectorAll('.fund-opt').forEach(el=>{
+  el.addEventListener('click',function(){
+    document.querySelectorAll('.fund-opt').forEach(o=>o.classList.remove('sel'));
+    this.classList.add('sel');
   });
 });
 
@@ -209,17 +299,19 @@ async function enviar(){
   const err=document.getElementById('err-msg');
   btn.disabled=true;btn.textContent='Enviando...';err.style.display='none';
   const esterNota=gv('f-ester-nota');
-  const esterVal=gr('ester')+(esterNota?(' — '+esterNota):'');
   const body={
     nombre:gv('f-nombre')||null,
     telefono:gv('f-tel')||null,
     email:null,
-    num_perros:gr('num')||null,
+    nombre_lomito:gv('f-nombre-lomito')||null,
     razas:gv('f-razas')||null,
     talla:gc('talla')||null,
-    esterilizado:esterVal||null,
+    num_perros:gr('num')||null,
+    esterilizado:gr('ester')+(esterNota?' — '+esterNota:'')||null,
+    areas_interes:gc('area')||null,
+    membresia_fundador:gr('fundador')||null,
     membresia_interes:null,
-    notas:gv('f-notas')||null,
+    notas:null,
   };
   try{
     const res=await fetch(SUPA+'/rest/v1/leads',{
@@ -231,10 +323,10 @@ async function enviar(){
       document.getElementById('form-wrap').style.display='none';
       document.getElementById('success').style.display='block';
       window.scrollTo({top:0,behavior:'smooth'});
-    } else { throw new Error(res.status); }
+    }else{throw new Error(res.status);}
   }catch(e){
     err.style.display='block';
-    btn.disabled=false;btn.textContent='Quiero información 🐾';
+    btn.disabled=false;btn.textContent='Enviar registro 🐾';
   }
 }
 </script>
