@@ -187,10 +187,7 @@ canvas#bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-e
           <label class="opt"><input type="radio" name="ester" value="No">No</label>
         </div>
       </div>
-      <div class="field" style="margin-top:12px">
-        <label>Comentario adicional sobre tu lomito</label>
-        <input type="text" id="f-ester-nota" placeholder="Algún detalle que quieras compartir...">
-      </div>
+
     </div>
 
     <!-- INTERESES -->
@@ -215,7 +212,7 @@ canvas#bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-e
     <div class="card">
       <div class="card-title">Membresía Fundador</div>
       <div class="field">
-        <label>¿Te gustaría asegurar uno de los lugares limitados?</label>
+        <label>¿Te gustaría asegurar una membresía Fundador?</label>
         <div style="margin-top:10px">
           <label class="fund-opt" id="fund-1">
             <input type="radio" name="fundador" value="Sí, quiero apartar mi lugar">
@@ -311,7 +308,7 @@ async function enviar(){
     razas:gv('f-razas')||null,
     talla:gc('talla')||null,
     num_perros:gr('num')||null,
-    esterilizado:gr('ester')+(esterNota?' — '+esterNota:'')||null,
+    esterilizado:gr('ester')||null,
     areas_interes:gc('area')||null,
     membresia_fundador:gr('fundador')||null,
     membresia_interes:null,
