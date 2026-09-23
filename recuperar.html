@@ -101,7 +101,16 @@
       const { error } = await client.auth.updateUser({ password: p1 });
       if (error) {
         $('btn').disabled = false;
-        msg.textContent = /same password/i.test(error.message) ? 'Esa es la misma contraseña de antes; elige otra.' : 'No se pudo guardar. Pide un enlace nuevo desde la app.';
+        const code = error.code || '';
+        if (code === 'same_password' || /different from the old password/i.test(error.message)) {
+          msg.textContent = 'Esa ya es tu contraseña actual: puedes entrar a la app con ella. Si quieres cambiarla, escribe una distinta.';
+        } else if (code === 'weak_password' || /weak|easy to guess|pwned/i.test(error.message)) {
+          msg.textContent = 'Esa contraseña es muy fácil de adivinar. Usa letras, números y algo que solo tú sepas.';
+        } else if (code === 'session_expired' || /session|expired|jwt/i.test(error.message)) {
+          msg.textContent = 'El enlace ya venció. Pide uno nuevo desde la app con "Olvidé mi contraseña".';
+        } else {
+          msg.textContent = 'No se pudo guardar: ' + error.message;
+        }
         msg.classList.add('err');
         return;
       }
