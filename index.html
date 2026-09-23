@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+<script>
+  // Si un correo de recuperación de contraseña llega a la portada, mandarlo a la página correcta.
+  if (/type=recovery/.test(location.hash)) { location.replace('recuperar.html' + location.hash); }
+</script>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lomitos Dog Club · Metepec</title>

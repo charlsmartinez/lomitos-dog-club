@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nueva contraseña · Lomitos Dog Club</title>
+<link rel="icon" href="logo.png">
+<style>
+  :root { --bg:#0F0F0D; --card:#1A1A16; --line:#2E2E28; --gold:#C9A84C; --cream:#F5F0E8; --muted:#8A8A7A; --red:#E05555; --green:#6BAF82; }
+  * { box-sizing:border-box; }
+  body { margin:0; min-height:100vh; background:var(--bg); color:var(--cream); font-family:"Segoe UI",system-ui,-apple-system,sans-serif; display:flex; align-items:center; justify-content:center; padding:24px; }
+  .card { width:100%; max-width:420px; background:var(--card); border:1px solid var(--line); border-radius:18px; padding:32px 28px; }
+  .logo { display:flex; flex-direction:column; align-items:center; margin-bottom:24px; }
+  .logo img { width:72px; height:72px; border-radius:16px; margin-bottom:10px; }
+  .logo h1 { font-family:Georgia,serif; font-size:22px; color:var(--gold); margin:0; font-weight:700; }
+  .logo p { margin:4px 0 0; font-size:11px; letter-spacing:1.5px; color:var(--muted); text-transform:uppercase; }
+  h2 { font-size:18px; margin:0 0 6px; }
+  .sub { font-size:14px; color:var(--muted); margin:0 0 20px; line-height:1.5; }
+  label { display:block; font-size:11px; letter-spacing:1px; text-transform:uppercase; color:var(--muted); margin:14px 0 6px; }
+  input { width:100%; background:#111110; border:1px solid var(--line); border-radius:12px; padding:14px 16px; color:var(--cream); font-size:15px; }
+  input:focus { outline:none; border-color:var(--gold); }
+  button { width:100%; margin-top:22px; background:var(--gold); color:#0A0A08; border:none; border-radius:12px; padding:16px; font-size:15px; font-weight:700; cursor:pointer; }
+  button:disabled { opacity:.55; cursor:default; }
+  .msg { margin-top:14px; font-size:13px; text-align:center; line-height:1.5; }
+  .msg.err { color:var(--red); } .msg.ok { color:var(--green); }
+  .hidden { display:none; }
+  a { color:var(--gold); }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">
+      <img src="logo.png" alt="Lomitos Dog Club">
+      <h1>Lomitos Dog Club</h1>
+      <p>Metepec</p>
+    </div>
+
+    <div id="cargando">
+      <h2>Verificando tu enlace…</h2>
+      <p class="sub">Un momento.</p>
+    </div>
+
+    <form id="form" class="hidden" autocomplete="off">
+      <h2>Elige tu nueva contraseña</h2>
+      <p class="sub">Después de guardarla, entra a la app con tu correo y esta contraseña.</p>
+      <label for="p1">Nueva contraseña</label>
+      <input id="p1" type="password" minlength="8" placeholder="Mínimo 8 caracteres" required>
+      <label for="p2">Repítela</label>
+      <input id="p2" type="password" minlength="8" placeholder="Otra vez, para confirmar" required>
+      <button id="btn" type="submit">Guardar contraseña</button>
+      <div id="msg" class="msg"></div>
+    </form>
+
+    <div id="invalido" class="hidden">
+      <h2>Este enlace ya no sirve</h2>
+      <p class="sub">Los enlaces de recuperación duran poco tiempo y solo se usan una vez. Abre la app de Lomitos Dog Club, toca <b>"Olvidé mi contraseña"</b> y te mandamos uno nuevo.</p>
+      <p class="sub">¿Dudas? Escríbenos por WhatsApp al <a href="https://wa.me/527291432516">729 143 2516</a>.</p>
+    </div>
+
+    <div id="listo" class="hidden">
+      <h2>✅ Contraseña guardada</h2>
+      <p class="sub">Ya puedes cerrar esta página y entrar a la app con tu correo y tu nueva contraseña.</p>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script>
+    const client = supabase.createClient(
+      'https://dpljrhomnfcubxoahmiq.supabase.co',
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRwbGpyaG9tbmZjdWJ4b2FobWlxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODAyNDc1NjQsImV4cCI6MjA5NTgyMzU2NH0.XPyq60LUgjQTExNWQYMX2lKR0O5Yc8yl5J4tCkcCnPw',
+      { auth: { detectSessionInUrl: true, persistSession: false } }
+    );
+    const $ = id => document.getElementById(id);
+    const show = id => { ['cargando','form','invalido','listo'].forEach(x => $(x).classList.toggle('hidden', x !== id)); };
+    let listo = false;
+
+    async function arrancar() {
+      // Enlace con ?code= (flujo PKCE): hay que canjearlo por una sesión.
+      const code = new URLSearchParams(location.search).get('code');
+      if (code) {
+        const { error } = await client.auth.exchangeCodeForSession(code);
+        if (error) { show('invalido'); return; }
+      }
+      // Enlace con #access_token=…&type=recovery: supabase-js lo toma solo.
+      const { data: { session } } = await client.auth.getSession();
+      if (session) { listo = true; show('form'); $('p1').focus(); return; }
+      // Darle unos segundos por si el evento llega después.
+      setTimeout(() => { if (!listo) show('invalido'); }, 4000);
+    }
+    client.auth.onAuthStateChange((event, session) => {
+      if ((event === 'PASSWORD_RECOVERY' || event === 'SIGNED_IN') && session && !listo) { listo = true; show('form'); $('p1').focus(); }
+    });
+
+    $('form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const p1 = $('p1').value, p2 = $('p2').value, msg = $('msg');
+      msg.className = 'msg';
+      if (p1.length < 8) { msg.textContent = 'Usa al menos 8 caracteres.'; msg.classList.add('err'); return; }
+      if (p1 !== p2) { msg.textContent = 'Las contraseñas no coinciden.'; msg.classList.add('err'); return; }
+      $('btn').disabled = true; msg.textContent = 'Guardando…';
+      const { error } = await client.auth.updateUser({ password: p1 });
+      if (error) {
+        $('btn').disabled = false;
+        msg.textContent = /same password/i.test(error.message) ? 'Esa es la misma contraseña de antes; elige otra.' : 'No se pudo guardar. Pide un enlace nuevo desde la app.';
+        msg.classList.add('err');
+        return;
+      }
+      await client.auth.signOut();
+      show('listo');
+    });
+
+    arrancar();
+  </script>
+</body>
+</html>
