@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pago · Lomitos Dog Club</title>
+<link rel="icon" href="logo.png">
+<style>
+  :root { --bg:#0F0F0D; --card:#1A1A16; --line:#2E2E28; --gold:#C9A84C; --cream:#F5F0E8; --muted:#8A8A7A; --red:#E05555; --green:#6BAF82; }
+  * { box-sizing:border-box; }
+  body { margin:0; min-height:100vh; background:var(--bg); color:var(--cream); font-family:"Segoe UI",system-ui,-apple-system,sans-serif; display:flex; align-items:center; justify-content:center; padding:24px; }
+  .card { width:100%; max-width:420px; background:var(--card); border:1px solid var(--line); border-radius:18px; padding:32px 28px; text-align:center; }
+  .logo img { width:72px; height:72px; border-radius:16px; margin-bottom:10px; }
+  .logo h1 { font-family:Georgia,serif; font-size:22px; color:var(--gold); margin:0 0 24px; font-weight:700; }
+  .ico { font-size:52px; margin-bottom:8px; }
+  h2 { font-size:20px; margin:0 0 8px; }
+  p { font-size:14px; color:var(--muted); line-height:1.55; margin:0 0 10px; }
+  .hidden { display:none; }
+  a { color:var(--gold); }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo"><img src="logo.png" alt="Lomitos Dog Club"><h1>Lomitos Dog Club</h1></div>
+
+    <div id="aprobado" class="hidden">
+      <div class="ico">✅</div>
+      <h2>¡Pago recibido!</h2>
+      <p>Tu membresía queda activa en unos segundos. Ya puedes cerrar esta página y regresar a la app.</p>
+    </div>
+    <div id="pendiente" class="hidden">
+      <div class="ico">⏳</div>
+      <h2>Pago en proceso</h2>
+      <p>Si pagaste en OXXO o por transferencia, tu membresía se activa sola en cuanto Mercado Pago confirme el pago (puede tardar unas horas).</p>
+      <p>Regresa a la app; ahí verás cuando quede activa.</p>
+    </div>
+    <div id="rechazado" class="hidden">
+      <div class="ico">✖</div>
+      <h2>El pago no se completó</h2>
+      <p>No se hizo ningún cargo. Regresa a la app e inténtalo de nuevo con otro medio de pago, o escríbenos por WhatsApp al <a href="https://wa.me/527291432516">729 143 2516</a>.</p>
+    </div>
+  </div>
+  <script>
+    const estado = new URLSearchParams(location.search).get('estado');
+    const id = ['aprobado','pendiente','rechazado'].includes(estado) ? estado : 'pendiente';
+    document.getElementById(id).classList.remove('hidden');
+  </script>
+</body>
+</html>
