@@ -29,6 +29,11 @@ canvas#bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-e
 .intro-text{font-size:14px;color:var(--cream2);line-height:1.85;margin-bottom:14px}
 .intro-cta{font-size:14px;color:var(--cream2);line-height:1.85}
 .intro-cta strong{color:var(--cream)}
+.intro-sub{font-family:'Playfair Display',serif;font-size:15px;color:var(--gold);margin:0 0 10px}
+.intro-loc{font-size:13px;color:var(--cream2);line-height:1.7}
+.intro-list{font-size:14px;color:var(--cream2);line-height:1.9;margin:0;padding-left:0;list-style:none}
+.intro-list li{padding-left:18px;position:relative;margin-bottom:4px}
+.intro-list li::before{content:'•';color:var(--gold);position:absolute;left:0}
 .badge{display:inline-block;background:rgba(228,143,36,.14);border:1px solid rgba(228,143,36,.35);border-radius:20px;padding:5px 14px;font-size:11px;color:var(--gold);margin-top:12px;font-weight:500}
 
 /* FIELDS */
@@ -103,12 +108,33 @@ canvas#bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-e
 
     <!-- INTRO -->
     <div class="card">
-      <img class="promo-img" src="fundador-promo.jpg" alt="Lomitos Dog Club · Membresía Fundador" onerror="this.style.display='none'">
       <div class="intro-logo">🐾</div>
       <div class="intro-title">¡Bienvenido a LOMITOS Dog Club!</div>
       <p class="intro-text">Gracias por tu interés en formar parte de nuestra comunidad. Estamos creando un espacio donde los perros son la prioridad y sus familias podrán disfrutar de un lugar seguro, divertido y exclusivo.</p>
       <p class="intro-cta">Solo necesitamos unos minutos para conocerte y reservar tu lugar como <strong>Miembro Fundador</strong>.</p>
       <span class="badge">🏆 Solo 60 lugares Fundador disponibles</span>
+    </div>
+
+    <!-- INFO DEL CLUB -->
+    <div class="card">
+      <div class="card-title">Actividades</div>
+      <p class="intro-text">Lomitos Dog Club, es un club donde puedes llevar a tu lomito a pasear, socializar, jugar, divertirse en la alberca y adicional hay espacio para TI, donde puedes trabajar, leer un libro, jugar algún juego de mesa, socializar, kids zone para que tu hij@ también se divierta y disfrute del club.</p>
+      <p class="intro-text">Todo nuestro club tendrá WiFi, juegos de mesa, snack / café y espacios donde puedas sentarte para realizar tus actividades y disfrutar de tu lomito.</p>
+      <p class="intro-text">Seguridad 24/7, cámaras de seguridad en todo el club, acceso por medio de registro QR y estacionamiento.</p>
+      <p class="intro-text" style="margin-bottom:0">Sé parte de esta gran familia de Lomitos Dog Club.</p>
+      <div class="divider"></div>
+      <div class="intro-sub">Ubicación de Lomitos Dog Club</div>
+      <p class="intro-loc">Av. Lerma S/N entre circuito metropolitano y calle 16 septiembre. (Como referencia, a 5 minutos de Fracc. Castaños).</p>
+      <div class="divider"></div>
+      <div class="intro-sub">La membresía Fundador incluye:</div>
+      <ul class="intro-list">
+        <li>Estancia L a V de 8:00 am - 16:00 hrs (reservar 24 hrs antes por medio de la App).</li>
+        <li>Un baño al mes a tu lomito.</li>
+        <li>15% descuento en Pet Shop.</li>
+        <li>10% descuento en Snack Cafe.</li>
+        <li>Entrada a eventos exclusivos.</li>
+        <li>Festeja a tu lomito con sus amigos (área exclusiva / regalo sorpresa / pastel).</li>
+      </ul>
     </div>
 
     <!-- DATOS -->
