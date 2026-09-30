@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lomitos Dog Club · Membresía Fundador</title>
+<title>Lomitos Dog Club · LOMITOS DC Fundadores</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;400i&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
@@ -26,18 +26,18 @@ canvas#bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-e
 .intro-logo{font-size:28px;margin-bottom:12px}
 .intro-title{font-family:'Playfair Display',serif;font-size:20px;color:var(--cream);margin-bottom:12px}
 .intro-text{font-size:14px;color:var(--cream2);line-height:1.85;margin-bottom:14px}
-.intro-cta{font-size:14px;color:var(--cream2);line-height:1.85}
-.intro-cta strong{color:var(--cream)}
+.intro-list{font-size:14px;color:var(--cream2);line-height:1.9;margin:0 0 14px 0;padding-left:0;list-style:none}
+.intro-list li{padding-left:18px;position:relative;margin-bottom:4px}
+.intro-list li::before{content:'•';color:var(--gold);position:absolute;left:0}
+.intro-loc{font-size:13px;color:var(--muted);line-height:1.7;margin-bottom:14px;font-style:italic}
+.intro-sub{font-family:'Playfair Display',serif;font-size:15px;color:var(--gold);margin:16px 0 10px}
 .badge{display:inline-block;background:rgba(228,143,36,.14);border:1px solid rgba(228,143,36,.35);border-radius:20px;padding:5px 14px;font-size:11px;color:var(--gold);margin-top:12px;font-weight:500}
 
 /* FIELDS */
-.section-title{font-size:9px;letter-spacing:2.5px;text-transform:uppercase;color:var(--muted);margin-bottom:16px;font-weight:500}
 .field{margin-bottom:16px}
 .field:last-child{margin-bottom:0}
 .field label{display:block;font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
 .field input,.field select,.field textarea{width:100%;background:var(--bg3);border:1px solid var(--bg4);border-radius:var(--r);padding:13px 15px;font-size:14px;color:var(--cream);font-family:'DM Sans',sans-serif;outline:none;transition:border .2s,background .2s;-webkit-appearance:none;appearance:none}
-.field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A7A6A' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:40px}
-.field select option{background:#252520;color:var(--cream)}
 .field input:focus,.field select:focus,.field textarea:focus{border-color:rgba(228,143,36,.55);background:#2A2A24}
 .field textarea{height:80px;resize:none}
 .divider{border:none;border-top:1px solid rgba(228,143,36,.1);margin:16px 0}
@@ -48,25 +48,6 @@ canvas#bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-e
 .opt:hover{border-color:var(--gold);color:var(--cream2)}
 .opt.sel{background:rgba(228,143,36,.12);border-color:var(--gold);color:var(--gold);font-weight:500}
 .opt input{display:none}
-
-/* AREAS GRID */
-.areas-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:6px}
-.area-opt{display:flex;align-items:center;gap:9px;padding:11px 14px;background:var(--bg3);border:1px solid var(--bg4);border-radius:9px;cursor:pointer;font-size:13px;color:var(--muted);transition:all .2s;user-select:none;-webkit-tap-highlight-color:transparent}
-.area-opt:hover{border-color:var(--gold);color:var(--cream2)}
-.area-opt.sel{background:rgba(228,143,36,.12);border-color:var(--gold);color:var(--gold)}
-.area-opt input{display:none}
-.area-ico{font-size:17px}
-
-/* FUNDADOR OPTS */
-.fund-opt{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:var(--bg3);border:1px solid var(--bg4);border-radius:var(--r);cursor:pointer;transition:all .2s;user-select:none;margin-bottom:10px;-webkit-tap-highlight-color:transparent}
-.fund-opt:last-child{margin-bottom:0}
-.fund-opt:hover{border-color:var(--gold)}
-.fund-opt.sel{background:rgba(228,143,36,.1);border-color:var(--gold)}
-.fund-opt input{display:none}
-.fund-dot{width:18px;height:18px;border-radius:50%;border:2px solid var(--bg4);margin-top:2px;flex-shrink:0;transition:all .2s;background:transparent}
-.fund-opt.sel .fund-dot{border-color:var(--gold);background:var(--gold)}
-.fund-text{font-size:14px;color:var(--cream2);line-height:1.5}
-.fund-opt.sel .fund-text{color:var(--cream)}
 
 /* SUBMIT */
 .submit-btn{width:100%;background:linear-gradient(135deg,#E48F24,#E8C96A);color:#0E0F12;border:none;border-radius:var(--r);padding:15px;font-size:15px;font-weight:600;cursor:pointer;font-family:'DM Sans',sans-serif;margin-top:8px;letter-spacing:.3px;transition:all .2s}
@@ -95,7 +76,7 @@ canvas#bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-e
   <div class="header">
     <img class="logo-img" src="logo.png" alt="Lomitos Dog Club" onerror="this.style.display='none'">
     <div class="logo">Lomitos Dog Club</div>
-    <div class="sub">Membresía Fundador</div>
+    <div class="sub">LOMITOS DC Fundadores</div>
   </div>
 
   <div id="form-wrap">
@@ -104,129 +85,97 @@ canvas#bg{position:fixed;top:0;left:0;width:100%;height:100%;z-index:0;pointer-e
     <div class="card">
       <div class="intro-logo">🐾</div>
       <div class="intro-title">¡Bienvenido a LOMITOS Dog Club!</div>
-      <p class="intro-text">Gracias por tu interés en formar parte de nuestra comunidad. Estamos creando un espacio donde los perros son la prioridad y sus familias podrán disfrutar de un lugar seguro, divertido y exclusivo.</p>
-      <p class="intro-cta">Solo necesitamos unos minutos para conocerte y reservar tu lugar como <strong>Miembro Fundador</strong>.</p>
+      <div class="intro-sub">Actividades</div>
+      <ul class="intro-list">
+        <li>Paseo, socializar y jugar con otros lomitos</li>
+        <li>Alberca</li>
+        <li>Espacio para ti: WiFi, juegos de mesa, snack/café</li>
+        <li>Kids Zone</li>
+        <li>Seguridad 24/7 + cámaras</li>
+        <li>Acceso QR</li>
+        <li>Estacionamiento</li>
+      </ul>
+      <p class="intro-loc">📍 Av. Lerma S/N entre circuito metropolitano y calle 16 de septiembre. (Como referencia, a 5 minutos de Fracc. Castaños).</p>
+      <div class="intro-sub">La membresía Fundador incluye:</div>
+      <ul class="intro-list">
+        <li>Estancia L-V 8:00am–16:00hrs (reservar 24h antes por App)</li>
+        <li>Un baño al mes</li>
+        <li>15% descuento Pet Shop</li>
+        <li>10% descuento Snack Café</li>
+        <li>Entrada a eventos exclusivos</li>
+        <li>Festeja a tu lomito con amigos (área exclusiva, regalo sorpresa, pastel)</li>
+      </ul>
       <span class="badge">🏆 Solo 60 lugares Fundador disponibles</span>
     </div>
 
-    <!-- DATOS -->
+    <!-- FORMULARIO -->
     <div class="card">
-      <div class="card-title">Datos del propietario</div>
+      <div class="card-title">LOMITOS DC Fundadores</div>
+
       <div class="field">
-        <label>Nombre completo</label>
+        <label>¿Estás interesado en la membresía Fundador?</label>
+        <div class="opt-group">
+          <label class="opt"><input type="radio" name="interes" value="No">No</label>
+          <label class="opt"><input type="radio" name="interes" value="Sí">Sí</label>
+          <label class="opt"><input type="radio" name="interes" value="Tal vez">Tal vez</label>
+        </div>
+      </div>
+      <div class="divider"></div>
+
+      <div class="field">
+        <label>Nombre completo del dueño</label>
         <input type="text" id="f-nombre" placeholder="Tu nombre">
       </div>
+
       <div class="field">
-        <label>Teléfono / WhatsApp</label>
+        <label>Teléfono de contacto</label>
         <input type="tel" id="f-tel" placeholder="722 000 0000">
       </div>
-    </div>
+      <div class="divider"></div>
 
-    <!-- SOBRE TU LOMITO -->
-    <div class="card">
-      <div class="card-title">Sobre tu lomito</div>
       <div class="field">
-        <label>¿Cómo se llama tu lomito?</label>
+        <label>Nombre de tu lomito</label>
         <input type="text" id="f-nombre-lomito" placeholder="Nombre de tu mejor amig@">
       </div>
-      <div class="divider"></div>
+
       <div class="field">
-        <label>¿Qué raza es?</label>
-        <select id="f-razas">
-          <option value="">Selecciona la raza principal</option>
-          <option>Labrador Retriever</option>
-          <option>Golden Retriever</option>
-          <option>French Bulldog</option>
-          <option>Bulldog Inglés</option>
-          <option>Beagle</option>
-          <option>Poodle / Caniche</option>
-          <option>Yorkshire Terrier</option>
-          <option>Chihuahua</option>
-          <option>Pastor Alemán</option>
-          <option>Husky Siberiano</option>
-          <option>Shih Tzu</option>
-          <option>Maltés</option>
-          <option>Rottweiler</option>
-          <option>Boxer</option>
-          <option>Dóberman</option>
-          <option>Border Collie</option>
-          <option>Cocker Spaniel</option>
-          <option>Schnauzer</option>
-          <option>Dálmata</option>
-          <option>Pitbull / American Bully</option>
-          <option>Samoyedo</option>
-          <option>Akita</option>
-          <option>Shar Pei</option>
-          <option>Weimaraner</option>
-          <option>Mestizo / Adoptado</option>
-          <option>Otra raza</option>
-        </select>
+        <label>Raza de tu lomito</label>
+        <input type="text" id="f-raza" placeholder="Raza de tu lomito">
       </div>
-      <div class="divider"></div>
+
       <div class="field">
-        <label>¿Qué tamaño es?</label>
+        <label>Edad de tu lomito</label>
+        <input type="text" id="f-edad" placeholder="Edad de tu lomito">
+      </div>
+
+      <div class="field">
+        <label>Sexo de tu perrito</label>
         <div class="opt-group">
-          <label class="opt"><input type="checkbox" name="talla" value="Pequeño (hasta 10kg)">Pequeño</label>
-          <label class="opt"><input type="checkbox" name="talla" value="Mediano (10–25kg)">Mediano</label>
-          <label class="opt"><input type="checkbox" name="talla" value="Grande (+25kg)">Grande</label>
+          <label class="opt"><input type="radio" name="sexo" value="Hembra">Hembra</label>
+          <label class="opt"><input type="radio" name="sexo" value="Macho">Macho</label>
         </div>
       </div>
       <div class="divider"></div>
+
       <div class="field">
-        <label>¿Cuántos perros deseas registrar?</label>
-        <div class="opt-group">
-          <label class="opt"><input type="radio" name="num" value="1">1</label>
-          <label class="opt"><input type="radio" name="num" value="2">2</label>
-          <label class="opt"><input type="radio" name="num" value="3 o más">3 o más</label>
-        </div>
-      </div>
-      <div class="divider"></div>
-      <div class="field">
-        <label>¿Está esterilizado?</label>
+        <label>¿Está esterilizado tu lomito?</label>
         <div class="opt-group">
           <label class="opt"><input type="radio" name="ester" value="Sí">Sí</label>
           <label class="opt"><input type="radio" name="ester" value="No">No</label>
         </div>
       </div>
+      <div class="divider"></div>
 
-    </div>
-
-    <!-- INTERESES -->
-    <div class="card">
-      <div class="card-title">Lo que más te interesa del club</div>
       <div class="field">
-        <label>¿Qué área disfrutarías más? (Puedes elegir varias)</label>
-        <div class="areas-grid">
-          <label class="area-opt"><input type="checkbox" name="area" value="Áreas de juego"><span class="area-ico">🏃</span>Áreas de juego</label>
-          <label class="area-opt"><input type="checkbox" name="area" value="Agility"><span class="area-ico">🏅</span>Agility</label>
-          <label class="area-opt"><input type="checkbox" name="area" value="Patio social"><span class="area-ico">🌿</span>Patio social</label>
-          <label class="area-opt"><input type="checkbox" name="area" value="Snack Café"><span class="area-ico">☕</span>Snack Café</label>
-          <label class="area-opt"><input type="checkbox" name="area" value="Pet Shop"><span class="area-ico">🛍</span>Pet Shop</label>
-          <label class="area-opt"><input type="checkbox" name="area" value="Photo Zone"><span class="area-ico">📸</span>Photo Zone</label>
-          <label class="area-opt"><input type="checkbox" name="area" value="Eventos exclusivos"><span class="area-ico">🎉</span>Eventos exclusivos</label>
-          <label class="area-opt"><input type="checkbox" name="area" value="Kids Zone"><span class="area-ico">👶</span>Kids Zone</label>
-        </div>
+        <label>Colonia y municipio donde viven</label>
+        <input type="text" id="f-colonia" placeholder="Colonia y municipio">
       </div>
-    </div>
 
-    <!-- MEMBRESÍA FUNDADOR -->
-    <div class="card">
-      <div class="card-title">Membresía Fundador</div>
       <div class="field">
-        <label>¿Te gustaría asegurar una membresía Fundador?</label>
-        <div style="margin-top:10px">
-          <label class="fund-opt" id="fund-1">
-            <input type="radio" name="fundador" value="Sí, quiero apartar mi lugar">
-            <div class="fund-dot"></div>
-            <div class="fund-text">Sí, quiero apartar mi lugar.</div>
-          </label>
-          <label class="fund-opt" id="fund-2">
-            <input type="radio" name="fundador" value="Quiero recibir más información antes de decidir">
-            <div class="fund-dot"></div>
-            <div class="fund-text">Quiero recibir más información antes de decidir.</div>
-          </label>
-        </div>
+        <label>Algún comentario extra</label>
+        <textarea id="f-comentario" placeholder="Comentario extra (opcional)"></textarea>
       </div>
+
       <button class="submit-btn" id="send-btn" onclick="enviar()">Enviar registro 🐾</button>
       <div class="err" id="err-msg">Algo salió mal. Por favor intenta de nuevo.</div>
     </div>
@@ -270,49 +219,40 @@ const KEY='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6
   draw();
 })();
 
-// Opts interactivos
+// Opts interactivos (radios de selección única)
 document.querySelectorAll('.opt').forEach(el=>{
   el.addEventListener('click',function(){
     const inp=this.querySelector('input');
-    if(inp.type==='radio'){this.closest('.opt-group').querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));this.classList.add('sel');}
-    else{this.classList.toggle('sel');inp.checked=this.classList.contains('sel');}
-  });
-});
-document.querySelectorAll('.area-opt').forEach(el=>{
-  el.addEventListener('click',function(e){
-    e.preventDefault();
-    this.classList.toggle('sel');
-    this.querySelector('input').checked=this.classList.contains('sel');
-  });
-});
-document.querySelectorAll('.fund-opt').forEach(el=>{
-  el.addEventListener('click',function(){
-    document.querySelectorAll('.fund-opt').forEach(o=>o.classList.remove('sel'));
+    this.closest('.opt-group').querySelectorAll('.opt').forEach(o=>o.classList.remove('sel'));
     this.classList.add('sel');
+    inp.checked=true;
   });
 });
 
 function gv(id){return(document.getElementById(id)||{}).value?.trim()||'';}
 function gr(n){const e=document.querySelector(`input[name="${n}"]:checked`);return e?e.value:'';}
-function gc(n){return[...document.querySelectorAll(`input[name="${n}"]:checked`)].map(e=>e.value).join(', ');}
 
 async function enviar(){
   const btn=document.getElementById('send-btn');
   const err=document.getElementById('err-msg');
   btn.disabled=true;btn.textContent='Enviando...';err.style.display='none';
   const body={
+    interes_nivel:gr('interes')||null,
     nombre:gv('f-nombre')||null,
     telefono:gv('f-tel')||null,
     email:null,
     nombre_lomito:gv('f-nombre-lomito')||null,
-    razas:gv('f-razas')||null,
-    talla:gc('talla')||null,
-    num_perros:gr('num')||null,
+    razas:gv('f-raza')||null,
+    edad_lomito:gv('f-edad')||null,
+    sexo_lomito:gr('sexo')||null,
     esterilizado:gr('ester')||null,
-    areas_interes:gc('area')||null,
-    membresia_fundador:gr('fundador')||null,
+    colonia_municipio:gv('f-colonia')||null,
+    notas:gv('f-comentario')||null,
+    talla:null,
+    num_perros:null,
+    areas_interes:null,
+    membresia_fundador:null,
     membresia_interes:null,
-    notas:null,
   };
   try{
     const res=await fetch(SUPA+'/rest/v1/leads',{
